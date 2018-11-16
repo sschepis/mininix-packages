@@ -1,19 +1,19 @@
-TERMUX_PKG_HOMEPAGE=http://invisible-island.net/dialog/
-TERMUX_PKG_DESCRIPTION="Application used in shell scripts which displays text user interface widgets"
-TERMUX_PKG_DEPENDS="ncurses"
-TERMUX_PKG_VERSION="1.3-20181107"
-TERMUX_PKG_SHA256=efeaca8027dda53a9f3cf6c7b5c1a77093825b7a9b85c23c0c6c96afc3506457
-TERMUX_PKG_SRCURL=http://invisible-island.net/datafiles/release/dialog.tar.gz
+LINUXDROID_PKG_HOMEPAGE=http://invisible-island.net/dialog/
+LINUXDROID_PKG_DESCRIPTION="Application used in shell scripts which displays text user interface widgets"
+LINUXDROID_PKG_DEPENDS="ncurses"
+LINUXDROID_PKG_VERSION="1.3-20181107"
+LINUXDROID_PKG_SHA256=efeaca8027dda53a9f3cf6c7b5c1a77093825b7a9b85c23c0c6c96afc3506457
+LINUXDROID_PKG_SRCURL=http://invisible-island.net/datafiles/release/dialog.tar.gz
 # This will break when a new version is released (the URL unfortunately does not change)
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--with-ncursesw --enable-widec --with-pkg-config"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="--with-ncursesw --enable-widec --with-pkg-config"
 
-termux_step_pre_configure () {
+linuxdroid_step_pre_configure () {
 	# Put a temporary link for libtinfo.so
-	ln -s -f $TERMUX_PREFIX/lib/libncursesw.so $TERMUX_PREFIX/lib/libtinfo.so
+	ln -s -f $LINUXDROID_PREFIX/lib/libncursesw.so $LINUXDROID_PREFIX/lib/libtinfo.so
 }
 
-termux_step_post_make_install () {
-	rm $TERMUX_PREFIX/lib/libtinfo.so
-	cd $TERMUX_PREFIX/bin
+linuxdroid_step_post_make_install () {
+	rm $LINUXDROID_PREFIX/lib/libtinfo.so
+	cd $LINUXDROID_PREFIX/bin
 	ln -f -s dialog whiptail
 }

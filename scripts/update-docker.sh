@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e -u
 
-CONTAINER=termux-package-builder
-IMAGE=termux/package-builder
+CONTAINER=linuxdroid-package-builder
+IMAGE=linuxdroid/package-builder
 
 docker pull $IMAGE
 

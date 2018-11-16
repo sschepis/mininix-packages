@@ -6,7 +6,7 @@ diff -u -r ../mc-4.8.21/src/usermenu.c ./src/usermenu.c
  
      cmd_file = fdopen (cmd_file_fd, "w");
 -    fputs ("#! /bin/sh\n", cmd_file);
-+    fputs ("#! @TERMUX_PREFIX@/bin/sh\n", cmd_file);
++    fputs ("#! @LINUXDROID_PREFIX@/bin/sh\n", cmd_file);
      commands++;
  
      for (col = 0; *commands != '\0'; commands++)
@@ -15,7 +15,7 @@ diff -u -r ../mc-4.8.21/src/usermenu.c ./src/usermenu.c
          char *cmd;
  
 -        cmd = g_strconcat ("/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
-+        cmd = g_strconcat ("@TERMUX_PREFIX@/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
++        cmd = g_strconcat ("@LINUXDROID_PREFIX@/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
  
          if (show_prompt)
              shell_execute (cmd, EXECUTE_HIDE);

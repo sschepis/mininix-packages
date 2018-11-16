@@ -34,7 +34,7 @@ diff -u -r ../debootstrap-1.0.108/debootstrap ./debootstrap
  fi
  HOST_OS="$HOST_ARCH"
 +
-+# Translate Termux arch names to those of Debian:
++# Translate Linuxdroid arch names to those of Debian:
 +case $HOST_ARCH in
 +	arm)
 +		HOST_ARCH=armel

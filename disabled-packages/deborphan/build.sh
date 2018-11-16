@@ -1,6 +1,6 @@
-TERMUX_PKG_HOMEPAGE=https://packages.debian.org/source/sid/deborphan
-TERMUX_PKG_DESCRIPTION="Program that can find unused packages"
-TERMUX_PKG_VERSION=1.7.28.8-0.3
-TERMUX_PKG_SRCURL=http://http.debian.net/debian/pool/main/d/deborphan/deborphan_$TERMUX_PKG_VERSION.tar.gz
-TERMUX_PKG_BUILD_IN_SRC=yes
-TERMUX_PKG_MAINTAINER="Pierre Rudloff @Rudloff"
+LINUXDROID_PKG_HOMEPAGE=https://packages.debian.org/source/sid/deborphan
+LINUXDROID_PKG_DESCRIPTION="Program that can find unused packages"
+LINUXDROID_PKG_VERSION=1.7.28.8-0.3
+LINUXDROID_PKG_SRCURL=http://http.debian.net/debian/pool/main/d/deborphan/deborphan_$LINUXDROID_PKG_VERSION.tar.gz
+LINUXDROID_PKG_BUILD_IN_SRC=yes
+LINUXDROID_PKG_MAINTAINER="Pierre Rudloff @Rudloff"

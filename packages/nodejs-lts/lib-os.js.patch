@@ -6,7 +6,7 @@ diff -u -r ../node-v5.10.0/lib/os.js ./lib/os.js
             process.env.TMP ||
             process.env.TEMP ||
 -           '/tmp';
-+           '@TERMUX_PREFIX@/tmp';
++           '@LINUXDROID_PREFIX@/tmp';
      if (path.length > 1 && path.endsWith('/'))
        path = path.slice(0, -1);
    }

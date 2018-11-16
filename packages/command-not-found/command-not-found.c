@@ -16,11 +16,11 @@ char const* const commands[] = {
 #endif
 };
 
-static inline int termux_min3(unsigned int a, unsigned int b, unsigned int c) {
+static inline int linuxdroid_min3(unsigned int a, unsigned int b, unsigned int c) {
 	return (a < b ? (a < c ? a : c) : (b < c ? b : c));
 }
 
-static int termux_levenshtein_distance(char const* restrict s1, char const* restrict s2) {
+static int linuxdroid_levenshtein_distance(char const* restrict s1, char const* restrict s2) {
 	unsigned int s1len = strlen(s1);
 	unsigned int s2len = strlen(s2);
 	unsigned int matrix[s2len+1][s1len+1];
@@ -31,13 +31,13 @@ static int termux_levenshtein_distance(char const* restrict s1, char const* rest
 		matrix[0][y] = matrix[0][y-1] + 1;
 	for (unsigned x = 1; x <= s2len; x++)
 		for (unsigned y = 1; y <= s1len; y++)
-			matrix[x][y] = termux_min3(matrix[x-1][y] + 1, matrix[x][y-1] + 1, matrix[x-1][y-1] + (s1[y-1] == s2[x-1] ? 0 : 1));
+			matrix[x][y] = linuxdroid_min3(matrix[x-1][y] + 1, matrix[x][y-1] + 1, matrix[x-1][y-1] + (s1[y-1] == s2[x-1] ? 0 : 1));
 	return matrix[s2len][s1len];
 }
 
 int main(int argc, char** argv) {
 	if (argc != 2) {
-		fprintf(stderr, "usage: termux-command-not-found <command>\n");
+		fprintf(stderr, "usage: linuxdroid-command-not-found <command>\n");
 		return 1;
 	}
 	char* command_not_found = argv[1];
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 		char const* current_line = commands[i];
 		if (current_line[0] == ' ') { // Binary
 			char const* binary_name = current_line + 1;
-			int distance = termux_levenshtein_distance(command_not_found, binary_name);
+			int distance = linuxdroid_levenshtein_distance(command_not_found, binary_name);
 			if (distance == 0 && strcmp(command_not_found, binary_name) == 0) {
 				if (best_distance == 0) {
 					fprintf(stderr, "or\n");
@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 				char const* current_line = commands[i];
 				if (current_line[0] == ' ') { // Binary
 					char const* binary_name = current_line + 1;
-					int distance = termux_levenshtein_distance(command_not_found, binary_name);
+					int distance = linuxdroid_levenshtein_distance(command_not_found, binary_name);
 					if (best_distance == distance) {
 						fprintf(stderr, " Command '%s' from package '%s'\n", binary_name, current_package);
 					}

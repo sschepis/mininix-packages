@@ -5,7 +5,7 @@
  static void _child_lock_init (void)
  {
 -        char lock_file[] = "/tmp/tinyproxy.servers.lock.XXXXXX";
-+        char lock_file[] = "@TERMUX_PREFIX@/tmp/tinyproxy.servers.lock.XXXXXX";
++        char lock_file[] = "@LINUXDROID_PREFIX@/tmp/tinyproxy.servers.lock.XXXXXX";
  
          /* Only allow u+rw bits. This may be required for some versions
           * of glibc so that mkstemp() doesn't make us vulnerable.

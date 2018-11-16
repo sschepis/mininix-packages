@@ -5,7 +5,7 @@ diff -uNr dropbear-2018.76/svr-chansession.c dropbear-2018.76.mod/svr-chansessio
  #endif
  
  	/* clear environment */
-+	/* termux: do not clear environment on android */
++	/* linuxdroid: do not clear environment on android */
 +#ifndef __ANDROID__
  	/* if we're debugging using valgrind etc, we need to keep the LD_PRELOAD
  	 * etc. This is hazardous, so should only be used for debugging. */
@@ -22,7 +22,7 @@ diff -uNr dropbear-2018.76/svr-chansession.c dropbear-2018.76.mod/svr-chansessio
  		}
  	}
  
-+	/* termux: do not modify environment since we did not clean it */
++	/* linuxdroid: do not modify environment since we did not clean it */
 +#ifndef __ANDROID__
  	/* set env vars */
  	addnewvar("USER", ses.authstate.pw_name);

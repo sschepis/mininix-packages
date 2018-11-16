@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# = 0 -o "$1" = "-h" ]; then
+	echo 'usage: linuxdroid-fix-shebang <files>'
+	echo 'Rewrite shebangs in specified files for running under Linuxdroid,'
+	echo 'which is done by rewriting #!*/bin/binary to #!$PREFIX/bin/binary.'
+	exit 1
+fi
+
+for file in "$@"; do
+	sed -i -E "1 s@^#\!(.*)/[sx]?bin/(.*)@#\!/data/data/com.linuxdroid/files/usr/bin/\2@" "$(realpath "${file}")"
+done

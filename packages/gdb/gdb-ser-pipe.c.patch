@@ -6,7 +6,7 @@ diff -u -r ../gdb-8.1/gdb/ser-pipe.c ./gdb/ser-pipe.c
  
        close_most_fds ();
 -      execl ("/bin/sh", "sh", "-c", name, (char *) 0);
-+      execl ("@TERMUX_PREFIX@/bin/sh", "sh", "-c", name, (char *) 0);
++      execl ("@LINUXDROID_PREFIX@/bin/sh", "sh", "-c", name, (char *) 0);
        _exit (127);
      }
  

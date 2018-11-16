@@ -15,7 +15,7 @@ diff -u -r ../openssh-6.4p1/misc.c ./misc.c
  			return;
  	}
 -	r = snprintf(s, len, "/tmp/ssh-XXXXXXXXXXXX");
-+	r = snprintf(s, len, "@TERMUX_PREFIX@/tmp/ssh-XXXXXXXXXXXX");
++	r = snprintf(s, len, "@LINUXDROID_PREFIX@/tmp/ssh-XXXXXXXXXXXX");
  	if (r < 0 || (size_t)r >= len)
  		fatal("%s: template string too short", __func__);
  }

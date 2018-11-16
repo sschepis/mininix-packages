@@ -6,7 +6,7 @@ diff -u -r ../node-v10.9.0/lib/os.js ./lib/os.js
             safeGetenv('TMP') ||
             safeGetenv('TEMP') ||
 -           '/tmp';
-+           '@TERMUX_PREFIX@/tmp';
++           '@LINUXDROID_PREFIX@/tmp';
      if (path.length > 1 && path.endsWith('/'))
        path = path.slice(0, -1);
    }

@@ -6,7 +6,7 @@ diff -u -r ../c-ares-cares-1_15_0/ares_android.c ./ares_android.c
   * without express or implied warranty.
   */
 -#if defined(ANDROID) || defined(__ANDROID__)
-+#if defined(__DISABLED_IN_TERMUX__)
++#if defined(__DISABLED_IN_LINUXDROID__)
  
  #include <jni.h>
  

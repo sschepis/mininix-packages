@@ -7,8 +7,8 @@ diff -u -r ../mandoc-1.14.4/configure ./configure
  
 -MANPATH_BASE="/usr/share/man:/usr/X11R6/man"
 -MANPATH_DEFAULT="/usr/share/man:/usr/X11R6/man:/usr/local/man"
-+MANPATH_BASE="@TERMUX_PREFIX@/share/man"
-+MANPATH_DEFAULT="@TERMUX_PREFIX@/share/man"
++MANPATH_BASE="@LINUXDROID_PREFIX@/share/man"
++MANPATH_DEFAULT="@LINUXDROID_PREFIX@/share/man"
  OSNAME=
  UTF8_LOCALE=
  
@@ -42,7 +42,7 @@ diff -u -r ../mandoc-1.14.4/configure ./configure
  
  echo
 -echo "#define MAN_CONF_FILE \"/etc/${MANM_MANCONF}\""
-+echo "#define MAN_CONF_FILE \"@TERMUX_PREFIX@/etc/${MANM_MANCONF}\""
++echo "#define MAN_CONF_FILE \"@LINUXDROID_PREFIX@/etc/${MANM_MANCONF}\""
  echo "#define MANPATH_BASE \"${MANPATH_BASE}\""
  echo "#define MANPATH_DEFAULT \"${MANPATH_DEFAULT}\""
  [ -n "${OSNAME}" ] && echo "#define OSNAME \"${OSNAME}\""

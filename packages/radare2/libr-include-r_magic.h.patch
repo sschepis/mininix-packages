@@ -6,7 +6,7 @@ diff -uNr radare2-2.0.0/libr/include/r_magic.h radare2-2.0.0.mod/libr/include/r_
  
  #ifndef MAGICFILE
 -#define MAGICFILE "/etc/magic"
-+#define MAGICFILE "@TERMUX_PREFIX@/etc/magic"
++#define MAGICFILE "@LINUXDROID_PREFIX@/etc/magic"
  #endif
  
  #define R_MAGIC_PATH R2_PREFIX "/share/radare2/" R2_VERSION "/magic"

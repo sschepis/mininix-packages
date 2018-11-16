@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://termux-x11.ml
-TERMUX_PKG_DESCRIPTION="Package repository containing X11 programs and libraries"
-TERMUX_PKG_MAINTAINER="Leonid Plyushch <leonid.plyushch@gmail.com> @xeffyr"
-TERMUX_PKG_VERSION=1.2
-TERMUX_PKG_PLATFORM_INDEPENDENT=yes
+LINUXDROID_PKG_HOMEPAGE=https://linuxdroid-x11.ml
+LINUXDROID_PKG_DESCRIPTION="Package repository containing X11 programs and libraries"
+LINUXDROID_PKG_MAINTAINER="Leonid Plyushch <leonid.plyushch@gmail.com> @xeffyr"
+LINUXDROID_PKG_VERSION=1.2
+LINUXDROID_PKG_PLATFORM_INDEPENDENT=yes
 
-termux_step_make_install() {
-	mkdir -p $TERMUX_PREFIX/etc/apt/{sources.list.d,trusted.gpg.d}
-	echo "deb https://termux-x11.ml x11 main" > $TERMUX_PREFIX/etc/apt/sources.list.d/x11.list
-	cp $TERMUX_PKG_BUILDER_DIR/xeffyr.gpg $TERMUX_PREFIX/etc/apt/trusted.gpg.d/
+linuxdroid_step_make_install() {
+	mkdir -p $LINUXDROID_PREFIX/etc/apt/{sources.list.d,trusted.gpg.d}
+	echo "deb https://linuxdroid-x11.ml x11 main" > $LINUXDROID_PREFIX/etc/apt/sources.list.d/x11.list
+	cp $LINUXDROID_PKG_BUILDER_DIR/xeffyr.gpg $LINUXDROID_PREFIX/etc/apt/trusted.gpg.d/
 }
 
-termux_step_create_debscripts () {
-	echo "#!$TERMUX_PREFIX/bin/sh" > postinst
+linuxdroid_step_create_debscripts () {
+	echo "#!$LINUXDROID_PREFIX/bin/sh" > postinst
 	echo "echo Downloading updated package list ..." >> postinst
 	echo "apt update" >> postinst
 	echo "exit 0" >> postinst

@@ -6,7 +6,7 @@ diff -u -r ../soxr-0.1.3-Source/go ./go
  cd "$build"
  
 -cmake -Wno-dev -DCMAKE_BUILD_TYPE="$build" ..
-+cmake -Wno-dev -DCMAKE_BUILD_TYPE="$build" -DCMAKE_INSTALL_PREFIX=@TERMUX_PREFIX@ -DBUILD_TESTS=off ..
++cmake -Wno-dev -DCMAKE_BUILD_TYPE="$build" -DCMAKE_INSTALL_PREFIX=@LINUXDROID_PREFIX@ -DBUILD_TESTS=off ..
  make $j
 +make install
  ctest $j || echo "FAILURE details in $build/Testing/Temporary/LastTest.log"

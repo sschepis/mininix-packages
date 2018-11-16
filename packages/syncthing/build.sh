@@ -1,18 +1,18 @@
-TERMUX_PKG_HOMEPAGE=https://syncthing.net/
-TERMUX_PKG_DESCRIPTION="Decentralized file synchronization"
-TERMUX_PKG_VERSION=0.14.52
-TERMUX_PKG_SHA256=4954c2b05c60b6de29104d4783193a51164485cfa4a810c5a0696d72a83816c2
-TERMUX_PKG_SRCURL=https://github.com/syncthing/syncthing/releases/download/v${TERMUX_PKG_VERSION}/syncthing-source-v${TERMUX_PKG_VERSION}.tar.gz
+LINUXDROID_PKG_HOMEPAGE=https://syncthing.net/
+LINUXDROID_PKG_DESCRIPTION="Decentralized file synchronization"
+LINUXDROID_PKG_VERSION=0.14.52
+LINUXDROID_PKG_SHA256=4954c2b05c60b6de29104d4783193a51164485cfa4a810c5a0696d72a83816c2
+LINUXDROID_PKG_SRCURL=https://github.com/syncthing/syncthing/releases/download/v${LINUXDROID_PKG_VERSION}/syncthing-source-v${LINUXDROID_PKG_VERSION}.tar.gz
 
-termux_step_make(){
-	termux_setup_golang
+linuxdroid_step_make(){
+	linuxdroid_setup_golang
 
 	# The build.sh script doesn't with our compiler
 	# so small adjustments to file locations are needed
 	# so the build.go is fine.
 	mkdir -p go/src/github.com/syncthing/syncthing
-	cp $TERMUX_PKG_SRCDIR/vendor/* ./go/src/ -r
-	cp $TERMUX_PKG_SRCDIR/*  go/src/github.com/syncthing/syncthing -r
+	cp $LINUXDROID_PKG_SRCDIR/vendor/* ./go/src/ -r
+	cp $LINUXDROID_PKG_SRCDIR/*  go/src/github.com/syncthing/syncthing -r
 
 	# Set gopath so dependencies are built as in go get etc.
 	export GOPATH=$(pwd)/go
@@ -30,16 +30,16 @@ termux_step_make(){
 	./build -goos android \
 		-goarch $GO_ARCH \
 		-no-upgrade \
-		-version v$TERMUX_PKG_VERSION \
+		-version v$LINUXDROID_PKG_VERSION \
 		build
 }
 
-termux_step_make_install() {
-	cp go/src/github.com/syncthing/syncthing/syncthing $TERMUX_PREFIX/bin/
+linuxdroid_step_make_install() {
+	cp go/src/github.com/syncthing/syncthing/syncthing $LINUXDROID_PREFIX/bin/
 
 	for section in 1 5 7; do
 		local MANDIR=$PREFIX/share/man/man$section
 		mkdir -p $MANDIR
-		cp $TERMUX_PKG_SRCDIR/man/*.$section $MANDIR
+		cp $LINUXDROID_PKG_SRCDIR/man/*.$section $MANDIR
 	done
 }

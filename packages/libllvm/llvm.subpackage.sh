@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+LINUXDROID_SUBPKG_INCLUDE="
 bin/llc
 bin/lli
 bin/sancov
@@ -20,5 +20,5 @@ share/man/man1/opt.1
 share/man/man1/bugpoint.1
 share/man/man1/tblgen.1
 "
-TERMUX_SUBPKG_DESCRIPTION="C language frontend for LLVM"
-TERMUX_SUBPKG_DEPENDS="libllvm"
+LINUXDROID_SUBPKG_DESCRIPTION="C language frontend for LLVM"
+LINUXDROID_SUBPKG_DEPENDS="libllvm"

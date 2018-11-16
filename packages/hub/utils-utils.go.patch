@@ -6,7 +6,7 @@ diff -u -r ../hub-2.3.0/utils/utils.go ./utils/utils.go
  	browser := os.Getenv("BROWSER")
  	if browser == "" {
 -		browser = searchBrowserLauncher(runtime.GOOS)
-+		browser = "termux-open"
++		browser = "linuxdroid-open"
  	}
  
  	if browser == "" {

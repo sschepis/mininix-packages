@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="bin share/man"
-TERMUX_SUBPKG_DESCRIPTION="Tools for working with tiff files"
-TERMUX_SUBPKG_DEPENDS="libtiff"
+LINUXDROID_SUBPKG_INCLUDE="bin share/man"
+LINUXDROID_SUBPKG_DESCRIPTION="Tools for working with tiff files"
+LINUXDROID_SUBPKG_DEPENDS="libtiff"

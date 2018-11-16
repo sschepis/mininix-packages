@@ -1,35 +1,35 @@
-TERMUX_PKG_HOMEPAGE=https://www.ruby-lang.org/
-TERMUX_PKG_DESCRIPTION="Dynamic programming language with a focus on simplicity and productivity"
+LINUXDROID_PKG_HOMEPAGE=https://www.ruby-lang.org/
+LINUXDROID_PKG_DESCRIPTION="Dynamic programming language with a focus on simplicity and productivity"
 _MAJOR_VERSION=2.5
-TERMUX_PKG_VERSION=${_MAJOR_VERSION}.3
-TERMUX_PKG_SHA256=1cc9d0359a8ea35fc6111ec830d12e60168f3b9b305a3c2578357d360fcf306f
-TERMUX_PKG_SRCURL=https://cache.ruby-lang.org/pub/ruby/${_MAJOR_VERSION}/ruby-${TERMUX_PKG_VERSION}.tar.xz
+LINUXDROID_PKG_VERSION=${_MAJOR_VERSION}.3
+LINUXDROID_PKG_SHA256=1cc9d0359a8ea35fc6111ec830d12e60168f3b9b305a3c2578357d360fcf306f
+LINUXDROID_PKG_SRCURL=https://cache.ruby-lang.org/pub/ruby/${_MAJOR_VERSION}/ruby-${LINUXDROID_PKG_VERSION}.tar.xz
 # libbffi is used by the fiddle extension module:
-TERMUX_PKG_DEPENDS="libandroid-support, libffi, libgmp, readline, openssl, libutil, libyaml"
+LINUXDROID_PKG_DEPENDS="libandroid-support, libffi, libgmp, readline, openssl, libutil, libyaml"
 # Needed to fix compilation on android:
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_func_setgroups=no ac_cv_func_setresuid=no ac_cv_func_setreuid=no --enable-rubygems"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_func_setgroups=no ac_cv_func_setresuid=no ac_cv_func_setreuid=no --enable-rubygems"
 # The gdbm module seems to be very little used:
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --without-gdbm"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" --without-gdbm"
 # Do not link in libcrypt.so if available (now in disabled-packages):
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_lib_crypt_crypt=no"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_lib_crypt_crypt=no"
 # Fix DEPRECATED_TYPE macro clang compatibility:
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" rb_cv_type_deprecated=x"
-# getresuid(2) does not work on ChromeOS - https://github.com/termux/termux-app/issues/147:
-# TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_getresuid=no"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" rb_cv_type_deprecated=x"
+# getresuid(2) does not work on ChromeOS - https://github.com/linuxdroid/linuxdroid-app/issues/147:
+# LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_getresuid=no"
 
-termux_step_pre_configure() {
-	if [ "$TERMUX_ARCH_BITS" = 32 ]; then
+linuxdroid_step_pre_configure() {
+	if [ "$LINUXDROID_ARCH_BITS" = 32 ]; then
 		# process.c:function timetick2integer: error: undefined reference to '__mulodi4'
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" rb_cv_builtin___builtin_mul_overflow=no"
+		LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" rb_cv_builtin___builtin_mul_overflow=no"
 	fi
 }
 
-termux_step_make_install () {
+linuxdroid_step_make_install () {
 	make install
 	make uninstall # remove possible remains to get fresh timestamps
 	make install
 
-	local RBCONFIG=$TERMUX_PREFIX/lib/ruby/${_MAJOR_VERSION}.0/${TERMUX_HOST_PLATFORM}/rbconfig.rb
+	local RBCONFIG=$LINUXDROID_PREFIX/lib/ruby/${_MAJOR_VERSION}.0/${LINUXDROID_HOST_PLATFORM}/rbconfig.rb
 
 	# Fix absolute paths to executables:
 	perl -p -i -e 's/^.*CONFIG\["INSTALL"\].*$/  CONFIG["INSTALL"] = "install -c"/' $RBCONFIG
@@ -40,8 +40,8 @@ termux_step_make_install () {
 	perl -p -i -e 's/^.*CONFIG\["GREP"\].*$/  CONFIG["GREP"] = "grep"/' $RBCONFIG
 }
 
-termux_step_post_massage () {
-	if [ ! -f $TERMUX_PREFIX/lib/ruby/${_MAJOR_VERSION}.0/${TERMUX_HOST_PLATFORM}/readline.so ]; then
+linuxdroid_step_post_massage () {
+	if [ ! -f $LINUXDROID_PREFIX/lib/ruby/${_MAJOR_VERSION}.0/${LINUXDROID_HOST_PLATFORM}/readline.so ]; then
 		echo "Error: The readline extension was not built"
 	fi
 }

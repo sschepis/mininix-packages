@@ -9,7 +9,7 @@ diff -u -r ../busybox-1.25.1/networking/telnetd.c ./networking/telnetd.c
 -	G.issuefile = "/etc/issue.net"; \
 +	struct passwd* pwd = getpwuid(getuid()); \
 +	G.loginpath = pwd->pw_shell; \
-+	G.issuefile = "@TERMUX_PREFIX@/etc/issue.net"; \
++	G.issuefile = "@LINUXDROID_PREFIX@/etc/issue.net"; \
  } while (0)
  
  

@@ -8,9 +8,9 @@ diff -u -r /home/fornwall/lib/android-ndk/sysroot/usr/include/sys/cdefs.h ./usr/
 -#if !defined(__LP64__) && defined(_FILE_OFFSET_BITS) && _FILE_OFFSET_BITS == 64
 +/* Using _FILE_OFFSET_BITS=64 does not work well on Android
 + * and can cause problems when mixing libraries, which is why
-+ * Termux hides away this unless TERMUX_EXPOSE_FILE_OFFSET64
++ * Linuxdroid hides away this unless LINUXDROID_EXPOSE_FILE_OFFSET64
 + * is defined. */
-+#if !defined(__LP64__) && defined(_FILE_OFFSET_BITS) && _FILE_OFFSET_BITS == 64 && defined(TERMUX_EXPOSE_FILE_OFFSET64)
++#if !defined(__LP64__) && defined(_FILE_OFFSET_BITS) && _FILE_OFFSET_BITS == 64 && defined(LINUXDROID_EXPOSE_FILE_OFFSET64)
  #  define __USE_FILE_OFFSET64 1
  /*
   * Note that __RENAME_IF_FILE_OFFSET64 is only valid if the off_t and off64_t

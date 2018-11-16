@@ -1,12 +1,12 @@
-TERMUX_PKG_HOMEPAGE=https://www.lysator.liu.se/~nisse/misc/
-TERMUX_PKG_DESCRIPTION="Standalone version of arguments parsing functions from GLIBC"
-TERMUX_PKG_VERSION=1.3
-TERMUX_PKG_SHA256=dec79694da1319acd2238ce95df57f3680fea2482096e483323fddf3d818d8be
-TERMUX_PKG_SRCURL=https://www.lysator.liu.se/~nisse/misc/argp-standalone-$TERMUX_PKG_VERSION.tar.gz
-TERMUX_PKG_KEEP_STATIC_LIBRARIES=true
-TERMUX_PKG_NO_DEVELSPLIT=true
+LINUXDROID_PKG_HOMEPAGE=https://www.lysator.liu.se/~nisse/misc/
+LINUXDROID_PKG_DESCRIPTION="Standalone version of arguments parsing functions from GLIBC"
+LINUXDROID_PKG_VERSION=1.3
+LINUXDROID_PKG_SHA256=dec79694da1319acd2238ce95df57f3680fea2482096e483323fddf3d818d8be
+LINUXDROID_PKG_SRCURL=https://www.lysator.liu.se/~nisse/misc/argp-standalone-$LINUXDROID_PKG_VERSION.tar.gz
+LINUXDROID_PKG_KEEP_STATIC_LIBRARIES=true
+LINUXDROID_PKG_NO_DEVELSPLIT=true
 
-termux_step_post_make_install() {
-        cp libargp.a $TERMUX_PREFIX/lib
-        cp $TERMUX_PKG_SRCDIR/argp.h $TERMUX_PREFIX/include
+linuxdroid_step_post_make_install() {
+        cp libargp.a $LINUXDROID_PREFIX/lib
+        cp $LINUXDROID_PKG_SRCDIR/argp.h $LINUXDROID_PREFIX/include
 }

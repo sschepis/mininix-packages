@@ -1,18 +1,18 @@
-TERMUX_PKG_HOMEPAGE=https://talloc.samba.org/talloc/doc/html/index.html
-TERMUX_PKG_DESCRIPTION="Hierarchical, reference counted memory pool system with destructors"
-TERMUX_PKG_VERSION=2.1.14
-TERMUX_PKG_SHA256=b185602756a628bac507fa8af8b9df92ace69d27c0add5dab93190ad7c3367ce
-TERMUX_PKG_SRCURL=https://www.samba.org/ftp/talloc/talloc-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_BUILD_IN_SRC="yes"
+LINUXDROID_PKG_HOMEPAGE=https://talloc.samba.org/talloc/doc/html/index.html
+LINUXDROID_PKG_DESCRIPTION="Hierarchical, reference counted memory pool system with destructors"
+LINUXDROID_PKG_VERSION=2.1.14
+LINUXDROID_PKG_SHA256=b185602756a628bac507fa8af8b9df92ace69d27c0add5dab93190ad7c3367ce
+LINUXDROID_PKG_SRCURL=https://www.samba.org/ftp/talloc/talloc-${LINUXDROID_PKG_VERSION}.tar.gz
+LINUXDROID_PKG_BUILD_IN_SRC="yes"
 
-termux_step_configure () {
+linuxdroid_step_configure () {
 	# Force fresh install:
-	rm -f $TERMUX_PREFIX/include/talloc.h
+	rm -f $LINUXDROID_PREFIX/include/talloc.h
 
 	# Make sure symlinks are installed:
-	rm $TERMUX_PREFIX/lib/libtalloc* || true
+	rm $LINUXDROID_PREFIX/lib/libtalloc* || true
 
-	cd $TERMUX_PKG_SRCDIR
+	cd $LINUXDROID_PKG_SRCDIR
 
 	cat <<EOF > cross-answers.txt
 Checking uname sysname type: "Linux"
@@ -42,7 +42,7 @@ Checking for HAVE_INCOHERENT_MMAP: OK
 Checking getconf large file support flags work: OK
 EOF
 
-	./configure --prefix=$TERMUX_PREFIX \
+	./configure --prefix=$LINUXDROID_PREFIX \
 		--disable-rpath \
 		--disable-python \
 		--cross-compile \

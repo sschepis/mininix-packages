@@ -12,7 +12,7 @@
  endif
  
  # Linking with C++ libraries is needed _only_ on mingw and Cygwin.
-+# .. termux edit because i can't be bothered fixing it properly.
++# .. linuxdroid edit because i can't be bothered fixing it properly.
  if !WOE32DLL
  libgettextlib_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
  	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \

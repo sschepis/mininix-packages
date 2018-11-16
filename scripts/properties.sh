@@ -1,7 +1,7 @@
-TERMUX_NDK_VERSION=18
-TERMUX_ANDROID_BUILD_TOOLS_VERSION=28.0.2
+LINUXDROID_NDK_VERSION=18
+LINUXDROID_ANDROID_BUILD_TOOLS_VERSION=28.0.2
 
-test -f "$HOME/.termuxrc" && . "$HOME/.termuxrc"
+test -f "$HOME/.linuxdroidrc" && . "$HOME/.linuxdroidrc"
 
 : "${ANDROID_HOME:="${HOME}/lib/android-sdk"}"
 : "${NDK:="${HOME}/lib/android-ndk"}"

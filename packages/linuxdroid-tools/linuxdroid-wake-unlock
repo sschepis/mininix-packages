@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ $# != 0 ]; then
+	echo 'usage: linuxdroid-wake-unlock'
+	echo 'Release the Linuxdroid wake lock to allow the CPU to sleep.'
+	exit 1
+fi
+
+am startservice \
+	--user 0 \
+	-a com.linuxdroid.service_wake_unlock \
+	com.linuxdroid/com.linuxdroid.app.LinuxdroidService \
+	> /dev/null

@@ -1,32 +1,32 @@
-TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/bash/
-TERMUX_PKG_DESCRIPTION="A sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)"
-TERMUX_PKG_DEPENDS="ncurses, readline, libandroid-support, termux-tools, command-not-found"
+LINUXDROID_PKG_HOMEPAGE=https://www.gnu.org/software/bash/
+LINUXDROID_PKG_DESCRIPTION="A sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)"
+LINUXDROID_PKG_DEPENDS="ncurses, readline, libandroid-support, linuxdroid-tools, command-not-found"
 _MAIN_VERSION=4.4
 _PATCH_VERSION=23
-TERMUX_PKG_REVISION=3
-TERMUX_PKG_SHA256=d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb
-TERMUX_PKG_VERSION=${_MAIN_VERSION}.${_PATCH_VERSION}
-TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/bash/bash-${_MAIN_VERSION}.tar.gz
-TERMUX_PKG_ESSENTIAL=true
+LINUXDROID_PKG_REVISION=3
+LINUXDROID_PKG_SHA256=d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb
+LINUXDROID_PKG_VERSION=${_MAIN_VERSION}.${_PATCH_VERSION}
+LINUXDROID_PKG_SRCURL=https://mirrors.kernel.org/gnu/bash/bash-${_MAIN_VERSION}.tar.gz
+LINUXDROID_PKG_ESSENTIAL=true
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--enable-multibyte --without-bash-malloc --with-installed-readline ac_cv_header_grp_h=no ac_cv_rl_version=7.0"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_job_control_missing=present"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_sys_siglist=yes"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_func_sigsetjmp=present"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_unusable_rtsigs=no"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="--enable-multibyte --without-bash-malloc --with-installed-readline ac_cv_header_grp_h=no ac_cv_rl_version=7.0"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_job_control_missing=present"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_sys_siglist=yes"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_func_sigsetjmp=present"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_unusable_rtsigs=no"
 # Use bash_cv_dev_fd=whacky to use /proc/self/fd instead of /dev/fd.
 # After making this change process substitution such as in 'cat <(ls)' works.
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_dev_fd=whacky"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_dev_fd=whacky"
 # Bash assumes that getcwd is broken and provides a wrapper which
 # does not work when not all parent directories up to root are
 # accessible, which they are not under Android (/data). See
 # - http://permalink.gmane.org/gmane.linux.embedded.yocto.general/25204
-# - https://github.com/termux/termux-app/issues/200
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_getcwd_malloc=yes"
+# - https://github.com/linuxdroid/linuxdroid-app/issues/200
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_getcwd_malloc=yes"
 
-TERMUX_PKG_RM_AFTER_INSTALL="share/man/man1/bashbug.1 bin/bashbug"
+LINUXDROID_PKG_RM_AFTER_INSTALL="share/man/man1/bashbug.1 bin/bashbug"
 
-termux_step_pre_configure () {
+linuxdroid_step_pre_configure () {
 	declare -A PATCH_CHECKSUMS
 	PATCH_CHECKSUMS[001]=3e28d91531752df9a8cb167ad07cc542abaf944de9353fe8c6a535c9f1f17f0f
 	PATCH_CHECKSUMS[002]=7020a0183e17a7233e665b979c78c184ea369cfaf3e8b4b11f5547ecb7c13c53
@@ -53,8 +53,8 @@ termux_step_pre_configure () {
 	PATCH_CHECKSUMS[023]=4fec236f3fbd3d0c47b893fdfa9122142a474f6ef66c20ffb6c0f4864dd591b6
 
 	for patch_number in `seq -f '%03g' ${_PATCH_VERSION}`; do
-		PATCHFILE=$TERMUX_PKG_CACHEDIR/bash_patch_${patch_number}.patch
-		termux_download \
+		PATCHFILE=$LINUXDROID_PKG_CACHEDIR/bash_patch_${patch_number}.patch
+		linuxdroid_download \
 			"https://mirrors.kernel.org/gnu/bash/bash-4.4-patches/bash44-$patch_number" \
 			$PATCHFILE \
 			${PATCH_CHECKSUMS[$patch_number]}
@@ -62,14 +62,14 @@ termux_step_pre_configure () {
 	done
 }
 
-termux_step_post_make_install () {
-	sed "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|" $TERMUX_PKG_BUILDER_DIR/etc-profile > $TERMUX_PREFIX/etc/profile
-	sed "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|" \
-		$TERMUX_PKG_BUILDER_DIR/etc-profile | \
-		sed "s|@TERMUX_HOME@|$TERMUX_ANDROID_HOME|" > \
-		$TERMUX_PREFIX/etc/profile
+linuxdroid_step_post_make_install () {
+	sed "s|@LINUXDROID_PREFIX@|$LINUXDROID_PREFIX|" $LINUXDROID_PKG_BUILDER_DIR/etc-profile > $LINUXDROID_PREFIX/etc/profile
+	sed "s|@LINUXDROID_PREFIX@|$LINUXDROID_PREFIX|" \
+		$LINUXDROID_PKG_BUILDER_DIR/etc-profile | \
+		sed "s|@LINUXDROID_HOME@|$LINUXDROID_ANDROID_HOME|" > \
+		$LINUXDROID_PREFIX/etc/profile
 	# /etc/bash.bashrc - System-wide .bashrc file for interactive shells. (config-top.h in bash source, patched to enable):
-	sed "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|" \
-		$TERMUX_PKG_BUILDER_DIR/etc-bash.bashrc > \
-		$TERMUX_PREFIX/etc/bash.bashrc
+	sed "s|@LINUXDROID_PREFIX@|$LINUXDROID_PREFIX|" \
+		$LINUXDROID_PKG_BUILDER_DIR/etc-bash.bashrc > \
+		$LINUXDROID_PREFIX/etc/bash.bashrc
 }

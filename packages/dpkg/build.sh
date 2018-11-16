@@ -1,9 +1,9 @@
-TERMUX_PKG_HOMEPAGE=https://packages.debian.org/dpkg
-TERMUX_PKG_DESCRIPTION="Debian package management system"
-TERMUX_PKG_VERSION=1.19.2
-TERMUX_PKG_SHA256=f8f2ae2cf8065b81239db960b3794099ec607c94a125cec61c986f68f9861b71
-TERMUX_PKG_SRCURL=https://mirrors.kernel.org/debian/pool/main/d/dpkg/dpkg_${TERMUX_PKG_VERSION}.tar.xz
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_PKG_HOMEPAGE=https://packages.debian.org/dpkg
+LINUXDROID_PKG_DESCRIPTION="Debian package management system"
+LINUXDROID_PKG_VERSION=1.19.2
+LINUXDROID_PKG_SHA256=f8f2ae2cf8065b81239db960b3794099ec607c94a125cec61c986f68f9861b71
+LINUXDROID_PKG_SRCURL=https://mirrors.kernel.org/debian/pool/main/d/dpkg/dpkg_${LINUXDROID_PKG_VERSION}.tar.xz
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 ac_cv_lib_selinux_setexecfilecon=no
 --disable-dselect
 --disable-largefile
@@ -12,11 +12,11 @@ ac_cv_lib_selinux_setexecfilecon=no
 --disable-update-alternatives
 dpkg_cv_c99_snprintf=yes
 HAVE_SETEXECFILECON_FALSE=#
---host=${TERMUX_ARCH}-linux
+--host=${LINUXDROID_ARCH}-linux
 --without-libbz2
 --without-selinux
 "
-TERMUX_PKG_RM_AFTER_INSTALL="
+LINUXDROID_PKG_RM_AFTER_INSTALL="
 bin/dpkg-architecture
 bin/dpkg-buildflags
 bin/dpkg-buildpackage
@@ -61,10 +61,10 @@ share/man/man5
 share/perl5
 "
 # with the extract.c.patch we remove the -p and --warning=no-timestamp tar options so we can use busybox tar
-TERMUX_PKG_DEPENDS="busybox, liblzma"
-TERMUX_PKG_ESSENTIAL=yes
+LINUXDROID_PKG_DEPENDS="busybox, liblzma"
+LINUXDROID_PKG_ESSENTIAL=yes
 
-termux_step_pre_configure () {
+linuxdroid_step_pre_configure () {
 	export TAR=tar # To make sure dpkg tries to use "tar" instead of e.g. "gnutar" (which happens when building on OS X)
-	perl -p -i -e "s/TERMUX_ARCH/$TERMUX_ARCH/" $TERMUX_PKG_SRCDIR/configure
+	perl -p -i -e "s/LINUXDROID_ARCH/$LINUXDROID_ARCH/" $LINUXDROID_PKG_SRCDIR/configure
 }

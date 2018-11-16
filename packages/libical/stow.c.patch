@@ -14,7 +14,7 @@
 -                    "%s: Can't get username. Try explicitly specifying the output file with -o",
 -                    program_name);
 -            exit(1);
-+	    user = "TERMUX";
++	    user = "LINUXDROID";
          }
  
          /* Find password entry for user */

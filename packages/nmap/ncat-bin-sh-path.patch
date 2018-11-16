@@ -7,8 +7,8 @@ diff -u -r ../nmap-7.40/ncat/ncat_main.c ./ncat/ncat_main.c
      /* See if the shell is executable before we get deep into this */
 -    if (o.execmode == EXEC_SHELL && access("/bin/sh", X_OK) == -1)
 -        bye("/bin/sh is not executable, so `-c' won't work.");
-+    if (o.execmode == EXEC_SHELL && access("@TERMUX_PREFIX@/bin/sh", X_OK) == -1)
-+        bye("@TERMUX_PREFIX@/bin/sh is not executable, so `-c' won't work.");
++    if (o.execmode == EXEC_SHELL && access("@LINUXDROID_PREFIX@/bin/sh", X_OK) == -1)
++        bye("@LINUXDROID_PREFIX@/bin/sh is not executable, so `-c' won't work.");
  #endif
  
      if (targetss.storage.ss_family != AF_UNSPEC) {
@@ -20,7 +20,7 @@ diff -u -r ../nmap-7.40/ncat/ncat_posix.c ./ncat/ncat_posix.c
  
          case EXEC_SHELL:
 -            execl("/bin/sh", "sh", "-c", cmdexec, (void *) NULL);
-+            execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", cmdexec, (void *) NULL);
++            execl("@LINUXDROID_PREFIX@/bin/sh", "sh", "-c", cmdexec, (void *) NULL);
              break;
  #ifdef HAVE_LUA
          case EXEC_LUA:

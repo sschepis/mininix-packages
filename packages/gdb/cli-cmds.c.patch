@@ -6,7 +6,7 @@ diff -uNr gdb-8.1/gdb/cli/cli-cmds.c gdb-8.1.mod/gdb/cli/cli-cmds.c
  
        if ((user_shell = (char *) getenv ("SHELL")) == NULL)
 -	user_shell = "/bin/sh";
-+	user_shell = "@TERMUX_PREFIX@/bin/sh";
++	user_shell = "@LINUXDROID_PREFIX@/bin/sh";
  
        /* Get the name of the shell for arg0.  */
        p = lbasename (user_shell);
@@ -15,7 +15,7 @@ diff -uNr gdb-8.1/gdb/cli/cli-cmds.c gdb-8.1.mod/gdb/cli/cli-cmds.c
  
    if ((editor = (char *) getenv ("EDITOR")) == NULL)
 -      editor = "/bin/ex";
-+      editor = "@TERMUX_REFIX@/bin/applets/vi";
++      editor = "@LINUXDROID_REFIX@/bin/applets/vi";
  
    fn = symtab_to_fullname (sal.symtab);
  

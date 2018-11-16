@@ -1,6 +1,6 @@
 # Sponsors and Backers
-- [Become a sponsor or backer at Patreon](https://www.patreon.com/termux)
-- [Donate to Termux using PayPal or Bitcoin](https://termux.com/donate.html)
+- [Become a sponsor or backer at Patreon](https://www.patreon.com/linuxdroid)
+- [Donate to Linuxdroid using PayPal or Bitcoin](https://linuxdroid.app/donate.html)
 
 # Backers
 - Henrik Grimler

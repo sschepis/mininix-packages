@@ -1,32 +1,32 @@
-TERMUX_PKG_HOMEPAGE=http://www.eclipse.org/jdt/core/
-TERMUX_PKG_DESCRIPTION="Eclipse Compiler for Java, for android 5 and 6"
-TERMUX_PKG_VERSION=4.6.2
+LINUXDROID_PKG_HOMEPAGE=http://www.eclipse.org/jdt/core/
+LINUXDROID_PKG_DESCRIPTION="Eclipse Compiler for Java, for android 5 and 6"
+LINUXDROID_PKG_VERSION=4.6.2
 local _date=201611241400
-TERMUX_PKG_SHA256=9953dc2be829732e1b939106a71de018f660891220dbca559a5c7bff84883e51
-TERMUX_PKG_SRCURL=http://archive.eclipse.org/eclipse/downloads/drops${TERMUX_PKG_VERSION:0:1}/R-$TERMUX_PKG_VERSION-$_date/ecj-$TERMUX_PKG_VERSION.jar
-TERMUX_PKG_PLATFORM_INDEPENDENT=true
-TERMUX_PKG_CONFLICTS="ecj"
+LINUXDROID_PKG_SHA256=9953dc2be829732e1b939106a71de018f660891220dbca559a5c7bff84883e51
+LINUXDROID_PKG_SRCURL=http://archive.eclipse.org/eclipse/downloads/drops${LINUXDROID_PKG_VERSION:0:1}/R-$LINUXDROID_PKG_VERSION-$_date/ecj-$LINUXDROID_PKG_VERSION.jar
+LINUXDROID_PKG_PLATFORM_INDEPENDENT=true
+LINUXDROID_PKG_CONFLICTS="ecj"
 
-termux_step_extract_package () {
-	mkdir $TERMUX_PKG_SRCDIR
+linuxdroid_step_extract_package () {
+	mkdir $LINUXDROID_PKG_SRCDIR
 }
 
-termux_step_make () {
-	local RAW_JAR=$TERMUX_PKG_CACHEDIR/ecj-${TERMUX_PKG_VERSION}.jar
-	termux_download $TERMUX_PKG_SRCURL \
+linuxdroid_step_make () {
+	local RAW_JAR=$LINUXDROID_PKG_CACHEDIR/ecj-${LINUXDROID_PKG_VERSION}.jar
+	linuxdroid_download $LINUXDROID_PKG_SRCURL \
 		$RAW_JAR \
-		$TERMUX_PKG_SHA256
+		$LINUXDROID_PKG_SHA256
 
-	mkdir -p $TERMUX_PREFIX/share/{dex,java}
-	$TERMUX_D8 \
-		--classpath $ANDROID_HOME/platforms/android-$TERMUX_PKG_API_LEVEL/android.jar \
+	mkdir -p $LINUXDROID_PREFIX/share/{dex,java}
+	$LINUXDROID_D8 \
+		--classpath $ANDROID_HOME/platforms/android-$LINUXDROID_PKG_API_LEVEL/android.jar \
 		--release \
 		--min-api 21 \
-		--output $TERMUX_PKG_TMPDIR \
+		--output $LINUXDROID_PKG_TMPDIR \
 		$RAW_JAR
 
 	# Package classes.dex into jar:
-	cd $TERMUX_PKG_TMPDIR
+	cd $LINUXDROID_PKG_TMPDIR
 	jar cf ecj.jar classes.dex
 	# Add needed properties file to jar file:
 	jar xf $RAW_JAR org/eclipse/jdt/internal/compiler/batch/messages.properties
@@ -42,7 +42,7 @@ termux_step_make () {
 		jar uf ecj.jar  org/eclipse/jdt/internal/compiler/parser/parser$i.rsc
 	done
 	# Move into place:
-	mv ecj.jar $TERMUX_PREFIX/share/dex/ecj.jar
+	mv ecj.jar $LINUXDROID_PREFIX/share/dex/ecj.jar
 
 	rm -rf android-jar
 	mkdir android-jar
@@ -54,7 +54,7 @@ termux_step_make () {
 	rm -Rf android.jar resources.arsc res assets
 	jar cfM android.jar .
 
-	cp $TERMUX_PKG_TMPDIR/android-jar/android.jar $TERMUX_PREFIX/share/java/android.jar
+	cp $LINUXDROID_PKG_TMPDIR/android-jar/android.jar $LINUXDROID_PREFIX/share/java/android.jar
 
 	# Bundle in an android.jar from an older API also, for those who want to
 	# build apps that run on older Android versions.
@@ -63,11 +63,11 @@ termux_step_make () {
 	unzip -q android.jar
 	rm -Rf android.jar resources.arsc res assets
 	jar cfM android-21.jar .
-	cp $TERMUX_PKG_TMPDIR/android-jar/android-21.jar $TERMUX_PREFIX/share/java/
+	cp $LINUXDROID_PKG_TMPDIR/android-jar/android-21.jar $LINUXDROID_PREFIX/share/java/
 
-	rm -Rf $TERMUX_PREFIX/bin/javac
-	install $TERMUX_PKG_BUILDER_DIR/ecj $TERMUX_PREFIX/bin/ecj
-	perl -p -i -e "s%\@TERMUX_PREFIX\@%${TERMUX_PREFIX}%g" $TERMUX_PREFIX/bin/ecj
-	install $TERMUX_PKG_BUILDER_DIR/ecj-21 $TERMUX_PREFIX/bin/ecj-21
-	perl -p -i -e "s%\@TERMUX_PREFIX\@%${TERMUX_PREFIX}%g" $TERMUX_PREFIX/bin/ecj-21
+	rm -Rf $LINUXDROID_PREFIX/bin/javac
+	install $LINUXDROID_PKG_BUILDER_DIR/ecj $LINUXDROID_PREFIX/bin/ecj
+	perl -p -i -e "s%\@LINUXDROID_PREFIX\@%${LINUXDROID_PREFIX}%g" $LINUXDROID_PREFIX/bin/ecj
+	install $LINUXDROID_PKG_BUILDER_DIR/ecj-21 $LINUXDROID_PREFIX/bin/ecj-21
+	perl -p -i -e "s%\@LINUXDROID_PREFIX\@%${LINUXDROID_PREFIX}%g" $LINUXDROID_PREFIX/bin/ecj-21
 }

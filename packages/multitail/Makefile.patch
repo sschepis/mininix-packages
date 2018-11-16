@@ -7,7 +7,7 @@ diff -u -r ../multitail-6.4.1/Makefile ./Makefile
  UTF8_SUPPORT=yes
 -DESTDIR=
 -PREFIX=/usr
-+DESTDIR=@TERMUX_PREFIX@
++DESTDIR=@LINUXDROID_PREFIX@
 +PREFIX=
  CONFIG_FILE=$(DESTDIR)/etc/multitail.conf
  

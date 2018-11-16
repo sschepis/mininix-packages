@@ -6,7 +6,7 @@ diff -uNr dropbear-2018.76/common-session.c dropbear-2018.76.mod/common-session.
  	/* an empty shell should be interpreted as "/bin/sh" */
  	if (ses.authstate.pw_shell[0] == '\0') {
 -		return "/bin/sh";
-+		return "@TERMUX_PREFIX@/bin/sh";
++		return "@LINUXDROID_PREFIX@/bin/sh";
  	} else {
  		return ses.authstate.pw_shell;
  	}

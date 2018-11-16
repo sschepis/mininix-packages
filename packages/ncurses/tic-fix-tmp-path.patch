@@ -6,7 +6,7 @@ diff -uNr ncurses-6.0-20170909/progs/tic.c ncurses-6.0-20170909.mod/progs/tic.c
      FILE *result = 0;
  
 -    _nc_STRCPY(filename, "/tmp/XXXXXX", PATH_MAX);
-+    _nc_STRCPY(filename, "@TERMUX_PREFIX@/tmp/XXXXXX", PATH_MAX);
++    _nc_STRCPY(filename, "@LINUXDROID_PREFIX@/tmp/XXXXXX", PATH_MAX);
  #if HAVE_MKSTEMP
      {
  	int oldmask = (int) umask(077);

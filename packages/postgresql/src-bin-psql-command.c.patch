@@ -6,7 +6,7 @@ diff -u -r ../postgresql-9.6.2/src/bin/psql/command.c ./src/bin/psql/command.c
  
  		if (!tmpdir)
 -			tmpdir = "/tmp";
-+			tmpdir = "@TERMUX_PREFIX@/tmp";
++			tmpdir = "@LINUXDROID_PREFIX@/tmp";
  #else
  		char		tmpdir[MAXPGPATH];
  		int			ret;
@@ -15,7 +15,7 @@ diff -u -r ../postgresql-9.6.2/src/bin/psql/command.c ./src/bin/psql/command.c
  
  #ifndef WIN32
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@LINUXDROID_PREFIX@/bin/sh"
  #else
  /*
   *	CMD.EXE is in different places in different Win32 releases so we

@@ -6,10 +6,10 @@ diff -u -r ../php-5.6.17/ext/standard/proc_open.c ./ext/standard/proc_open.c > ~
  
  		if (env.envarray) {
 -			execle("/bin/sh", "sh", "-c", command, NULL, env.envarray);
-+			execle("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL, env.envarray);
++			execle("@LINUXDROID_PREFIX@/bin/sh", "sh", "-c", command, NULL, env.envarray);
  		} else {
 -			execl("/bin/sh", "sh", "-c", command, NULL);
-+			execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL);
++			execl("@LINUXDROID_PREFIX@/bin/sh", "sh", "-c", command, NULL);
  		}
  		_exit(127);
  

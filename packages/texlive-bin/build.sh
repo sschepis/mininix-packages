@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=https://www.tug.org/texlive/
-TERMUX_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system. This package contains architecture dependent binaries."
-TERMUX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
-TERMUX_PKG_VERSION=20180414
-TERMUX_PKG_REVISION=5
-TERMUX_PKG_SRCURL=ftp://tug.org/texlive/historic/${TERMUX_PKG_VERSION:0:4}/texlive-${TERMUX_PKG_VERSION}-source.tar.xz
-TERMUX_PKG_SHA256="fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e"
-TERMUX_PKG_DEPENDS="freetype, libpng, libgd, libgmp, libmpfr, libicu, liblua, poppler, libgraphite, harfbuzz-icu, teckit"
-TERMUX_PKG_BUILD_DEPENDS="icu-devtools"
-TERMUX_PKG_BREAKS="texlive (<< 20180414)"
-TERMUX_PKG_REPLACES="texlive (<< 20170524-3)"
-TERMUX_PKG_RECOMMENDS="texlive"
-TERMUX_PKG_NO_DEVELSPLIT=yes
-TERMUX_PKG_HOSTBUILD=true
+LINUXDROID_PKG_HOMEPAGE=https://www.tug.org/texlive/
+LINUXDROID_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system. This package contains architecture dependent binaries."
+LINUXDROID_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+LINUXDROID_PKG_VERSION=20180414
+LINUXDROID_PKG_REVISION=5
+LINUXDROID_PKG_SRCURL=ftp://tug.org/texlive/historic/${LINUXDROID_PKG_VERSION:0:4}/texlive-${LINUXDROID_PKG_VERSION}-source.tar.xz
+LINUXDROID_PKG_SHA256="fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e"
+LINUXDROID_PKG_DEPENDS="freetype, libpng, libgd, libgmp, libmpfr, libicu, liblua, poppler, libgraphite, harfbuzz-icu, teckit"
+LINUXDROID_PKG_BUILD_DEPENDS="icu-devtools"
+LINUXDROID_PKG_BREAKS="texlive (<< 20180414)"
+LINUXDROID_PKG_REPLACES="texlive (<< 20170524-3)"
+LINUXDROID_PKG_RECOMMENDS="texlive"
+LINUXDROID_PKG_NO_DEVELSPLIT=yes
+LINUXDROID_PKG_HOSTBUILD=true
 
-TL_ROOT=$TERMUX_PREFIX/share/texlive
-TL_BINDIR=$TERMUX_PREFIX/bin
+TL_ROOT=$LINUXDROID_PREFIX/share/texlive
+TL_BINDIR=$LINUXDROID_PREFIX/bin
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 AR=ar \
 RANLIB=ranlib \
 BUILDAR=ar \
@@ -24,13 +24,13 @@ BUILDRANLIB=ranlib \
 --prefix=$TL_ROOT \
 --bindir=$TL_BINDIR \
 --datarootdir=$TL_ROOT \
---datadir=$TERMUX_PREFIX/share \
---mandir=$TERMUX_PREFIX/share/man \
---docdir=$TERMUX_PREFIX/share/doc \
---infodir=$TERMUX_PREFIX/share/info \
---libdir=$TERMUX_PREFIX/lib \
---includedir=$TERMUX_PREFIX/include \
---build=$TERMUX_BUILD_TUPLE \
+--datadir=$LINUXDROID_PREFIX/share \
+--mandir=$LINUXDROID_PREFIX/share/man \
+--docdir=$LINUXDROID_PREFIX/share/doc \
+--infodir=$LINUXDROID_PREFIX/share/info \
+--libdir=$LINUXDROID_PREFIX/lib \
+--includedir=$LINUXDROID_PREFIX/include \
+--build=$LINUXDROID_BUILD_TUPLE \
 --enable-ttfdump=no \
 --enable-makeindexk=yes \
 --enable-makejvf=no \
@@ -69,10 +69,10 @@ BUILDRANLIB=ranlib \
 --with-system-lua \
 --with-system-teckit \
 --without-x \
---with-banner-add=/Termux"
+--with-banner-add=/Linuxdroid"
 
 # These files are provided by texlive:
-TERMUX_PKG_RM_AFTER_INSTALL="
+LINUXDROID_PKG_RM_AFTER_INSTALL="
 bin/tlmgr
 bin/man
 share/texlive/texmf-dist/texconfig/tcfmgr.map
@@ -122,43 +122,43 @@ share/texlive/texmf-dist/scripts/lua2dox/lua2dox_filter
 share/texlive/texmf-dist/scripts/context/perl/mptopdf.pl
 share/texlive/texmf-dist/scripts/checkcites/checkcites.lua"
 
-termux_step_host_build () {
+linuxdroid_step_host_build () {
 	mkdir -p auxdir/auxsub
 	mkdir -p texk/kpathsea
 	mkdir -p texk/web2c
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/auxdir/auxsub
-	$TERMUX_PKG_SRCDIR/auxdir/auxsub/configure
+	cd $LINUXDROID_PKG_HOSTBUILD_DIR/auxdir/auxsub
+	$LINUXDROID_PKG_SRCDIR/auxdir/auxsub/configure
 	make
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/texk/kpathsea
-	$TERMUX_PKG_SRCDIR/texk/kpathsea/configure
+	cd $LINUXDROID_PKG_HOSTBUILD_DIR/texk/kpathsea
+	$LINUXDROID_PKG_SRCDIR/texk/kpathsea/configure
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/texk/web2c
-	$TERMUX_PKG_SRCDIR/texk/web2c/configure --without-x
+	cd $LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c
+	$LINUXDROID_PKG_SRCDIR/texk/web2c/configure --without-x
 	make tangle
 	make ctangle
 	make tie
 	make otangle
 }
 
-termux_step_pre_configure() {
+linuxdroid_step_pre_configure() {
 	# When building against libicu 59.1 or later we need c++11:
 	CXXFLAGS+=" -std=c++11"
-	export TANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tangle
-	export TANGLEBOOT=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tangleboot
-	export CTANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/ctangle
-	export CTANGLEBOOT=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/ctangleboot
-	export TIE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tie
-	export OTANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/.libs/otangle
+	export TANGLE=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/tangle
+	export TANGLEBOOT=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/tangleboot
+	export CTANGLE=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/ctangle
+	export CTANGLEBOOT=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/ctangleboot
+	export TIE=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/tie
+	export OTANGLE=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/web2c/.libs/otangle
 	# otangle is linked against libkpathsea but can't find it, so we use LD_LIBRARY_PATH
-	export LD_LIBRARY_PATH=$TERMUX_PKG_HOSTBUILD_DIR/texk/kpathsea/.libs
+	export LD_LIBRARY_PATH=$LINUXDROID_PKG_HOSTBUILD_DIR/texk/kpathsea/.libs
 }
 
-termux_step_create_debscripts () {
+linuxdroid_step_create_debscripts () {
 	# Clean texlive's folder if needed (run on fresh install)
-	echo "#!$TERMUX_PREFIX/bin/bash" > preinst
-	echo "if [ ! -d $PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Termux'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
+	echo "#!$LINUXDROID_PREFIX/bin/bash" > preinst
+	echo "if [ ! -d $PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Linuxdroid'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
 	echo "exit 0" >> preinst
 	chmod 0755 preinst
 }

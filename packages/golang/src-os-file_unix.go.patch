@@ -9,7 +9,7 @@
 -		} else {
 -			dir = "/tmp"
 -		}
-+		dir = "@TERMUX_PREFIX@/tmp"
++		dir = "@LINUXDROID_PREFIX@/tmp"
  	}
  	return dir
  }

@@ -1,38 +1,38 @@
-TERMUX_PKG_HOMEPAGE=https://www.archlinux.org/pacman/
-TERMUX_PKG_DESCRIPTION="A library-based package manager with dependency support"
-TERMUX_PKG_MAINTAINER="Francisco Demartino @franciscod"
+LINUXDROID_PKG_HOMEPAGE=https://www.archlinux.org/pacman/
+LINUXDROID_PKG_DESCRIPTION="A library-based package manager with dependency support"
+LINUXDROID_PKG_MAINTAINER="Francisco Demartino @franciscod"
 # HEAVILY adapted from archlinux PKGBUILD
 pkgname=pacman
 pkgver=4.2.1
-TERMUX_PKG_VERSION=$pkgver
+LINUXDROID_PKG_VERSION=$pkgver
 #FIXME: asciidoc, fakechroot/fakeroot
-TERMUX_PKG_DEPENDS="bash, glib, libarchive, curl, gpgme, python2, libandroid-glob, libandroid-support"
-TERMUX_PKG_SRCURL="https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz"
-TERMUX_PKG_BUILD_IN_SRC=yes
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--prefix=$TERMUX_PREFIX --sysconfdir=$TERMUX_PREFIX/etc"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --localstatedir=$TERMUX_PREFIX/var --enable-doc "
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --with-scriptlet-shell=/usr/bin/bash"
+LINUXDROID_PKG_DEPENDS="bash, glib, libarchive, curl, gpgme, python2, libandroid-glob, libandroid-support"
+LINUXDROID_PKG_SRCURL="https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz"
+LINUXDROID_PKG_BUILD_IN_SRC=yes
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="--prefix=$LINUXDROID_PREFIX --sysconfdir=$LINUXDROID_PREFIX/etc"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" --localstatedir=$LINUXDROID_PREFIX/var --enable-doc "
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" --with-scriptlet-shell=/usr/bin/bash"
 
-termux_step_pre_configure() {
+linuxdroid_step_pre_configure() {
   LDFLAGS+="$LDFLAGS -llog -landroid-glob"
 }
 
-termux_step_make () {
+linuxdroid_step_make () {
   make
   make -C contrib
   # make -C "$pkgname-$pkgver" check
 }
 
-termux_step_make_install () {
+linuxdroid_step_make_install () {
 
   make install
   make -C contrib install
 
   # install Arch specific stuff
-  install -dm755 "$TERMUX_PREFIX/etc"
-  install -m644 "$TERMUX_PKG_BUILDER_DIR/pacman.conf" "$TERMUX_PREFIX/etc/pacman.conf"
+  install -dm755 "$LINUXDROID_PREFIX/etc"
+  install -m644 "$LINUXDROID_PKG_BUILDER_DIR/pacman.conf" "$LINUXDROID_PREFIX/etc/pacman.conf"
 
-  case $TERMUX_ARCH in
+  case $LINUXDROID_ARCH in
     i686)
       mycarch="i686"
       mychost="i686-pc-linux-gnu"
@@ -46,21 +46,21 @@ termux_step_make_install () {
   esac
 
   # set things correctly in the default conf file
-  install -m644 "$TERMUX_PKG_BUILDER_DIR/makepkg.conf" "$TERMUX_PREFIX/etc"
-  sed -i "$TERMUX_PREFIX/etc/makepkg.conf" \
+  install -m644 "$LINUXDROID_PKG_BUILDER_DIR/makepkg.conf" "$LINUXDROID_PREFIX/etc"
+  sed -i "$LINUXDROID_PREFIX/etc/makepkg.conf" \
     -e "s|@CARCH[@]|$mycarch|g" \
     -e "s|@CHOST[@]|$mychost|g" \
     -e "s|@CARCHFLAGS[@]|$myflags|g"
 
   # FIXME bash_completion
   # # put bash_completion in the right location
-  # install -dm755 "$TERMUX_PREFIX/share/bash-completion/completions"
-  # mv "$TERMUX_PREFIX/etc/bash_completion.d/pacman" "$TERMUX_PREFIX/share/bash-completion/completions"
-  # rmdir "$TERMUX_PREFIX/etc/bash_completion.d"
+  # install -dm755 "$LINUXDROID_PREFIX/share/bash-completion/completions"
+  # mv "$LINUXDROID_PREFIX/etc/bash_completion.d/pacman" "$LINUXDROID_PREFIX/share/bash-completion/completions"
+  # rmdir "$LINUXDROID_PREFIX/etc/bash_completion.d"
 
   # for f in makepkg pacman-key; do
-  #   ln -s pacman "$TERMUX_PREFIX/share/bash-completion/completions/$f"
+  #   ln -s pacman "$LINUXDROID_PREFIX/share/bash-completion/completions/$f"
   # done
 
-  install -Dm644 contrib/PKGBUILD.vim "$TERMUX_PREFIX/share/vim/vimfiles/syntax/PKGBUILD.vim"
+  install -Dm644 contrib/PKGBUILD.vim "$LINUXDROID_PREFIX/share/vim/vimfiles/syntax/PKGBUILD.vim"
 }

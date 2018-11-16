@@ -1,36 +1,36 @@
-TERMUX_PKG_HOMEPAGE=https://www.cyrusimap.org/sasl/
-TERMUX_PKG_DESCRIPTION="Cyrus SASL - authentication abstraction library"
-TERMUX_PKG_VERSION=2.1.26
-TERMUX_PKG_REVISION=2
-TERMUX_PKG_SRCURL=https://cyrusimap.org/releases/cyrus-sasl-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3
+LINUXDROID_PKG_HOMEPAGE=https://www.cyrusimap.org/sasl/
+LINUXDROID_PKG_DESCRIPTION="Cyrus SASL - authentication abstraction library"
+LINUXDROID_PKG_VERSION=2.1.26
+LINUXDROID_PKG_REVISION=2
+LINUXDROID_PKG_SRCURL=https://cyrusimap.org/releases/cyrus-sasl-${LINUXDROID_PKG_VERSION}.tar.gz
+LINUXDROID_PKG_SHA256=8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3
 # Seems to be race issues in build (symlink creation)::
-TERMUX_MAKE_PROCESSES=1
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_MAKE_PROCESSES=1
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 ac_cv_func_syslog=no
 ac_cv_header_syslog_h=no
 --disable-gssapi
 --disable-otp
---sysconfdir=$TERMUX_PREFIX/etc
+--sysconfdir=$LINUXDROID_PREFIX/etc
 --with-dblib=none
---with-dbpath=$TERMUX_PREFIX/var/lib/sasldb
+--with-dbpath=$LINUXDROID_PREFIX/var/lib/sasldb
 --without-des
 --without-saslauthd
---with-plugindir=$TERMUX_PREFIX/lib/sasl2
+--with-plugindir=$LINUXDROID_PREFIX/lib/sasl2
 "
-TERMUX_PKG_RM_AFTER_INSTALL="bin/pluginviewer"
+LINUXDROID_PKG_RM_AFTER_INSTALL="bin/pluginviewer"
 
-termux_step_post_configure () {
+linuxdroid_step_post_configure () {
 	# Build wants to run makemd5 at build time:
-	gcc $TERMUX_PKG_SRCDIR/include/makemd5.c -o $TERMUX_PKG_BUILDDIR/include/makemd5
-	touch -d "next hour" $TERMUX_PKG_BUILDDIR/include/makemd5
+	gcc $LINUXDROID_PKG_SRCDIR/include/makemd5.c -o $LINUXDROID_PKG_BUILDDIR/include/makemd5
+	touch -d "next hour" $LINUXDROID_PKG_BUILDDIR/include/makemd5
 }
 
-termux_step_post_massage () {
+linuxdroid_step_post_massage () {
 	for sub in anonymous crammd5 digestmd5 plain; do
 		local base=lib/sasl2/lib${sub}
 		if [ ! -L ${base}.so ] || [ ! -L ${base}.so.3 ] || [ ! -f ${base}.so.3.0.0 ] ; then
-			termux_error_exit "libsasl not packaged with $base"
+			linuxdroid_error_exit "libsasl not packaged with $base"
 		fi
 	done
 }

@@ -1,0 +1,12 @@
+Welcome to Linuxdroid!
+
+Wiki:            https://wiki.linuxdroid.app
+Community forum: https://linuxdroid.app/community
+IRC channel:     #linuxdroid on freenode
+Gitter chat:     https://gitter.im/linuxdroid/linuxdroid
+Mailing list:    linuxdroid+subscribe@groups.io
+
+Search packages:   pkg search <query>
+Install a package: pkg install <package>
+Upgrade packages:  pkg upgrade
+Learn more:        pkg help

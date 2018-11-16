@@ -6,7 +6,7 @@ diff -u -r ../autoconf-2.69/lib/Autom4te/General.pm ./lib/Autom4te/General.pm
  {
    my ($signature) = @_;
 -  my $TMPDIR = $ENV{'TMPDIR'} || '/tmp';
-+  my $TMPDIR = $ENV{'TMPDIR'} || '@TERMUX_PREFIX@/tmp';
++  my $TMPDIR = $ENV{'TMPDIR'} || '@LINUXDROID_PREFIX@/tmp';
    my $quoted_tmpdir = shell_quote ($TMPDIR);
  
    # If mktemp supports dirs, use it.

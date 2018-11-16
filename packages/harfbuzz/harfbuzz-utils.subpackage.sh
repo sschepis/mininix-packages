@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="bin/"
-TERMUX_SUBPKG_DESCRIPTION="Tools using the harfbuzz library"
-TERMUX_SUBPKG_DEPENDS="harfbuzz, libcairo, fontconfig, liblzma, libpixman, libxml2"
+LINUXDROID_SUBPKG_INCLUDE="bin/"
+LINUXDROID_SUBPKG_DESCRIPTION="Tools using the harfbuzz library"
+LINUXDROID_SUBPKG_DEPENDS="harfbuzz, libcairo, fontconfig, liblzma, libpixman, libxml2"

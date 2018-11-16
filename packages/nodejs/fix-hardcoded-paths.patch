@@ -6,9 +6,9 @@ diff -uNr node-v8.4.0/deps/uv/src/unix/core.c node-v8.4.0.mod/deps/uv/src/unix/c
    /* No temp environment variables defined */
    #if defined(__ANDROID__)
 -    buf = "/data/local/tmp";
-+    // Don't use '/data/local/tmp' in Termux
++    // Don't use '/data/local/tmp' in Linuxdroid
 +    //buf = "/data/local/tmp";
-+    buf = "@TERMUX_PREFIX@/tmp";
++    buf = "@LINUXDROID_PREFIX@/tmp";
    #else
      buf = "/tmp";
    #endif
@@ -20,7 +20,7 @@ diff -uNr node-v8.4.0/deps/v8/src/flag-definitions.h node-v8.4.0.mod/deps/v8/src
              "Enable unwinding info for perf linux profiler (experimental).")
  DEFINE_IMPLICATION(perf_prof, perf_prof_unwinding_info)
 -DEFINE_STRING(gc_fake_mmap, "/tmp/__v8_gc__",
-+DEFINE_STRING(gc_fake_mmap, "@TERMUX_PREFIX@/tmp/__v8_gc__",
++DEFINE_STRING(gc_fake_mmap, "@LINUXDROID_PREFIX@/tmp/__v8_gc__",
                "Specify the name of the file for fake gc mmap used in ll_prof")
  DEFINE_BOOL(log_internal_timer_events, false, "Time internal events.")
  DEFINE_BOOL(log_timer_events, false,
@@ -32,7 +32,7 @@ diff -uNr node-v8.4.0/deps/v8/src/log.cc node-v8.4.0.mod/deps/v8/src/log.cc
  };
  
 -const char PerfBasicLogger::kFilenameFormatString[] = "/tmp/perf-%d.map";
-+const char PerfBasicLogger::kFilenameFormatString[] = "@TERMUX_PREFIX@/tmp/perf-%d.map";
++const char PerfBasicLogger::kFilenameFormatString[] = "@LINUXDROID_PREFIX@/tmp/perf-%d.map";
  // Extra space for the PID in the filename
  const int PerfBasicLogger::kFilenameBufferPadding = 16;
  

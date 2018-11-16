@@ -2,8 +2,8 @@
 # clean.sh - clean everything.
 set -e -u
 
-# Read settings from .termuxrc if existing
-test -f $HOME/.termuxrc && . $HOME/.termuxrc
-: ${TERMUX_TOPDIR:="$HOME/.termux-build"}
+# Read settings from .linuxdroidrc if existing
+test -f $HOME/.linuxdroidrc && . $HOME/.linuxdroidrc
+: ${LINUXDROID_TOPDIR:="$HOME/.linuxdroid-build"}
 
-rm -Rf /data/* $TERMUX_TOPDIR
+rm -Rf /data/* $LINUXDROID_TOPDIR

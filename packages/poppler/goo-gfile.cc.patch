@@ -6,7 +6,7 @@ diff -uNr poppler-0.65.0/goo/gfile.cc poppler-0.65.0.mod/goo/gfile.cc
      *name = new GooString(s);
    } else {
 -    *name = new GooString("/tmp");
-+    *name = new GooString("@TERMUX_PREFIX@/tmp");
++    *name = new GooString("@LINUXDROID_PREFIX@/tmp");
    }
    (*name)->append("/XXXXXX");
    fd = mkstemp((*name)->getCString());

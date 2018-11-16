@@ -23,7 +23,7 @@ diff -u -r ../apk-tools-2.10.1/src/database.c ./src/database.c
  
  	db->cache_max_age = dbopts->cache_max_age ?: 4*60*60; /* 4 hours default */
 -	db->root = strdup(dbopts->root ?: "/");
-+	db->root = strdup(dbopts->root ?: "@TERMUX_PREFIX@");
++	db->root = strdup(dbopts->root ?: "@LINUXDROID_PREFIX@");
  	db->root_fd = openat(AT_FDCWD, db->root, O_RDONLY | O_CLOEXEC);
  	if (db->root_fd < 0 && (dbopts->open_flags & APK_OPENF_CREATE)) {
  		mkdirat(AT_FDCWD, db->root, 0755);

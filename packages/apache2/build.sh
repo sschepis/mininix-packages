@@ -1,10 +1,10 @@
-TERMUX_PKG_HOMEPAGE=https://httpd.apache.org
-TERMUX_PKG_DESCRIPTION="Apache Web Server"
-TERMUX_PKG_VERSION=2.4.37
-TERMUX_PKG_SHA256=3498dc5c6772fac2eb7307dc7963122ffe243b5e806e0be4fb51974ff759d726
-TERMUX_PKG_SRCURL=https://www.apache.org/dist/httpd/httpd-$TERMUX_PKG_VERSION.tar.bz2
-TERMUX_PKG_DEPENDS="apr, apr-util, pcre, openssl, libcrypt, libandroid-support, libnghttp2, libexpat"
-TERMUX_PKG_CONFFILES="
+LINUXDROID_PKG_HOMEPAGE=https://httpd.apache.org
+LINUXDROID_PKG_DESCRIPTION="Apache Web Server"
+LINUXDROID_PKG_VERSION=2.4.37
+LINUXDROID_PKG_SHA256=3498dc5c6772fac2eb7307dc7963122ffe243b5e806e0be4fb51974ff759d726
+LINUXDROID_PKG_SRCURL=https://www.apache.org/dist/httpd/httpd-$LINUXDROID_PKG_VERSION.tar.bz2
+LINUXDROID_PKG_DEPENDS="apr, apr-util, pcre, openssl, libcrypt, libandroid-support, libnghttp2, libexpat"
+LINUXDROID_PKG_CONFFILES="
 etc/apache2/httpd.conf
 etc/apache2/extra/httpd-autoindex.conf
 etc/apache2/extra/httpd-dav.conf
@@ -21,14 +21,14 @@ etc/apache2/extra/proxy-html.conf
 etc/apache2/mime.types
 etc/apache2/magic
 "
-TERMUX_PKG_MAINTAINER="Vishal Biswas @vishalbiswas"
+LINUXDROID_PKG_MAINTAINER="Vishal Biswas @vishalbiswas"
 # providing manual paths to libs because it picks up host libs on some systems
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
---with-apr=$TERMUX_PREFIX
---with-apr-util=$TERMUX_PREFIX
---with-pcre=$TERMUX_PREFIX
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
+--with-apr=$LINUXDROID_PREFIX
+--with-apr-util=$LINUXDROID_PREFIX
+--with-pcre=$LINUXDROID_PREFIX
 --enable-suexec
---enable-layout=Termux
+--enable-layout=Linuxdroid
 --enable-so
 --enable-authnz-fcgi
 --enable-cache
@@ -60,21 +60,21 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --with-sslport=8443
 --enable-unixd
 --without-libxml2
---libexecdir=$TERMUX_PREFIX/libexec/apache2
+--libexecdir=$LINUXDROID_PREFIX/libexec/apache2
 ac_cv_func_getpwnam=yes
 ac_cv_have_threadsafe_pollset=no
 "
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_RM_AFTER_INSTALL="share/apache2/manual etc/apache2/original share/man/man8/suexec.8 libexec/httpd.exp"
-TERMUX_PKG_INCLUDE_IN_DEVPACKAGE="share/apache2/build"
-TERMUX_PKG_EXTRA_MAKE_ARGS="-s"
+LINUXDROID_PKG_BUILD_IN_SRC=true
+LINUXDROID_PKG_RM_AFTER_INSTALL="share/apache2/manual etc/apache2/original share/man/man8/suexec.8 libexec/httpd.exp"
+LINUXDROID_PKG_INCLUDE_IN_DEVPACKAGE="share/apache2/build"
+LINUXDROID_PKG_EXTRA_MAKE_ARGS="-s"
 
-termux_step_pre_configure () {
+linuxdroid_step_pre_configure () {
 	# remove old files
-	rm -rf "$TERMUX_PREFIX"/{libexec,share,etc}/apache2
-	rm -rf "$TERMUX_PREFIX"/lib/cgi-bin
+	rm -rf "$LINUXDROID_PREFIX"/{libexec,share,etc}/apache2
+	rm -rf "$LINUXDROID_PREFIX"/lib/cgi-bin
 
-	if [ $TERMUX_ARCH_BITS -eq 32 ]; then
+	if [ $LINUXDROID_ARCH_BITS -eq 32 ]; then
 		export ap_cv_void_ptr_lt_long=4
 	else
 		export ap_cv_void_ptr_lt_long=8
@@ -83,17 +83,17 @@ termux_step_pre_configure () {
 	LDFLAGS="$LDFLAGS -llog -lapr-1 -laprutil-1"
 
 	# use custom layout
-	cat $TERMUX_PKG_BUILDER_DIR/Termux.layout > $TERMUX_PKG_SRCDIR/config.layout
+	cat $LINUXDROID_PKG_BUILDER_DIR/Linuxdroid.layout > $LINUXDROID_PKG_SRCDIR/config.layout
 }
 
-termux_step_post_configure () {
+linuxdroid_step_post_configure () {
 	# thanks to @JetBalsa
-	gcc -O2 -DCROSS_COMPILE $TERMUX_PKG_SRCDIR/server/gen_test_char.c -o $TERMUX_PKG_BUILDDIR/server/gen_test_char
-	touch -d "1 hour" $TERMUX_PKG_BUILDDIR/server/gen_test_char
+	gcc -O2 -DCROSS_COMPILE $LINUXDROID_PKG_SRCDIR/server/gen_test_char.c -o $LINUXDROID_PKG_BUILDDIR/server/gen_test_char
+	touch -d "1 hour" $LINUXDROID_PKG_BUILDDIR/server/gen_test_char
 }
 
-termux_step_post_make_install () {
-	sed -e "s#/$TERMUX_PREFIX/libexec/apache2/#modules/#" \
+linuxdroid_step_post_make_install () {
+	sed -e "s#/$LINUXDROID_PREFIX/libexec/apache2/#modules/#" \
 		-e 's|#\(LoadModule negotiation_module \)|\1|' \
 		-e 's|#\(LoadModule include_module \)|\1|' \
 		-e 's|#\(LoadModule userdir_module \)|\1|' \
@@ -106,13 +106,13 @@ termux_step_post_make_install () {
 		-e 's|#\(Include extra/httpd-mpm.conf\)|\1|' \
 		-e 's|User daemon|#User daemon|' \
 		-e 's|Group daemon|#Group daemon|' \
-		-i "$TERMUX_PREFIX/etc/apache2/httpd.conf"
+		-i "$LINUXDROID_PREFIX/etc/apache2/httpd.conf"
 }
 
-termux_step_post_massage () {
-	# sometimes it creates a $TERMUX_PREFIX/bin/sh -> /bin/sh
-	rm ${TERMUX_PKG_MASSAGEDIR}${TERMUX_PREFIX}/bin/sh || true
+linuxdroid_step_post_massage () {
+	# sometimes it creates a $LINUXDROID_PREFIX/bin/sh -> /bin/sh
+	rm ${LINUXDROID_PKG_MASSAGEDIR}${LINUXDROID_PREFIX}/bin/sh || true
 
-	mkdir -p ${TERMUX_PKG_MASSAGEDIR}${TERMUX_PREFIX}/var/run/apache2
-	mkdir -p ${TERMUX_PKG_MASSAGEDIR}${TERMUX_PREFIX}/var/log/apache2
+	mkdir -p ${LINUXDROID_PKG_MASSAGEDIR}${LINUXDROID_PREFIX}/var/run/apache2
+	mkdir -p ${LINUXDROID_PKG_MASSAGEDIR}${LINUXDROID_PREFIX}/var/log/apache2
 }

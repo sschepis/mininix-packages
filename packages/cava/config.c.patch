@@ -7,7 +7,7 @@ index 1da11cd..2e9ddd8 100644
  if (strcmp(inputMethod, "fifo") == 0) {
  	p->im = 2;
 -	p->audio_source = (char *)iniparser_getstring(ini, "input:source", "/tmp/mpd.fifo");
-+	p->audio_source = (char *)iniparser_getstring(ini, "input:source", "@TERMUX_PREFIX@/tmp/mpd.fifo");
++	p->audio_source = (char *)iniparser_getstring(ini, "input:source", "@LINUXDROID_PREFIX@/tmp/mpd.fifo");
  }
  if (strcmp(inputMethod, "pulse") == 0) {
  	p->im = 3;

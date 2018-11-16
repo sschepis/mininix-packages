@@ -1,14 +1,14 @@
-TERMUX_PKG_HOMEPAGE=https://www.ginac.de/CLN/
-TERMUX_PKG_DESCRIPTION="CLN is a library for efficient computations with all kinds of numbers in arbitrary precision"
-TERMUX_PKG_VERSION=1.3.4
-TERMUX_PKG_REVISION=3
-TERMUX_PKG_SRCURL=https://fossies.org/linux/privat/cln-$TERMUX_PKG_VERSION.tar.xz
-TERMUX_PKG_SHA256=c32e59b6afbcf8b84075ab454c42982429c6ea9675aee2bbda176cb85293e38f
-TERMUX_PKG_DEPENDS="libgmp"
-TERMUX_PKG_BUILD_IN_SRC=yes
+LINUXDROID_PKG_HOMEPAGE=https://www.ginac.de/CLN/
+LINUXDROID_PKG_DESCRIPTION="CLN is a library for efficient computations with all kinds of numbers in arbitrary precision"
+LINUXDROID_PKG_VERSION=1.3.4
+LINUXDROID_PKG_REVISION=3
+LINUXDROID_PKG_SRCURL=https://fossies.org/linux/privat/cln-$LINUXDROID_PKG_VERSION.tar.xz
+LINUXDROID_PKG_SHA256=c32e59b6afbcf8b84075ab454c42982429c6ea9675aee2bbda176cb85293e38f
+LINUXDROID_PKG_DEPENDS="libgmp"
+LINUXDROID_PKG_BUILD_IN_SRC=yes
 
-termux_step_pre_configure() {
-	if [ $TERMUX_ARCH = arm ]; then
+linuxdroid_step_pre_configure() {
+	if [ $LINUXDROID_ARCH = arm ]; then
 		# See the following section in INSTALL:
 		# "(*) On these platforms, problems with the assembler routines have been
 		# reported. It may be best to add "-DNO_ASM" to CPPFLAGS before configuring."
@@ -23,8 +23,8 @@ termux_step_pre_configure() {
 	autoreconf
 }
 
-termux_step_post_configure() {
-	cd $TERMUX_PKG_SRCDIR
+linuxdroid_step_post_configure() {
+	cd $LINUXDROID_PKG_SRCDIR
 	sed -i -e 's% tests%%' Makefile
 	sed -i -e 's% examples%%' Makefile
 	sed -i -e 's% benchmarks%%' Makefile

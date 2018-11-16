@@ -1,10 +1,10 @@
-TERMUX_PKG_HOMEPAGE=https://termux.com
-TERMUX_PKG_DESCRIPTION="Suggest installation of packages in interactive shell sessions"
-TERMUX_PKG_VERSION=1.35
+LINUXDROID_PKG_HOMEPAGE=https://linuxdroid.app
+LINUXDROID_PKG_DESCRIPTION="Suggest installation of packages in interactive shell sessions"
+LINUXDROID_PKG_VERSION=1.35
 
-termux_step_make_install () {
-	TERMUX_LIBEXEC_DIR=$TERMUX_PREFIX/libexec/termux
-	mkdir -p $TERMUX_LIBEXEC_DIR
-	$CC -Wall -Wextra -Werror -pedantic $CFLAGS $LDFLAGS -std=c11 $TERMUX_PKG_BUILDER_DIR/command-not-found.c \
-	        -o $TERMUX_LIBEXEC_DIR/command-not-found
+linuxdroid_step_make_install () {
+	LINUXDROID_LIBEXEC_DIR=$LINUXDROID_PREFIX/libexec/linuxdroid
+	mkdir -p $LINUXDROID_LIBEXEC_DIR
+	$CC -Wall -Wextra -Werror -pedantic $CFLAGS $LDFLAGS -std=c11 $LINUXDROID_PKG_BUILDER_DIR/command-not-found.c \
+	        -o $LINUXDROID_LIBEXEC_DIR/command-not-found
 }

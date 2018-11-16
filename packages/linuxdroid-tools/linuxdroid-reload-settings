@@ -1,0 +1,12 @@
+#!/data/data/com.linuxdroid/files/usr/bin/sh
+
+if [ "$#" != "0" ]; then
+	echo 'usage: linuxdroid-reload-settings'
+	echo 'Use without arguments to reload settings after modifying any of:'
+	echo '  ~/.linuxdroid/colors.properties'
+	echo '  ~/.linuxdroid/font.ttf '
+	echo '  ~/.linuxdroid/linuxdroid.properties'
+	exit
+fi
+
+am broadcast --user 0 -a com.linuxdroid.app.reload_style com.linuxdroid > /dev/null

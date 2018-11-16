@@ -1,34 +1,34 @@
-TERMUX_PKG_HOMEPAGE=http://lynx.browser.org/
-TERMUX_PKG_DESCRIPTION="The text web browser"
-TERMUX_PKG_VERSION=2.8.9rel.1
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SHA256=387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595
-TERMUX_PKG_SRCURL=http://invisible-mirror.net/archives/lynx/tarballs/lynx${TERMUX_PKG_VERSION}.tar.bz2
-TERMUX_PKG_DEPENDS="ncurses, openssl, libbz2, libidn"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--with-screen=ncursesw --enable-widec --enable-scrollbar --enable-nested-tables --enable-htmlized-cfg --with-ssl --with-zlib --with-bzlib --enable-cjk --enable-japanese-utf8 --enable-progressbar --enable-prettysrc --enable-forms-options --enable-8bit-toupper --enable-ascii-ctypes --disable-font-switch"
+LINUXDROID_PKG_HOMEPAGE=http://lynx.browser.org/
+LINUXDROID_PKG_DESCRIPTION="The text web browser"
+LINUXDROID_PKG_VERSION=2.8.9rel.1
+LINUXDROID_PKG_REVISION=1
+LINUXDROID_PKG_SHA256=387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595
+LINUXDROID_PKG_SRCURL=http://invisible-mirror.net/archives/lynx/tarballs/lynx${LINUXDROID_PKG_VERSION}.tar.bz2
+LINUXDROID_PKG_DEPENDS="ncurses, openssl, libbz2, libidn"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="--with-screen=ncursesw --enable-widec --enable-scrollbar --enable-nested-tables --enable-htmlized-cfg --with-ssl --with-zlib --with-bzlib --enable-cjk --enable-japanese-utf8 --enable-progressbar --enable-prettysrc --enable-forms-options --enable-8bit-toupper --enable-ascii-ctypes --disable-font-switch"
 
 ## set default paths for tools that may be used in runtime by 'lynx' binary
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_BZIP2=${TERMUX_PREFIX}/bin/bzip2"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_COMPRESS=${TERMUX_PREFIX}/bin/compress"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_GZIP=${TERMUX_PREFIX}/bin/gzip"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_INSTALL=${TERMUX_PREFIX}/bin/install"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_MSGINIT=${TERMUX_PREFIX}/bin/msginit"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_MV=${TERMUX_PREFIX}/bin/mv"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_RM=${TERMUX_PREFIX}/bin/rm"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_TAR=${TERMUX_PREFIX}/bin/tar"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_TELNET=${TERMUX_PREFIX}/bin/applets/telnet"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UNCOMPRESS=${TERMUX_PREFIX}/bin/uncompress"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UNZIP=${TERMUX_PREFIX}/bin/unzip"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UUDECODE=${TERMUX_PREFIX}/bin/uudecode"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_ZCAT=${TERMUX_PREFIX}/bin/zcat"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_ZIP=${TERMUX_PREFIX}/bin/zip"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_BZIP2=${LINUXDROID_PREFIX}/bin/bzip2"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_COMPRESS=${LINUXDROID_PREFIX}/bin/compress"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_GZIP=${LINUXDROID_PREFIX}/bin/gzip"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_INSTALL=${LINUXDROID_PREFIX}/bin/install"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_MSGINIT=${LINUXDROID_PREFIX}/bin/msginit"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_MV=${LINUXDROID_PREFIX}/bin/mv"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_RM=${LINUXDROID_PREFIX}/bin/rm"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_TAR=${LINUXDROID_PREFIX}/bin/tar"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_TELNET=${LINUXDROID_PREFIX}/bin/applets/telnet"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UNCOMPRESS=${LINUXDROID_PREFIX}/bin/uncompress"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UNZIP=${LINUXDROID_PREFIX}/bin/unzip"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_UUDECODE=${LINUXDROID_PREFIX}/bin/uudecode"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_ZCAT=${LINUXDROID_PREFIX}/bin/zcat"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_path_ZIP=${LINUXDROID_PREFIX}/bin/zip"
 
-termux_step_pre_configure() {
+linuxdroid_step_pre_configure() {
 	CC+=" $LDFLAGS"
 	unset LDFLAGS
 }
 
-termux_step_make_install () {
+linuxdroid_step_make_install () {
 	make uninstall
 	make install
 }

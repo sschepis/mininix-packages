@@ -5,13 +5,13 @@
 check_package() { # path
 	local path=$1
 	local pkg=`basename $path`
-	TERMUX_PKG_REVISION=0
-	TERMUX_ARCH=aarch64
+	LINUXDROID_PKG_REVISION=0
+	LINUXDROID_ARCH=aarch64
 	. $path/build.sh
-	if [ "$TERMUX_PKG_REVISION" != "0" ] || [ "$TERMUX_PKG_VERSION" != "${TERMUX_PKG_VERSION/-/}" ]; then
-		TERMUX_PKG_VERSION+="-$TERMUX_PKG_REVISION"
+	if [ "$LINUXDROID_PKG_REVISION" != "0" ] || [ "$LINUXDROID_PKG_VERSION" != "${LINUXDROID_PKG_VERSION/-/}" ]; then
+		LINUXDROID_PKG_VERSION+="-$LINUXDROID_PKG_REVISION"
 	fi
-	echo "$pkg=$TERMUX_PKG_VERSION"
+	echo "$pkg=$LINUXDROID_PKG_VERSION"
 }
 
 for path in packages/*; do

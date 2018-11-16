@@ -6,7 +6,7 @@ diff -u -r ../gnupg-2.1.22/dirmngr/dns.c ./dirmngr/dns.c
  		goto error;
  
 -	if ((error = dns_resconf_loadpath(resconf, "/etc/resolv.conf"))) {
-+	if ((error = dns_resconf_loadpath(resconf, "@TERMUX_PREFIX@/etc/resolv.conf"))) {
++	if ((error = dns_resconf_loadpath(resconf, "@LINUXDROID_PREFIX@/etc/resolv.conf"))) {
  		/*
  		 * NOTE: Both the glibc and BIND9 resolvers ignore a missing
  		 * /etc/resolv.conf, defaulting to a nameserver of
@@ -15,7 +15,7 @@ diff -u -r ../gnupg-2.1.22/dirmngr/dns.c ./dirmngr/dns.c
  	}
  
 -	if ((error = dns_nssconf_loadpath(resconf, "/etc/nsswitch.conf"))) {
-+	if ((error = dns_nssconf_loadpath(resconf, "@TERMUX_PREFIX@/etc/nsswitch.conf"))) {
++	if ((error = dns_nssconf_loadpath(resconf, "@LINUXDROID_PREFIX@/etc/nsswitch.conf"))) {
  		if (error != ENOENT)
  			goto error;
  	}
@@ -24,7 +24,7 @@ diff -u -r ../gnupg-2.1.22/dirmngr/dns.c ./dirmngr/dns.c
  
  	if (!MAIN.resconf.count)
 -		MAIN.resconf.path[MAIN.resconf.count++]	= "/etc/resolv.conf";
-+		MAIN.resconf.path[MAIN.resconf.count++]	= "@TERMUX_PREFIX@/etc/resolv.conf";
++		MAIN.resconf.path[MAIN.resconf.count++]	= "@LINUXDROID_PREFIX@/etc/resolv.conf";
  
  	for (i = 0; i < MAIN.resconf.count; i++) {
  		path	= MAIN.resconf.path[i];
@@ -36,7 +36,7 @@ diff -u -r ../gnupg-2.1.22/dirmngr/dns-stuff.c ./dirmngr/dns-stuff.c
  
  
 -#define RESOLV_CONF_NAME "/etc/resolv.conf"
-+#define RESOLV_CONF_NAME "@TERMUX_PREFIX@/etc/resolv.conf"
++#define RESOLV_CONF_NAME "@LINUXDROID_PREFIX@/etc/resolv.conf"
  
  /* Two flags to enable verbose and debug mode.  */
  static int opt_verbose;

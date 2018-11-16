@@ -5,15 +5,15 @@
        "Run postinst code blobs" ],
    "sys_bin" =>
 -    [ "p", "/usr/local/bin", "sys_bin",
-+    [ "p", "@TERMUX_PREFIX@/bin", "sys_bin",
++    [ "p", "@LINUXDROID_PREFIX@/bin", "sys_bin",
        "Destination for symlinks for binaries" ],
    "sys_info" =>
 -    [ "p", "/usr/local/share/info", "sys_info",
-+    [ "p", "@TERMUX_PREFIX@/share/info", "sys_info",
++    [ "p", "@LINUXDROID_PREFIX@/share/info", "sys_info",
        "Destination for symlinks for info docs" ],
    "sys_man" =>
 -    [ "p", "/usr/local/share/man", "sys_man",
-+    [ "p", "@TERMUX_PREFIX@/share/man", "sys_man",
++    [ "p", "@LINUXDROID_PREFIX@/share/man", "sys_man",
        "Destination for symlinks for man pages" ],
    "w32_multi_user" =>
      [ "b", 1, "multiuser",

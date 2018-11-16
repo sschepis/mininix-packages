@@ -6,7 +6,7 @@ diff -u -r ../ruby-2.4.0/lib/tmpdir.rb ./lib/tmpdir.rb
  class Dir
  
 -  @@systmpdir ||= defined?(Etc.systmpdir) ? Etc.systmpdir : '/tmp'
-+  @@systmpdir ||= defined?(Etc.systmpdir) ? Etc.systmpdir : '@TERMUX_PREFIX@/tmp'
++  @@systmpdir ||= defined?(Etc.systmpdir) ? Etc.systmpdir : '@LINUXDROID_PREFIX@/tmp'
  
    ##
    # Returns the operating system's temporary file path.
@@ -15,7 +15,7 @@ diff -u -r ../ruby-2.4.0/lib/tmpdir.rb ./lib/tmpdir.rb
      else
        tmp = nil
 -      [ENV['TMPDIR'], ENV['TMP'], ENV['TEMP'], @@systmpdir, '/tmp', '.'].each do |dir|
-+      [ENV['TMPDIR'], ENV['TMP'], ENV['TEMP'], @@systmpdir, '@TERMUX_PREFIX@/tmp', '.'].each do |dir|
++      [ENV['TMPDIR'], ENV['TMP'], ENV['TEMP'], @@systmpdir, '@LINUXDROID_PREFIX@/tmp', '.'].each do |dir|
          next if !dir
          dir = File.expand_path(dir)
          if stat = File.stat(dir) and stat.directory? and stat.writable? and
@@ -24,7 +24,7 @@ diff -u -r ../ruby-2.4.0/lib/tmpdir.rb ./lib/tmpdir.rb
      def create(basename, tmpdir=nil, max_try: nil, **opts)
        if $SAFE > 0 and tmpdir.tainted?
 -        tmpdir = '/tmp'
-+        tmpdir = '@TERMUX_PREFIX@/tmp'
++        tmpdir = '@LINUXDROID_PREFIX@/tmp'
        else
          tmpdir ||= tmpdir()
        end

@@ -6,7 +6,7 @@ diff -u -r ../fish-2.4b1/src/env_universal_common.cpp ./src/env_universal_common
  
          // /tmp/fish.user
 -        std::string tmpdir = "/tmp/fish.";
-+        std::string tmpdir = "@TERMUX_PREFIX@/tmp/fish.";
++        std::string tmpdir = "@LINUXDROID_PREFIX@/tmp/fish.";
          tmpdir.append(uname);
          if (check_runtime_path(tmpdir.c_str()) != 0) {
              debug(0,

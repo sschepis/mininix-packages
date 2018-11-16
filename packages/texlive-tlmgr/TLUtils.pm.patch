@@ -5,7 +5,7 @@
        # explicitly because sometimes the 'noexec' flag is set in
        # /etc/fstab for ISO9660 file systems.
 -      chomp (my $guessed_platform = `/bin/sh '$config_guess'`);
-+      chomp (my $guessed_platform = `@TERMUX_PREFIX@/bin/sh '$config_guess'`);
++      chomp (my $guessed_platform = `@LINUXDROID_PREFIX@/bin/sh '$config_guess'`);
  
        # For example, if the disc or reader has hardware problems.
        die "$0: could not run $config_guess, cannot proceed, sorry"

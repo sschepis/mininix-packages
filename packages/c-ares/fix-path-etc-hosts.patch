@@ -6,7 +6,7 @@ diff -uNr c-ares-1.13.0/ares_private.h c-ares-1.13.0.mod/ares_private.h
  #define PATH_HOSTS              "/etc/inet/hosts"
  #else
 -#define PATH_HOSTS              "/etc/hosts"
-+#define PATH_HOSTS              "@TERMUX_PREFIX@/etc/hosts"
++#define PATH_HOSTS              "@LINUXDROID_PREFIX@/etc/hosts"
  #endif
  
  #endif

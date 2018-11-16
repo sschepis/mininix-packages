@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/gdb/
-TERMUX_PKG_DESCRIPTION="The standard GNU Debugger that runs on many Unix-like systems and works for many programming languages"
-TERMUX_PKG_DEPENDS="liblzma, libexpat, readline, ncurses, libmpfr"
-TERMUX_PKG_VERSION=8.2
-TERMUX_PKG_SHA256=c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39
-TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/gdb/gdb-${TERMUX_PKG_VERSION}.tar.xz
+LINUXDROID_PKG_HOMEPAGE=https://www.gnu.org/software/gdb/
+LINUXDROID_PKG_DESCRIPTION="The standard GNU Debugger that runs on many Unix-like systems and works for many programming languages"
+LINUXDROID_PKG_DEPENDS="liblzma, libexpat, readline, ncurses, libmpfr"
+LINUXDROID_PKG_VERSION=8.2
+LINUXDROID_PKG_SHA256=c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39
+LINUXDROID_PKG_SRCURL=https://mirrors.kernel.org/gnu/gdb/gdb-${LINUXDROID_PKG_VERSION}.tar.xz
 # gdb can not build with our normal --disable-static: https://sourceware.org/bugzilla/show_bug.cgi?id=15916
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 --with-system-readline
 --with-curses
 --enable-static
 ac_cv_func_getpwent=no
 ac_cv_func_getpwnam=no
 "
-TERMUX_PKG_RM_AFTER_INSTALL="share/gdb/python share/gdb/syscalls share/gdb/system-gdbinit"
-TERMUX_PKG_MAKE_INSTALL_TARGET="-C gdb install"
-TERMUX_PKG_BUILD_IN_SRC="yes"
+LINUXDROID_PKG_RM_AFTER_INSTALL="share/gdb/python share/gdb/syscalls share/gdb/system-gdbinit"
+LINUXDROID_PKG_MAKE_INSTALL_TARGET="-C gdb install"
+LINUXDROID_PKG_BUILD_IN_SRC="yes"
 
-termux_step_pre_configure() {
+linuxdroid_step_pre_configure() {
 	# Fix "undefined reference to 'rpl_gettimeofday'" when building:
 	export gl_cv_func_gettimeofday_clobber=no
 	export gl_cv_func_gettimeofday_posix_signature=yes

@@ -43,7 +43,7 @@ Typical components:
 version=@LLVM_VERSION@
 prefix=@LLVM_BUILD_DIR@
 has_rtti=NO
-CPPFLAGS="-I@TERMUX_PKG_SRCDIR@/llvm/include -I${prefix}/include -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+CPPFLAGS="-I@LINUXDROID_PKG_SRCDIR@/llvm/include -I${prefix}/include -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 CFLAGS="${CPPFLAGS} ${CFLAGS} -fPIC -Werror=date-time -Wall -W -Wno-unused-parameter -Wwrite-strings -Wmissing-field-initializers -pedantic \
 -Wno-long-long -Wcovered-switch-default -Wdelete-non-virtual-dtor -Wstring-conversion \
 -ffunction-sections -fdata-sections -Os -DNDEBUG -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS \
@@ -89,10 +89,10 @@ handle_args () {
 		link-static) libs=$static_libs ;;
 		version) echo "$version\n";;
 		prefix) echo "$prefix";;
-		src-root) echo "@TERMUX_PKG_SRCDIR@";;
+		src-root) echo "@LINUXDROID_PKG_SRCDIR@";;
 		obj-root) echo "$prefix";;
 		bindir) echo "$prefix/bin";;
-		includedir) echo "@TERMUX_PKG_SRCDIR@/llvm/include";;
+		includedir) echo "@LINUXDROID_PKG_SRCDIR@/llvm/include";;
 		libdir) echo "$prefix/lib";;
 		cppflags) echo "$CPPFLAGS";;
 		cflags) echo "$CFLAGS";;

@@ -6,7 +6,7 @@ diff -uNr perl-5.26.2/perlio.c perl-5.26.2.mod/perlio.c
  #    if defined(HAS_MKSTEMP) && ! defined(VMS) && ! defined(OS2)
       int fd = -1;
 -     char tempname[] = "/tmp/PerlIO_XXXXXX";
-+     char tempname[] = "@TERMUX_PREFIX@/tmp/PerlIO_XXXXXX";
++     char tempname[] = "@LINUXDROID_PREFIX@/tmp/PerlIO_XXXXXX";
       const char * const tmpdir = TAINTING_get ? NULL : PerlEnv_getenv("TMPDIR");
       SV * sv = NULL;
       int old_umask = umask(0177);

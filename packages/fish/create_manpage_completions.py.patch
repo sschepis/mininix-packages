@@ -21,7 +21,7 @@ diff -u -r ../fish-2.6.0/share/tools/create_manpage_completions.py ./share/tools
 -        # The alternative is reading its config file (/etc/man.conf)
 -        sys.stderr.write("Unable to get the manpath, falling back to /usr/share/man:/usr/local/share/man. Please set $MANPATH if that is not correct.\n")
 -        parent_paths = ["/usr/share/man", "/usr/local/share/man"]
-+        parent_paths = ["@TERMUX_PREFIX@/share/man"]
++        parent_paths = ["@LINUXDROID_PREFIX@/share/man"]
      result = []
      for parent_path in parent_paths:
          for section in ['man1', 'man6', 'man8']:

@@ -6,7 +6,7 @@ diff -uNr ruby-2.4.2/addr2line.c ruby-2.4.2.mod/addr2line.c
         but we handle only one case for now as this format is used
         by some linux distributions. See GDB's info for detail. */
 -    static const char global_debug_dir[] = "/usr/lib/debug";
-+    static const char global_debug_dir[] = "@TERMUX_PREFIX@/lib/debug";
++    static const char global_debug_dir[] = "@LINUXDROID_PREFIX@/lib/debug";
      const size_t global_debug_dir_len = sizeof(global_debug_dir) - 1;
      char *p;
  
@@ -17,8 +17,8 @@ diff -uNr ruby-2.4.2/dln_find.c ruby-2.4.2.mod/dln_find.c
  
      if (!path) {
  	path =
-+        "@TERMUX_PREFIX@/bin" PATH_SEP
-+        "@TERMUX_PREFIX@/bin/applets" PATH_SEP
++        "@LINUXDROID_PREFIX@/bin" PATH_SEP
++        "@LINUXDROID_PREFIX@/bin/applets" PATH_SEP
 +        "/system/xbin" PATH_SEP
 +        "/system/bin" PATH_SEP
  	    "/usr/local/bin" PATH_SEP
@@ -33,8 +33,8 @@ diff -uNr ruby-2.4.2/lib/drb/gw.rb ruby-2.4.2.mod/lib/drb/gw.rb
  
 -s1 = DRb::DRbServer.new('drbunix:/tmp/gw_b_a', front)
 -s2 = DRb::DRbServer.new('drbunix:/tmp/gw_b_c', front)
-+s1 = DRb::DRbServer.new('drbunix:@TERMUX_PREFIX@/tmp/gw_b_a', front)
-+s2 = DRb::DRbServer.new('drbunix:@TERMUX_PREFIX@/tmp/gw_b_c', front)
++s1 = DRb::DRbServer.new('drbunix:@LINUXDROID_PREFIX@/tmp/gw_b_a', front)
++s2 = DRb::DRbServer.new('drbunix:@LINUXDROID_PREFIX@/tmp/gw_b_c', front)
  
  s1.thread.join
  s2.thread.join
@@ -43,10 +43,10 @@ diff -uNr ruby-2.4.2/lib/drb/gw.rb ruby-2.4.2.mod/lib/drb/gw.rb
  
  obj = Foo.new('a')
 -DRb.start_service("drbunix:/tmp/gw_a", obj)
-+DRb.start_service("drbunix:@TERMUX_PREFIX@/tmp/gw_a", obj)
++DRb.start_service("drbunix:@LINUXDROID_PREFIX@/tmp/gw_a", obj)
  
 -robj = DRbObject.new_with_uri('drbunix:/tmp/gw_b_a')
-+robj = DRbObject.new_with_uri('drbunix:@TERMUX_PREFIX@/tmp/gw_b_a')
++robj = DRbObject.new_with_uri('drbunix:@LINUXDROID_PREFIX@/tmp/gw_b_a')
  robj[:a] = obj
  
  DRb.thread.join
@@ -55,10 +55,10 @@ diff -uNr ruby-2.4.2/lib/drb/gw.rb ruby-2.4.2.mod/lib/drb/gw.rb
  foo = Foo.new('c', nil)
  
 -DRb.start_service("drbunix:/tmp/gw_c", nil)
-+DRb.start_service("drbunix:@TERMUX_PREFIX@/tmp/gw_c", nil)
++DRb.start_service("drbunix:@LINUXDROID_PREFIX@/tmp/gw_c", nil)
  
 -robj = DRbObject.new_with_uri("drbunix:/tmp/gw_b_c")
-+robj = DRbObject.new_with_uri("drbunix:@TERMUX_PREFIX@/tmp/gw_b_c")
++robj = DRbObject.new_with_uri("drbunix:@LINUXDROID_PREFIX@/tmp/gw_b_c")
  
  puts "c->b"
  a = robj[:a]
@@ -70,7 +70,7 @@ diff -uNr ruby-2.4.2/lib/mkmf.rb ruby-2.4.2.mod/lib/mkmf.rb
        path = path.split(File::PATH_SEPARATOR)
      else
 -      path = %w[/usr/local/bin /usr/ucb /usr/bin /bin]
-+      path = %w[@TERMUX_PREFIX@/bin @TERMUX_PREFIX@/bin/applets /system/xbin /system/bin /usr/local/bin /usr/ucb /usr/bin /bin]
++      path = %w[@LINUXDROID_PREFIX@/bin @LINUXDROID_PREFIX@/bin/applets /system/xbin /system/bin /usr/local/bin /usr/ucb /usr/bin /bin]
      end
      file = nil
      path.each do |dir|
@@ -82,7 +82,7 @@ diff -uNr ruby-2.4.2/lib/resolv.rb ruby-2.4.2.mod/lib/resolv.rb
        DefaultFileName = Win32::Resolv.get_hosts_path
      rescue LoadError
 -      DefaultFileName = '/etc/hosts'
-+      DefaultFileName = '@TERMUX_PREFIX@/etc/hosts'
++      DefaultFileName = '@LINUXDROID_PREFIX@/etc/hosts'
      end
  
      ##
@@ -91,7 +91,7 @@ diff -uNr ruby-2.4.2/lib/resolv.rb ruby-2.4.2.mod/lib/resolv.rb
        end
  
 -      def Config.default_config_hash(filename="/etc/resolv.conf")
-+      def Config.default_config_hash(filename="@TERMUX_PREFIX@/etc/resolv.conf")
++      def Config.default_config_hash(filename="@LINUXDROID_PREFIX@/etc/resolv.conf")
          if File.exist? filename
            config_hash = Config.parse_resolv_conf(filename)
          else
@@ -103,7 +103,7 @@ diff -uNr ruby-2.4.2/lib/rubygems/config_file.rb ruby-2.4.2.mod/lib/rubygems/con
          path.strip
        rescue LoadError
 -        RbConfig::CONFIG["sysconfdir"] || "/etc"
-+        RbConfig::CONFIG["sysconfdir"] || "@TERMUX_PREFIX@/etc"
++        RbConfig::CONFIG["sysconfdir"] || "@LINUXDROID_PREFIX@/etc"
        end
      end
  
@@ -115,7 +115,7 @@ diff -uNr ruby-2.4.2/lib/rubygems/defaults.rb ruby-2.4.2.mod/lib/rubygems/defaul
    def self.default_bindir
      if defined? RUBY_FRAMEWORK_VERSION then # mac framework support
 -      '/usr/bin'
-+      '@TERMUX_PREFIX@/bin'
++      '@LINUXDROID_PREFIX@/bin'
      else # generic install
        RbConfig::CONFIG['bindir']
      end
@@ -127,7 +127,7 @@ diff -uNr ruby-2.4.2/lib/webrick/config.rb ruby-2.4.2.mod/lib/webrick/config.rb
        :ServerSoftware => "WEBrick/#{WEBrick::VERSION} " +
                           "(Ruby/#{RUBY_VERSION}/#{RUBY_RELEASE_DATE})",
 -      :TempDir        => ENV['TMPDIR']||ENV['TMP']||ENV['TEMP']||'/tmp',
-+      :TempDir        => ENV['TMPDIR']||ENV['TMP']||ENV['TEMP']||'@TERMUX_PREFIX@/tmp',
++      :TempDir        => ENV['TMPDIR']||ENV['TMP']||ENV['TEMP']||'@LINUXDROID_PREFIX@/tmp',
        :DoNotListen    => false,
        :StartCallback  => nil,
        :StopCallback   => nil,

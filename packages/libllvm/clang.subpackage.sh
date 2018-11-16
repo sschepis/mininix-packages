@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+LINUXDROID_SUBPKG_INCLUDE="
 bin/c++
 bin/cc
 bin/*clang*
@@ -12,5 +12,5 @@ libexec/
 share/clang
 share/man/man1/scan-build.1
 "
-TERMUX_SUBPKG_DESCRIPTION="C language frontend for LLVM"
-TERMUX_SUBPKG_DEPENDS="libllvm"
+LINUXDROID_SUBPKG_DESCRIPTION="C language frontend for LLVM"
+LINUXDROID_SUBPKG_DEPENDS="libllvm"

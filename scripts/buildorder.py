@@ -32,9 +32,9 @@ def die(msg):
 
 def parse_build_file_dependencies(path):
     "Extract the dependencies of a build.sh or *.subpackage.sh file."
-    pkg_dep_prefix = 'TERMUX_PKG_DEPENDS='
-    pkg_build_dep_prefix = 'TERMUX_PKG_BUILD_DEPENDS='
-    subpkg_dep_prefix = 'TERMUX_SUBPKG_DEPENDS='
+    pkg_dep_prefix = 'LINUXDROID_PKG_DEPENDS='
+    pkg_build_dep_prefix = 'LINUXDROID_PKG_BUILD_DEPENDS='
+    subpkg_dep_prefix = 'LINUXDROID_SUBPKG_DEPENDS='
     dependencies = []
 
     with open(path, encoding="utf-8") as build_script:
@@ -64,7 +64,7 @@ def parse_build_file_dependencies(path):
 
     return set(dependencies)
 
-class TermuxPackage(object):
+class LinuxdroidPackage(object):
     "A main package definition represented by a directory with a build.sh file."
     def __init__(self, dir_path):
         self.dir = dir_path
@@ -86,7 +86,7 @@ class TermuxPackage(object):
         for filename in os.listdir(self.dir):
             if not filename.endswith('.subpackage.sh'):
                 continue
-            subpkg = TermuxSubPackage(self.dir + '/' + filename, self)
+            subpkg = LinuxdroidSubPackage(self.dir + '/' + filename, self)
 
             self.subpkgs.append(subpkg)
             self.deps |= subpkg.deps
@@ -110,7 +110,7 @@ class TermuxPackage(object):
             result += [dependency_package]
         return unique_everseen(result)
 
-class TermuxSubPackage:
+class LinuxdroidSubPackage:
     "A sub-package represented by a ${PACKAGE_NAME}.subpackage.sh file."
     def __init__(self, subpackage_file_path, parent):
         if parent is None:
@@ -124,7 +124,7 @@ class TermuxSubPackage:
         return "<{} '{}' parent='{}'>".format(self.__class__.__name__, self.name, self.parent)
 
 def read_packages_from_directories(directories):
-    """Construct a map from package name to TermuxPackage.
+    """Construct a map from package name to LinuxdroidPackage.
     For subpackages this maps from the subpackage name to the parent package."""
     pkgs_map = {}
     all_packages = []
@@ -133,7 +133,7 @@ def read_packages_from_directories(directories):
         for pkgdir_name in sorted(os.listdir(package_dir)):
             dir_path = package_dir + '/' + pkgdir_name
             if os.path.isfile(dir_path + '/build.sh'):
-                new_package = TermuxPackage(package_dir + '/' + pkgdir_name)
+                new_package = LinuxdroidPackage(package_dir + '/' + pkgdir_name)
 
                 if new_package.name in pkgs_map:
                     die('Duplicated package: ' + new_package.name)
@@ -153,7 +153,7 @@ def read_packages_from_directories(directories):
             if dependency_name not in pkgs_map:
                 die('Package %s depends on non-existing package "%s"' % (pkg.name, dependency_name))
             dep_pkg = pkgs_map[dependency_name]
-            if not isinstance(pkg, TermuxSubPackage):
+            if not isinstance(pkg, LinuxdroidSubPackage):
                 dep_pkg.needed_by.add(pkg)
     return pkgs_map
 
@@ -161,7 +161,7 @@ def generate_full_buildorder(pkgs_map):
     "Generate a build order for building all packages."
     build_order = []
 
-    # List of all TermuxPackages without dependencies
+    # List of all LinuxdroidPackages without dependencies
     leaf_pkgs = [pkg for name, pkg in pkgs_map.items() if not pkg.deps]
 
     if not leaf_pkgs:

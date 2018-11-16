@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="$_jvm_dir/bin/idlj bin/idlj
+LINUXDROID_SUBPKG_INCLUDE="$_jvm_dir/bin/idlj bin/idlj
 $_jvm_dir/bin/jar bin/jar
 $_jvm_dir/bin/jarsigner bin/jarsigner
 $_jvm_dir/bin/javac bin/javac
@@ -29,5 +29,5 @@ $_jvm_dir/bin/wsgen bin/wsgen
 $_jvm_dir/bin/wsimport bin/wsimport
 $_jvm_dir/bin/xjc bin/xjc
 $_jvm_dir/include"
-TERMUX_SUBPKG_DEPENDS="openjdk-9-jre-headless"
-TERMUX_SUBPKG_DESCRIPTION="OpenJDK Development Kit (JDK) (headless)"
+LINUXDROID_SUBPKG_DEPENDS="openjdk-9-jre-headless"
+LINUXDROID_SUBPKG_DESCRIPTION="OpenJDK Development Kit (JDK) (headless)"

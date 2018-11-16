@@ -14,8 +14,8 @@
     {
        SrvRecords.clear();
 -      if (_config->FindB("Acquire::EnableSrvRecords", true) == true)
-+      /* Disable by default in Termux due to it breaking on (some) HTC
-+         devices (https://github.com/termux/termux-packages/issues/99). */
++      /* Disable by default in Linuxdroid due to it breaking on (some) HTC
++         devices (https://github.com/linuxdroid/linuxdroid-packages/issues/99). */
 +	
 +	 if (_config->FindB("Acquire::EnableSrvRecords", false) == true)
        {

@@ -32,11 +32,11 @@ diff -u -r ../apt-1.4.7/apt-pkg/contrib/fileutl.cc ./apt-pkg/contrib/fileutl.cc
     if (!tmpdir || strlen(tmpdir) == 0 || // tmpdir is set
  	 stat(tmpdir, &st) != 0 || (st.st_mode & S_IFDIR) == 0) // exists and is directory
 -      tmpdir = "/tmp";
-+      tmpdir = "@TERMUX_PREFIX@/tmp";
++      tmpdir = "@LINUXDROID_PREFIX@/tmp";
     else if (geteuid() != 0 && // root can do everything anyway
  	 faccessat(AT_FDCWD, tmpdir, R_OK | W_OK | X_OK, AT_EACCESS) != 0) // current user has rwx access to directory
 -      tmpdir = "/tmp";
-+      tmpdir = "@TERMUX_PREFIX@/tmp";
++      tmpdir = "@LINUXDROID_PREFIX@/tmp";
  
     return string(tmpdir);
  }

@@ -1,7 +1,7 @@
 Remove reference to __android_log_error_write which does not exist
 on Android 5. See:
 
-  https://github.com/termux/termux-packages/issues/1306
+  https://github.com/linuxdroid/linuxdroid-packages/issues/1306
 
 diff -u -r ../../pristine-src/libziparchive/zip_archive.cc ./zip_archive.cc
 --- ../../pristine-src/libziparchive/zip_archive.cc	2017-08-23 21:25:26.492287975 +0200

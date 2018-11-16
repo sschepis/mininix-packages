@@ -11,7 +11,7 @@ diff -u -r /home/fornwall/lib/android-ndk/sysroot/usr/include/pty.h ./usr/includ
 -int forkpty(int* __master_fd, char* __slave_name, const struct termios* __termios_ptr, const struct winsize* __winsize_ptr) __INTRODUCED_IN(23);
 -#endif /* __ANDROID_API__ >= 23 */
 -
-+/* In Termux these are implemented in the libutil package to support android-21. */
++/* In Linuxdroid these are implemented in the libutil package to support android-21. */
 +int openpty(int* __master_fd, int* __slave_fd, char* __slave_name, const struct termios* __termios_ptr, const struct winsize* __winsize_ptr);
 +int forkpty(int* __master_fd, char* __slave_name, const struct termios* __termios_ptr, const struct winsize* __winsize_ptr);
  

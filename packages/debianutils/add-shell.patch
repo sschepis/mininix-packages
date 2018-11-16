@@ -6,7 +6,7 @@ diff -u -r ../debianutils-4.4/add-shell ./add-shell
  fi
  
 -file=/etc/shells
-+file=@TERMUX_PREFIX@/etc/shells
++file=@LINUXDROID_PREFIX@/etc/shells
  # I want this to be GUARANTEED to be on the same filesystem as $file
  tmpfile=${file}.tmp
  

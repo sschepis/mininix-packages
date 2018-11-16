@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="lib/weechat/plugins/lua.so"
-TERMUX_SUBPKG_DESCRIPTION="WeeChat Lua Plugin"
-TERMUX_SUBPKG_DEPENDS="weechat, liblua"
+LINUXDROID_SUBPKG_INCLUDE="lib/weechat/plugins/lua.so"
+LINUXDROID_SUBPKG_DESCRIPTION="WeeChat Lua Plugin"
+LINUXDROID_SUBPKG_DEPENDS="weechat, liblua"

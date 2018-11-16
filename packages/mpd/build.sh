@@ -1,11 +1,11 @@
-TERMUX_PKG_HOMEPAGE=https://www.musicpd.org
-TERMUX_PKG_DESCRIPTION="Music player daemon"
-TERMUX_PKG_VERSION=0.20.23
-TERMUX_PKG_SHA256=93c4441719a8312f3d150de02b1db0c22fe3a1a99e4159c6056950846a109368
-TERMUX_PKG_SRCURL=https://github.com/MusicPlayerDaemon/MPD/archive/v$TERMUX_PKG_VERSION.tar.gz
-TERMUX_PKG_DEPENDS="libcurl, libid3tag, libopus, libpulseaudio, libmpdclient, openal-soft, libvorbis, libsqlite, ffmpeg, libmp3lame, libbz2"
-TERMUX_PKG_BUILD_DEPENDS="boost"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_PKG_HOMEPAGE=https://www.musicpd.org
+LINUXDROID_PKG_DESCRIPTION="Music player daemon"
+LINUXDROID_PKG_VERSION=0.20.23
+LINUXDROID_PKG_SHA256=93c4441719a8312f3d150de02b1db0c22fe3a1a99e4159c6056950846a109368
+LINUXDROID_PKG_SRCURL=https://github.com/MusicPlayerDaemon/MPD/archive/v$LINUXDROID_PKG_VERSION.tar.gz
+LINUXDROID_PKG_DEPENDS="libcurl, libid3tag, libopus, libpulseaudio, libmpdclient, openal-soft, libvorbis, libsqlite, ffmpeg, libmp3lame, libbz2"
+LINUXDROID_PKG_BUILD_DEPENDS="boost"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-alsa
 --disable-ao
 --disable-epoll
@@ -17,49 +17,49 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --without-tremor
 ac_cv_func_linkat=no
 "
-TERMUX_PKG_BUILD_IN_SRC=yes
-TERMUX_PKG_CONFFILES="$TERMUX_PREFIX/etc/mpd.conf"
+LINUXDROID_PKG_BUILD_IN_SRC=yes
+LINUXDROID_PKG_CONFFILES="$LINUXDROID_PREFIX/etc/mpd.conf"
 
-termux_step_pre_configure() {
-	CXXFLAGS+=" -DTERMUX -UANDROID"
+linuxdroid_step_pre_configure() {
+	CXXFLAGS+=" -DLINUXDROID -UANDROID"
 	LDFLAGS+=" -llog -lOpenSLES"
 	NOCONFIGURE=1	./autogen.sh
-	rm -f /data/data/com.termux/files/usr/etc/mpd.conf
+	rm -f /data/data/com.linuxdroid/files/usr/etc/mpd.conf
 }
 
-termux_step_make_install () {
+linuxdroid_step_make_install () {
 	# Try to work around OpenSL ES library clashes:
 	# Linking against libOpenSLES causes indirect linkage against
 	# libskia.so, which links against the platform libjpeg.so and
-	# libpng.so, which are not compatible with the Termux ones.
+	# libpng.so, which are not compatible with the Linuxdroid ones.
 	#
 	# On Android N also liblzma seems to conflict.
 	make install
-	cp -f $TERMUX_PREFIX/share/doc/mpd/mpdconf.example /data/data/com.termux/files/usr/etc/mpd.conf
-	mkdir -p $TERMUX_PREFIX/libexec
-	mkdir -p $TERMUX_PREFIX/var/mpd
-	mv $TERMUX_PREFIX/bin/mpd $TERMUX_PREFIX/libexec
+	cp -f $LINUXDROID_PREFIX/share/doc/mpd/mpdconf.example /data/data/com.linuxdroid/files/usr/etc/mpd.conf
+	mkdir -p $LINUXDROID_PREFIX/libexec
+	mkdir -p $LINUXDROID_PREFIX/var/mpd
+	mv $LINUXDROID_PREFIX/bin/mpd $LINUXDROID_PREFIX/libexec
 	local SYSTEM_LIBFOLDER=lib64
-	if [ $TERMUX_ARCH_BITS = 32 ]; then SYSTEM_LIBFOLDER=lib; fi
+	if [ $LINUXDROID_ARCH_BITS = 32 ]; then SYSTEM_LIBFOLDER=lib; fi
 
-	echo "#!/bin/sh" > $TERMUX_PREFIX/bin/mpd
-	cat $TERMUX_SCRIPTDIR/packages/mpd/mpd-script.sh >> $TERMUX_PREFIX/bin/mpd
+	echo "#!/bin/sh" > $LINUXDROID_PREFIX/bin/mpd
+	cat $LINUXDROID_SCRIPTDIR/packages/mpd/mpd-script.sh >> $LINUXDROID_PREFIX/bin/mpd
 	# Work around issues on devices having ffmpeg libraries
-	# in a system vendor dir, reported by live_the_dream on #termux:
+	# in a system vendor dir, reported by live_the_dream on #linuxdroid:
 	local FFMPEG_LIBS="" lib
 	# c++_shared needs to go first in every c++ app that uses audio directly.
 	for lib in c++_shared curl ssl opus vorbis avcodec avfilter avformat avutil postproc swresample swscale sqlite3; do
 		if [ -n "$FFMPEG_LIBS" ]; then FFMPEG_LIBS+=":"; fi
-		FFMPEG_LIBS+="$TERMUX_PREFIX/lib/lib${lib}.so"
+		FFMPEG_LIBS+="$LINUXDROID_PREFIX/lib/lib${lib}.so"
 	done
-	echo "export LD_PRELOAD=$FFMPEG_LIBS" >> $TERMUX_PREFIX/bin/mpd
-	chmod +x $TERMUX_PREFIX/bin/mpd
+	echo "export LD_PRELOAD=$FFMPEG_LIBS" >> $LINUXDROID_PREFIX/bin/mpd
+	chmod +x $LINUXDROID_PREFIX/bin/mpd
 	# /system/vendor/lib(64) needed for libqc-opt.so on
-	# a xperia z5 c, reported by BrainDamage on #termux:
-	echo "LD_LIBRARY_PATH=/system/$SYSTEM_LIBFOLDER:/system/vendor/$SYSTEM_LIBFOLDER:$TERMUX_PREFIX/lib exec $TERMUX_PREFIX/libexec/mpd \"\$@\"" >> $TERMUX_PREFIX/bin/mpd
+	# a xperia z5 c, reported by BrainDamage on #linuxdroid:
+	echo "LD_LIBRARY_PATH=/system/$SYSTEM_LIBFOLDER:/system/vendor/$SYSTEM_LIBFOLDER:$LINUXDROID_PREFIX/lib exec $LINUXDROID_PREFIX/libexec/mpd \"\$@\"" >> $LINUXDROID_PREFIX/bin/mpd
 }
 
-termux_step_create_debscripts() {
-	echo "#!$TERMUX_PREFIX/bin/sh" > postinst
+linuxdroid_step_create_debscripts() {
+	echo "#!$LINUXDROID_PREFIX/bin/sh" > postinst
 	echo 'mkdir -p $HOME/.mpd/playlists' >> postinst
 }

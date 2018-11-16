@@ -1,12 +1,12 @@
-TERMUX_PKG_HOMEPAGE=https://www.vim.org
-TERMUX_PKG_DESCRIPTION="Vi IMproved - enhanced vi editor"
-TERMUX_PKG_DEPENDS="ncurses, vim-runtime"
+LINUXDROID_PKG_HOMEPAGE=https://www.vim.org
+LINUXDROID_PKG_DESCRIPTION="Vi IMproved - enhanced vi editor"
+LINUXDROID_PKG_DEPENDS="ncurses, vim-runtime"
 # vim should only be updated every 50 releases on multiples of 50.
 # Update both vim and vim-python to the same version in one PR.
-TERMUX_PKG_VERSION=8.1.0518
-TERMUX_PKG_SHA256=36988911a0399a77c2b9874655b3a08915b804c2d8890c1abb4b1242c48c95fc
-TERMUX_PKG_SRCURL="https://github.com/vim/vim/archive/v${TERMUX_PKG_VERSION}.tar.gz"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+LINUXDROID_PKG_VERSION=8.1.0518
+LINUXDROID_PKG_SHA256=36988911a0399a77c2b9874655b3a08915b804c2d8890c1abb4b1242c48c95fc
+LINUXDROID_PKG_SRCURL="https://github.com/vim/vim/archive/v${LINUXDROID_PKG_VERSION}.tar.gz"
+LINUXDROID_PKG_EXTRA_CONFIGURE_ARGS="
 vim_cv_getcwd_broken=no
 vim_cv_memmove_handles_overlap=yes
 vim_cv_stat_ignores_slash=no
@@ -20,8 +20,8 @@ vim_cv_tty_group=world
 --without-x
 --with-tlib=ncursesw
 "
-TERMUX_PKG_BUILD_IN_SRC="yes"
-TERMUX_PKG_RM_AFTER_INSTALL="
+LINUXDROID_PKG_BUILD_IN_SRC="yes"
+LINUXDROID_PKG_RM_AFTER_INSTALL="
 bin/rview
 bin/rvim
 bin/ex
@@ -31,26 +31,26 @@ share/vim/vim81/spell/en.ascii*
 share/vim/vim81/print
 share/vim/vim81/tools
 "
-TERMUX_PKG_CONFFILES="share/vim/vimrc"
+LINUXDROID_PKG_CONFFILES="share/vim/vimrc"
 
-TERMUX_PKG_CONFLICTS="vim-python"
+LINUXDROID_PKG_CONFLICTS="vim-python"
 
-termux_step_pre_configure () {
+linuxdroid_step_pre_configure () {
 	make distclean
 
 	# Remove eventually existing symlinks from previous builds so that they get re-created
-	for b in rview rvim ex view vimdiff; do rm -f $TERMUX_PREFIX/bin/$b; done
-	rm -f $TERMUX_PREFIX/share/man/man1/view.1
+	for b in rview rvim ex view vimdiff; do rm -f $LINUXDROID_PREFIX/bin/$b; done
+	rm -f $LINUXDROID_PREFIX/share/man/man1/view.1
 }
 
-termux_step_post_make_install () {
-	cp $TERMUX_PKG_BUILDER_DIR/vimrc $TERMUX_PREFIX/share/vim/vimrc
+linuxdroid_step_post_make_install () {
+	cp $LINUXDROID_PKG_BUILDER_DIR/vimrc $LINUXDROID_PREFIX/share/vim/vimrc
 
 	# Remove most tutor files:
-	cp $TERMUX_PREFIX/share/vim/vim81/tutor/{tutor,tutor.vim,tutor.utf-8} $TERMUX_PKG_TMPDIR/
-	rm -f $TERMUX_PREFIX/share/vim/vim81/tutor/*
-	cp $TERMUX_PKG_TMPDIR/{tutor,tutor.vim,tutor.utf-8} $TERMUX_PREFIX/share/vim/vim81/tutor/
+	cp $LINUXDROID_PREFIX/share/vim/vim81/tutor/{tutor,tutor.vim,tutor.utf-8} $LINUXDROID_PKG_TMPDIR/
+	rm -f $LINUXDROID_PREFIX/share/vim/vim81/tutor/*
+	cp $LINUXDROID_PKG_TMPDIR/{tutor,tutor.vim,tutor.utf-8} $LINUXDROID_PREFIX/share/vim/vim81/tutor/
 
-	cd $TERMUX_PREFIX/bin
+	cd $LINUXDROID_PREFIX/bin
 	ln -f -s vim vi
 }

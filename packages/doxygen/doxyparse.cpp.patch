@@ -5,7 +5,7 @@
    // we need a place to put intermediate files
    std::ostringstream tmpdir;
 -  tmpdir << "/tmp/doxyparse-" << getpid();
-+  tmpdir << "@TERMUX_PREFIX@/tmp/doxyparse-" << getpid();
++  tmpdir << "@LINUXDROID_PREFIX@/tmp/doxyparse-" << getpid();
    Config_getString(OUTPUT_DIRECTORY)= tmpdir.str().c_str();
    // enable HTML (fake) output to omit warning about missing output format
    Config_getBool(GENERATE_HTML)=TRUE;

@@ -5,7 +5,7 @@ diff -u -r /home/fornwall/lib/android-ndk/sysroot/usr/include/sys/wait.h ./usr/i
  // Implemented as a static inline before 18.
  #endif
  
-+/* Termux addition: Add wait3() declaration used by busybox. Available in libc for 32-bit only. */
++/* Linuxdroid addition: Add wait3() declaration used by busybox. Available in libc for 32-bit only. */
 +static pid_t wait3(int* status, int options, struct rusage* rusage) { return wait4(-1, status, options, rusage); }
 +
  /* Posix states that idtype_t should be an enumeration type, but

@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+LINUXDROID_SUBPKG_INCLUDE="
 include/lld/
 lib/liblldConfig.a
 lib/liblldCore.a
@@ -14,5 +14,5 @@ bin/ld64.lld
 lib/liblldCOFF.a
 lib/liblldELF.a
 "
-TERMUX_SUBPKG_DESCRIPTION="LD replace based on LLVM"
-TERMUX_SUBPKG_DEPENDS="libllvm"
+LINUXDROID_SUBPKG_DESCRIPTION="LD replace based on LLVM"
+LINUXDROID_SUBPKG_DEPENDS="libllvm"

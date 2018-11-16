@@ -6,7 +6,7 @@ diff -uNr apt-1.4.8/methods/rsh.cc apt-1.4.8.mod/methods/rsh.cc
           Args[i++] = Host.c_str();
        }
 -      Args[i++] = "/bin/sh";
-+      Args[i++] = "@TERMUX_PREFIX@/bin/sh";
++      Args[i++] = "@LINUXDROID_PREFIX@/bin/sh";
        Args[i] = 0;
        execvp(Args[0],(char **)Args);
        exit(100);

@@ -1,4 +1,4 @@
---- /home/builder/termux-packages/packages/libhdf5/CMakeLists.txt.orig	2018-04-03 22:59:37.677363132 +0000
+--- /home/builder/linuxdroid-packages/packages/libhdf5/CMakeLists.txt.orig	2018-04-03 22:59:37.677363132 +0000
 +++ src/src/CMakeLists.txt	2018-04-04 06:18:37.177298348 +0000
 @@ -848,13 +848,13 @@
    target_link_libraries (H5detect "ws2_32.lib")
