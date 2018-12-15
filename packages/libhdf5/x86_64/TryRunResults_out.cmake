@@ -15,12 +15,12 @@
 #    check what the source file would have printed when called with the given arguments.
 # The TEST_LFS_WORKS_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake_ext_mod/HDFTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_0c83a-TEST_LFS_WORKS_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake_ext_mod/HDFTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_0c83a-TEST_LFS_WORKS_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake_ext_mod/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake_ext_mod/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( TEST_LFS_WORKS_RUN 
      "0"
@@ -42,12 +42,12 @@ set( TEST_LFS_WORKS_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_PRINTF_LL_TEST_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake_ext_mod/HDFTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_0923e-H5_PRINTF_LL_TEST_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake_ext_mod/HDFTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_0923e-H5_PRINTF_LL_TEST_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake_ext_mod/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake_ext_mod/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_PRINTF_LL_TEST_RUN 
      "0"
@@ -69,12 +69,12 @@ set( H5_PRINTF_LL_TEST_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_LDOUBLE_TO_LONG_SPECIAL_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake/ConversionTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_b96b8-H5_LDOUBLE_TO_LONG_SPECIAL_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake/ConversionTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_b96b8-H5_LDOUBLE_TO_LONG_SPECIAL_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_LDOUBLE_TO_LONG_SPECIAL_RUN 
      "1"
@@ -96,12 +96,12 @@ set( H5_LDOUBLE_TO_LONG_SPECIAL_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_LONG_TO_LDOUBLE_SPECIAL_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake/ConversionTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_f960d-H5_LONG_TO_LDOUBLE_SPECIAL_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake/ConversionTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_f960d-H5_LONG_TO_LDOUBLE_SPECIAL_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_LONG_TO_LDOUBLE_SPECIAL_RUN 
      "1"
@@ -123,12 +123,12 @@ set( H5_LONG_TO_LDOUBLE_SPECIAL_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_LDOUBLE_TO_LLONG_ACCURATE_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake/ConversionTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_39750-H5_LDOUBLE_TO_LLONG_ACCURATE_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake/ConversionTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_39750-H5_LDOUBLE_TO_LLONG_ACCURATE_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_LDOUBLE_TO_LLONG_ACCURATE_RUN 
      "0"
@@ -150,12 +150,12 @@ set( H5_LDOUBLE_TO_LLONG_ACCURATE_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_LLONG_TO_LDOUBLE_CORRECT_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake/ConversionTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_e6f7f-H5_LLONG_TO_LDOUBLE_CORRECT_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake/ConversionTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_e6f7f-H5_LLONG_TO_LDOUBLE_CORRECT_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_LLONG_TO_LDOUBLE_CORRECT_RUN 
      "0"
@@ -177,12 +177,12 @@ set( H5_LLONG_TO_LDOUBLE_CORRECT_RUN__TRYRUN_OUTPUT
 #    check what the source file would have printed when called with the given arguments.
 # The H5_NO_ALIGNMENT_RESTRICTIONS_COMPILE variable holds the build result for this TRY_RUN().
 # 
-# Source file   : /home/builder/.termux-build/libhdf5/src/config/cmake/ConversionTests.c
-# Executable    : /home/builder/.termux-build/libhdf5/build/CMakeFiles/cmTC_178af-H5_NO_ALIGNMENT_RESTRICTIONS_RUN
+# Source file   : /home/builder/.mininix-build/libhdf5/src/config/cmake/ConversionTests.c
+# Executable    : /home/builder/.mininix-build/libhdf5/build/CMakeFiles/cmTC_178af-H5_NO_ALIGNMENT_RESTRICTIONS_RUN
 # Run arguments : 
-#    Called from: [3]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [2]	/home/builder/.termux-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
-#                 [1]	/home/builder/.termux-build/libhdf5/src/CMakeLists.txt
+#    Called from: [3]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [2]	/home/builder/.mininix-build/libhdf5/src/config/cmake/ConfigureChecks.cmake
+#                 [1]	/home/builder/.mininix-build/libhdf5/src/CMakeLists.txt
 
 set( H5_NO_ALIGNMENT_RESTRICTIONS_RUN 
      "0"

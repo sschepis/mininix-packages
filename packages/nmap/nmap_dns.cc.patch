@@ -6,7 +6,7 @@ diff -u -r ../nmap-7.01/nmap_dns.cc ./nmap_dns.cc
    char ipaddr[INET6_ADDRSTRLEN+1];
  
 -  fp = fopen("/etc/resolv.conf", "r");
-+  fp = fopen("@TERMUX_PREFIX@/etc/resolv.conf", "r");
++  fp = fopen("@MININIX_PREFIX@/etc/resolv.conf", "r");
    if (fp == NULL) {
 -    if (firstrun) error("mass_dns: warning: Unable to open /etc/resolv.conf. Try using --system-dns or specify valid servers with --dns-servers");
 +    if (firstrun) error("mass_dns: warning: Unable to open $PREFIX/etc/resolv.conf. Try using --system-dns or specify valid servers with --dns-servers");

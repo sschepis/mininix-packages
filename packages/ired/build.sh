@@ -1,6 +1,6 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/radare/ired
-TERMUX_PKG_DESCRIPTION="Minimalist hexadecimal editor"
-TERMUX_PKG_VERSION=0.6
-TERMUX_PKG_SRCURL=https://github.com/radare/ired/archive/${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=c15d37b96b1a25c44435d824bd7ef1f9aea9dc191be14c78b689d3156312d58a
-TERMUX_PKG_BUILD_IN_SRC=yes
+MININIX_PKG_HOMEPAGE=https://github.com/radare/ired
+MININIX_PKG_DESCRIPTION="Minimalist hexadecimal editor"
+MININIX_PKG_VERSION=0.6
+MININIX_PKG_SRCURL=https://github.com/radare/ired/archive/${MININIX_PKG_VERSION}.tar.gz
+MININIX_PKG_SHA256=c15d37b96b1a25c44435d824bd7ef1f9aea9dc191be14c78b689d3156312d58a
+MININIX_PKG_BUILD_IN_SRC=yes

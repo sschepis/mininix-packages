@@ -1,7 +1,7 @@
-TERMUX_PKG_HOMEPAGE=https://libgit2.github.com/
-TERMUX_PKG_DESCRIPTION="C library implementing Git core methods"
-TERMUX_PKG_VERSION=0.27.7
-TERMUX_PKG_SHA256=1a5435a483759b1cd96feb12b11abb5231b0688016db506ce5947178f6ba2531
-TERMUX_PKG_SRCURL=https://github.com/libgit2/libgit2/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_DEPENDS="libcurl, openssl, libssh2"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="-DBUILD_CLAR=OFF"
+MININIX_PKG_HOMEPAGE=https://libgit2.github.com/
+MININIX_PKG_DESCRIPTION="C library implementing Git core methods"
+MININIX_PKG_VERSION=0.27.7
+MININIX_PKG_SHA256=1a5435a483759b1cd96feb12b11abb5231b0688016db506ce5947178f6ba2531
+MININIX_PKG_SRCURL=https://github.com/libgit2/libgit2/archive/v${MININIX_PKG_VERSION}.tar.gz
+MININIX_PKG_DEPENDS="libcurl, openssl, libssh2"
+MININIX_PKG_EXTRA_CONFIGURE_ARGS="-DBUILD_CLAR=OFF"

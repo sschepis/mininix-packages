@@ -6,7 +6,7 @@ diff -u -r ../iperf-3.2/src/iperf_api.c ./src/iperf_api.c
          }
          if (tempdir == 0){
 -            tempdir = "/tmp";
-+            tempdir = "@TERMUX_PREFIX@/tmp";
++            tempdir = "@MININIX_PREFIX@/tmp";
          }
          snprintf(template, sizeof(template) / sizeof(char), "%s/iperf3.XXXXXX", tempdir);
      }

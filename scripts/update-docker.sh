@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e -u
 
-CONTAINER=termux-package-builder
-IMAGE=termux/package-builder
+CONTAINER=mininix-package-builder
+IMAGE=mininix/package-builder
 
 docker pull $IMAGE
 

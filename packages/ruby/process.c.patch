@@ -5,10 +5,10 @@
      *--argv = (char *)"sh";
      if (envp)
 -        execve("/bin/sh", argv, envp); /* async-signal-safe */
-+        execve("@TERMUX_PREFIX@/bin/sh", argv, envp); /* async-signal-safe */
++        execve("@MININIX_PREFIX@/bin/sh", argv, envp); /* async-signal-safe */
      else
 -        execv("/bin/sh", argv); /* async-signal-safe (since SUSv4) */
-+        execv("@TERMUX_PREFIX@/bin/sh", argv); /* async-signal-safe (since SUSv4) */
++        execv("@MININIX_PREFIX@/bin/sh", argv); /* async-signal-safe (since SUSv4) */
  }
  
  #else
@@ -17,10 +17,10 @@
  #else
      if (envp_str)
 -        execle("/bin/sh", "sh", "-c", str, (char *)NULL, (char **)RSTRING_PTR(envp_str)); /* async-signal-safe */
-+        execle("@TERMUX_PREFIX@/bin/sh", "sh", "-c", str, (char *)NULL, (char **)RSTRING_PTR(envp_str)); /* async-signal-safe */
++        execle("@MININIX_PREFIX@/bin/sh", "sh", "-c", str, (char *)NULL, (char **)RSTRING_PTR(envp_str)); /* async-signal-safe */
      else
 -        execl("/bin/sh", "sh", "-c", str, (char *)NULL); /* async-signal-safe (since SUSv4) */
-+        execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", str, (char *)NULL); /* async-signal-safe (since SUSv4) */
++        execl("@MININIX_PREFIX@/bin/sh", "sh", "-c", str, (char *)NULL); /* async-signal-safe (since SUSv4) */
  #endif	/* _WIN32 */
      return errno;
  }
@@ -29,7 +29,7 @@
  	*argv = (char *)prog;
  	*--argv = (char *)"sh";
 -	status = spawnv(P_NOWAIT, "/bin/sh", (const char **)argv);
-+	status = spawnv(P_NOWAIT, "@TERMUX_PREFIX@/bin/sh", (const char **)argv);
++	status = spawnv(P_NOWAIT, "@MININIX_PREFIX@/bin/sh", (const char **)argv);
  	after_exec();
  	if (status == -1) errno = ENOEXEC;
      }
@@ -38,7 +38,7 @@
      char *shell = dln_find_exe_r("sh", 0, fbuf, sizeof(fbuf));
      before_exec();
 -    status = spawnl(P_NOWAIT, (shell ? shell : "/bin/sh"), "sh", "-c", str, (char*)NULL);
-+    status = spawnl(P_NOWAIT, (shell ? shell : "@TERMUX_PREFIX@/bin/sh"), "sh", "-c", str, (char*)NULL);
++    status = spawnl(P_NOWAIT, (shell ? shell : "@MININIX_PREFIX@/bin/sh"), "sh", "-c", str, (char*)NULL);
      after_exec();
      return status;
  }

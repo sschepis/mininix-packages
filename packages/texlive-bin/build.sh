@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=https://www.tug.org/texlive/
-TERMUX_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system. This package contains architecture dependent binaries."
-TERMUX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
-TERMUX_PKG_VERSION=20180414
-TERMUX_PKG_REVISION=5
-TERMUX_PKG_SRCURL=ftp://tug.org/texlive/historic/${TERMUX_PKG_VERSION:0:4}/texlive-${TERMUX_PKG_VERSION}-source.tar.xz
-TERMUX_PKG_SHA256="fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e"
-TERMUX_PKG_DEPENDS="freetype, libpng, libgd, libgmp, libmpfr, libicu, liblua, poppler, libgraphite, harfbuzz-icu, teckit"
-TERMUX_PKG_BUILD_DEPENDS="icu-devtools"
-TERMUX_PKG_BREAKS="texlive (<< 20180414)"
-TERMUX_PKG_REPLACES="texlive (<< 20170524-3)"
-TERMUX_PKG_RECOMMENDS="texlive"
-TERMUX_PKG_NO_DEVELSPLIT=yes
-TERMUX_PKG_HOSTBUILD=true
+MININIX_PKG_HOMEPAGE=https://www.tug.org/texlive/
+MININIX_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system. This package contains architecture dependent binaries."
+MININIX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+MININIX_PKG_VERSION=20180414
+MININIX_PKG_REVISION=5
+MININIX_PKG_SRCURL=ftp://tug.org/texlive/historic/${MININIX_PKG_VERSION:0:4}/texlive-${MININIX_PKG_VERSION}-source.tar.xz
+MININIX_PKG_SHA256="fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e"
+MININIX_PKG_DEPENDS="freetype, libpng, libgd, libgmp, libmpfr, libicu, liblua, poppler, libgraphite, harfbuzz-icu, teckit"
+MININIX_PKG_BUILD_DEPENDS="icu-devtools"
+MININIX_PKG_BREAKS="texlive (<< 20180414)"
+MININIX_PKG_REPLACES="texlive (<< 20170524-3)"
+MININIX_PKG_RECOMMENDS="texlive"
+MININIX_PKG_NO_DEVELSPLIT=yes
+MININIX_PKG_HOSTBUILD=true
 
-TL_ROOT=$TERMUX_PREFIX/share/texlive
-TL_BINDIR=$TERMUX_PREFIX/bin
+TL_ROOT=$MININIX_PREFIX/share/texlive
+TL_BINDIR=$MININIX_PREFIX/bin
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+MININIX_PKG_EXTRA_CONFIGURE_ARGS="
 AR=ar \
 RANLIB=ranlib \
 BUILDAR=ar \
@@ -24,13 +24,13 @@ BUILDRANLIB=ranlib \
 --prefix=$TL_ROOT \
 --bindir=$TL_BINDIR \
 --datarootdir=$TL_ROOT \
---datadir=$TERMUX_PREFIX/share \
---mandir=$TERMUX_PREFIX/share/man \
---docdir=$TERMUX_PREFIX/share/doc \
---infodir=$TERMUX_PREFIX/share/info \
---libdir=$TERMUX_PREFIX/lib \
---includedir=$TERMUX_PREFIX/include \
---build=$TERMUX_BUILD_TUPLE \
+--datadir=$MININIX_PREFIX/share \
+--mandir=$MININIX_PREFIX/share/man \
+--docdir=$MININIX_PREFIX/share/doc \
+--infodir=$MININIX_PREFIX/share/info \
+--libdir=$MININIX_PREFIX/lib \
+--includedir=$MININIX_PREFIX/include \
+--build=$MININIX_BUILD_TUPLE \
 --enable-ttfdump=no \
 --enable-makeindexk=yes \
 --enable-makejvf=no \
@@ -69,10 +69,10 @@ BUILDRANLIB=ranlib \
 --with-system-lua \
 --with-system-teckit \
 --without-x \
---with-banner-add=/Termux"
+--with-banner-add=/Mininix"
 
 # These files are provided by texlive:
-TERMUX_PKG_RM_AFTER_INSTALL="
+MININIX_PKG_RM_AFTER_INSTALL="
 bin/tlmgr
 bin/man
 share/texlive/texmf-dist/texconfig/tcfmgr.map
@@ -122,43 +122,43 @@ share/texlive/texmf-dist/scripts/lua2dox/lua2dox_filter
 share/texlive/texmf-dist/scripts/context/perl/mptopdf.pl
 share/texlive/texmf-dist/scripts/checkcites/checkcites.lua"
 
-termux_step_host_build () {
+mininix_step_host_build () {
 	mkdir -p auxdir/auxsub
 	mkdir -p texk/kpathsea
 	mkdir -p texk/web2c
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/auxdir/auxsub
-	$TERMUX_PKG_SRCDIR/auxdir/auxsub/configure
+	cd $MININIX_PKG_HOSTBUILD_DIR/auxdir/auxsub
+	$MININIX_PKG_SRCDIR/auxdir/auxsub/configure
 	make
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/texk/kpathsea
-	$TERMUX_PKG_SRCDIR/texk/kpathsea/configure
+	cd $MININIX_PKG_HOSTBUILD_DIR/texk/kpathsea
+	$MININIX_PKG_SRCDIR/texk/kpathsea/configure
 
-	cd $TERMUX_PKG_HOSTBUILD_DIR/texk/web2c
-	$TERMUX_PKG_SRCDIR/texk/web2c/configure --without-x
+	cd $MININIX_PKG_HOSTBUILD_DIR/texk/web2c
+	$MININIX_PKG_SRCDIR/texk/web2c/configure --without-x
 	make tangle
 	make ctangle
 	make tie
 	make otangle
 }
 
-termux_step_pre_configure() {
+mininix_step_pre_configure() {
 	# When building against libicu 59.1 or later we need c++11:
 	CXXFLAGS+=" -std=c++11"
-	export TANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tangle
-	export TANGLEBOOT=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tangleboot
-	export CTANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/ctangle
-	export CTANGLEBOOT=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/ctangleboot
-	export TIE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/tie
-	export OTANGLE=$TERMUX_PKG_HOSTBUILD_DIR/texk/web2c/.libs/otangle
+	export TANGLE=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/tangle
+	export TANGLEBOOT=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/tangleboot
+	export CTANGLE=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/ctangle
+	export CTANGLEBOOT=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/ctangleboot
+	export TIE=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/tie
+	export OTANGLE=$MININIX_PKG_HOSTBUILD_DIR/texk/web2c/.libs/otangle
 	# otangle is linked against libkpathsea but can't find it, so we use LD_LIBRARY_PATH
-	export LD_LIBRARY_PATH=$TERMUX_PKG_HOSTBUILD_DIR/texk/kpathsea/.libs
+	export LD_LIBRARY_PATH=$MININIX_PKG_HOSTBUILD_DIR/texk/kpathsea/.libs
 }
 
-termux_step_create_debscripts () {
+mininix_step_create_debscripts () {
 	# Clean texlive's folder if needed (run on fresh install)
-	echo "#!$TERMUX_PREFIX/bin/bash" > preinst
-	echo "if [ ! -d $PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Termux'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
+	echo "#!$MININIX_PREFIX/bin/bash" > preinst
+	echo "if [ ! -d $PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Mininix'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
 	echo "exit 0" >> preinst
 	chmod 0755 preinst
 }

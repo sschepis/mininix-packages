@@ -40,9 +40,9 @@ Typical components:
   engine            Either a native JIT or a bitcode interpreter."
 }
 
-arch=@TERMUX_ARCH@
-version=@TERMUX_PKG_VERSION@
-prefix=@TERMUX_PREFIX@
+arch=@MININIX_ARCH@
+version=@MININIX_PKG_VERSION@
+prefix=@MININIX_PREFIX@
 has_rtti=NO
 CPPFLAGS="-I${prefix}/include -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 CFLAGS="${CPPFLAGS} ${CFLAGS} -fPIC -Werror=date-time -Wall -W -Wno-unused-parameter -Wwrite-strings -Wmissing-field-initializers -pedantic \
@@ -100,7 +100,7 @@ handle_args () {
 		link-static) libs=$static_libs ;;
 		version) echo "$version\n";;
 		prefix) echo "$prefix";;
-		src-root) echo "@TERMUX_PKG_SRCDIR@";;
+		src-root) echo "@MININIX_PKG_SRCDIR@";;
 		obj-root) echo "$prefix";;
 		bindir) echo "$prefix/bin";;
 		includedir) echo "$prefix/include";;

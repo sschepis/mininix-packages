@@ -6,7 +6,7 @@
        /* Try the easy approaches first: */
 -#     ifdef PLATFORM_ANDROID
 +	/* this workaround for gold linker when only aarch64 is using it in 
-+	  termux breaks x86_64 and x86 builds and also arm w3m apply it to
++	  mininix breaks x86_64 and x86 builds and also arm w3m apply it to
 +	 aarch64 only  */
 +
 +#   if defined(PLATFORM_ANDROID) && defined(__aarch64__) 

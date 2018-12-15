@@ -6,7 +6,7 @@ diff -uNr mandoc-1.14.3/mandocdb.c mandoc-1.14.3.mod/mandocdb.c
  	 */
  
 -	(void)strlcpy(tfn, "/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
-+	(void)strlcpy(tfn, "@TERMUX_PREFIX@/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
++	(void)strlcpy(tfn, "@MININIX_PREFIX@/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
  	if (mkdtemp(tfn) == NULL) {
  		exitcode = (int)MANDOCLEVEL_SYSERR;
  		say("", "&%s", tfn);

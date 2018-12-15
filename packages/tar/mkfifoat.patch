@@ -5,12 +5,12 @@ segfault.
 
 Snippet of backtrace:
 ....
-#9  0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.termux-build/tar/src/gnu/at-func.c:75
-#10 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.termux-build/tar/src/gnu/at-func.c:75
-#11 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.termux-build/tar/src/gnu/at-func.c:75
-#12 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.termux-build/tar/src/gnu/at-func.c:75
-#13 0x000000555556a9d4 in extract_node (file_name=0x7fb7c90050 "sda", typeflag=52) at /home/builder/.termux-build/tar/src/src/extract.c:1447
-#14 0x0000005555568f38 in extract_archive () at /home/builder/.termux-build/tar/src/src/extract.c:1709
+#9  0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.mininix-build/tar/src/gnu/at-func.c:75
+#10 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.mininix-build/tar/src/gnu/at-func.c:75
+#11 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.mininix-build/tar/src/gnu/at-func.c:75
+#12 0x000000555559819c in mknodat (fd=-100, file=0x7fb7c90050 "sda", mode=25008, dev=2048) at /home/builder/.mininix-build/tar/src/gnu/at-func.c:75
+#13 0x000000555556a9d4 in extract_node (file_name=0x7fb7c90050 "sda", typeflag=52) at /home/builder/.mininix-build/tar/src/src/extract.c:1447
+#14 0x0000005555568f38 in extract_archive () at /home/builder/.mininix-build/tar/src/src/extract.c:1709
 ....
 
 diff -uNr tar-1.30/src/extract.c tar-1.30.mod/src/extract.c

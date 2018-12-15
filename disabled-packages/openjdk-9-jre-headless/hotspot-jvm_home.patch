@@ -6,7 +6,7 @@ shoutout to @its-pointless (live_the_dream)
  int               os::_initial_active_processor_count = 0;
  size_t            os::_page_sizes[os::page_sizes_max];
 -const char *      os::_java_home = NULL;
-+const char *      os::_java_home = "@TERMUX_PREFIX@/lib/jvm/openjdk-9";
++const char *      os::_java_home = "@MININIX_PREFIX@/lib/jvm/openjdk-9";
  
  #ifndef PRODUCT
  julong os::num_mallocs = 0;         // # of calls to malloc/realloc

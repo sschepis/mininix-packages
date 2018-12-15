@@ -7,7 +7,7 @@ diff -u -r ../bash-completion-2.8/completions/man ./completions/man
  
 -    local manpath=$( manpath 2>/dev/null || command man -w 2>/dev/null )
 -    [[ -z $manpath ]] && manpath="/usr/share/man:/usr/local/share/man"
-+    local manpath="@TERMUX_PREFIX@/share/man"
++    local manpath="@MININIX_PREFIX@/share/man"
  
      # determine manual section to search
      local sect

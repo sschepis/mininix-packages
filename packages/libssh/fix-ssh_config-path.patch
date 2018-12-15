@@ -6,7 +6,7 @@ diff -uNr libssh-0.7.5/src/options.c libssh-0.7.5.mod/src/options.c
    }
    if (filename == NULL) {
 -      r = ssh_config_parse_file(session, "/etc/ssh/ssh_config");
-+      r = ssh_config_parse_file(session, "@TERMUX_PREFIX@/etc/ssh/ssh_config");
++      r = ssh_config_parse_file(session, "@MININIX_PREFIX@/etc/ssh/ssh_config");
    }
  
  out:

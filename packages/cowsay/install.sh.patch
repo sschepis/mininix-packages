@@ -55,8 +55,8 @@ diff -u -r ../cowsay-3.03+dfsg1/install.sh ./install.sh
 -fi
 -
 -PREFIX=${prefix:-/usr/local}
-+usethisperl=@TERMUX_PREFIX@/bin/perl
-+PREFIX=@TERMUX_PREFIX@
++usethisperl=@MININIX_PREFIX@/bin/perl
++PREFIX=@MININIX_PREFIX@
  
  echo Okay, time to install this puppy.
  

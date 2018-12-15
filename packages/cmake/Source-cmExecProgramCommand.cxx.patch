@@ -6,7 +6,7 @@ diff -u -r ../cmake-3.10.1/Source/cmExecProgramCommand.cxx ./Source/cmExecProgra
    fflush(stdout);
    fflush(stderr);
 -  const char* cmd[] = { "/bin/sh", "-c", command, nullptr };
-+  const char* cmd[] = { "@TERMUX_PREFIX@/bin/sh", "-c", command, nullptr };
++  const char* cmd[] = { "@MININIX_PREFIX@/bin/sh", "-c", command, nullptr };
    cmsysProcess_SetCommand(cp, cmd);
  #endif
  

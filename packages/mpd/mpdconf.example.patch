@@ -31,7 +31,7 @@
  # setting defaults to logging to syslog, otherwise logging is disabled.
  #
 -#log_file			"~/.mpd/log"
-+#log_file			"@TERMUX_HOME@/.mpd/log"
++#log_file			"@MININIX_HOME@/.mpd/log"
  #
  # This setting sets the location of the file which stores the process ID
  # for use of mpd --kill and some init scripts. This setting is disabled by
@@ -68,11 +68,11 @@
  #
  # And for Unix Socket
 -#bind_to_address		"~/.mpd/socket"
-+bind_to_address		"@TERMUX_PREFIX@/tmp/mpd.socket"
++bind_to_address		"@MININIX_PREFIX@/tmp/mpd.socket"
  #
  # This setting is the TCP port that is desired for the daemon to get assigned
 -# to.
-+# to. Normally this is 6600 but for termux this port needs to be above 8000. 
++# to. Normally this is 6600 but for mininix this port needs to be above 8000. 
  #
 -#port				"6600"
 +#port				"8600"
@@ -128,7 +128,7 @@
  #	name		"My recorder"
  #	encoder		"vorbis"		# optional, vorbis or lame
 -#	path		"/var/lib/mpd/recorder/mpd.ogg"
-+##  for termux changed "path" to somewhere on android that works
++##  for mininix changed "path" to somewhere on android that works
 +#	path		"~/mpd.ogg" 
  ##	quality		"5.0"			# do not define if bitrate is defined
  #	bitrate		"128"			# do not define if quality is defined

@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+MININIX_SUBPKG_INCLUDE="
 share/xapian-core
 share/man/man1/copydatabase.1
 share/man/man1/xapian-compact.1
@@ -24,5 +24,5 @@ bin/xapian-compact
 bin/xapian-delve
 bin/xapian-replicate
 "
-TERMUX_SUBPKG_DESCRIPTION="Basic tools for the Xapian search engine"
-TERMUX_SUBPKG_DEPENDS="libxapian"
+MININIX_SUBPKG_DESCRIPTION="Basic tools for the Xapian search engine"
+MININIX_SUBPKG_DEPENDS="libxapian"

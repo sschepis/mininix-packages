@@ -6,7 +6,7 @@ diff -uNr gnupg-2.2.8/g10/exec.c gnupg-2.2.8.mod/g10/exec.c
  
  	  if(shell==NULL)
 -	    shell="/bin/sh";
-+	    shell="@TERMUX_PREFIX@/bin/sh";
++	    shell="@MININIX_PREFIX@/bin/sh";
  
  	  /* I'm the child */
  

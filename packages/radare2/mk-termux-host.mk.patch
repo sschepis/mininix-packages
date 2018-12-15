@@ -1,6 +1,6 @@
-diff -u -r ../radare2-2.4.0/mk/termux-host.mk ./mk/termux-host.mk
---- ../radare2-2.4.0/mk/termux-host.mk	2018-03-05 17:12:35.000000000 +0000
-+++ ./mk/termux-host.mk	2018-03-07 10:00:57.076202764 +0000
+diff -u -r ../radare2-2.4.0/mk/mininix-host.mk ./mk/mininix-host.mk
+--- ../radare2-2.4.0/mk/mininix-host.mk	2018-03-05 17:12:35.000000000 +0000
++++ ./mk/mininix-host.mk	2018-03-07 10:00:57.076202764 +0000
 @@ -3,6 +3,7 @@
  #RANLIB=ndk-ranlib
  USERCC=gcc -fPIC -fPIE

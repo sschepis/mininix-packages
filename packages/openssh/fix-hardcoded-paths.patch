@@ -6,7 +6,7 @@ diff -uNr openssh-7.5p1/contrib/ssh-copy-id openssh-7.5p1.mod/contrib/ssh-copy-i
  if false ^ printf "%s: WARNING: ancient shell, hunting for a more modern one... " "$0"
  then
 -  SANE_SH=${SANE_SH:-/usr/bin/ksh}
-+  SANE_SH=${SANE_SH:-@TERMUX_PREFIX@/bin/bash}
++  SANE_SH=${SANE_SH:-@MININIX_PREFIX@/bin/bash}
    if printf 'true ^ false\n' | "$SANE_SH"
    then
      printf "'%s' seems viable.\n" "$SANE_SH"
@@ -18,7 +18,7 @@ diff -uNr openssh-7.5p1/defines.h openssh-7.5p1.mod/defines.h
  
  #ifndef _PATH_NOLOGIN
 -# define _PATH_NOLOGIN "/etc/nologin"
-+# define _PATH_NOLOGIN "@TERMUX_PREFIX@/etc/nologin"
++# define _PATH_NOLOGIN "@MININIX_PREFIX@/etc/nologin"
  #endif
  
  /* Define this to be the path of the xauth program. */
@@ -27,7 +27,7 @@ diff -uNr openssh-7.5p1/defines.h openssh-7.5p1.mod/defines.h
  #    define X_UNIX_PATH "/var/spool/sockets/X11/%u"
  #  else
 -#    define X_UNIX_PATH "/tmp/.X11-unix/X%u"
-+#    define X_UNIX_PATH "@TERMUX_PREFIX@/tmp/.X11-unix/X%u"
++#    define X_UNIX_PATH "@MININIX_PREFIX@/tmp/.X11-unix/X%u"
  #  endif
  #endif /* X_UNIX_PATH */
  #define _PATH_UNIX_X X_UNIX_PATH
@@ -39,7 +39,7 @@ diff -uNr openssh-7.5p1/pathnames.h openssh-7.5p1.mod/pathnames.h
   */
  #define _PATH_SSH_HOSTS_EQUIV		SSHDIR "/shosts.equiv"
 -#define _PATH_RHOSTS_EQUIV		"/etc/hosts.equiv"
-+#define _PATH_RHOSTS_EQUIV		"@TERMUX_PREFIX@/etc/hosts.equiv"
++#define _PATH_RHOSTS_EQUIV		"@MININIX_PREFIX@/etc/hosts.equiv"
  
  /*
   * Default location of askpass
@@ -48,13 +48,13 @@ diff -uNr openssh-7.5p1/pathnames.h openssh-7.5p1.mod/pathnames.h
  /* xauth for X11 forwarding */
  #ifndef _PATH_XAUTH
 -#define _PATH_XAUTH			"/usr/X11R6/bin/xauth"
-+#define _PATH_XAUTH			"@TERMUX_PREFIX@/bin/xauth"
++#define _PATH_XAUTH			"@MININIX_PREFIX@/bin/xauth"
  #endif
  
  /* UNIX domain socket for X11 server; displaynum will replace %u */
  #ifndef _PATH_UNIX_X
 -#define _PATH_UNIX_X "/tmp/.X11-unix/X%u"
-+#define _PATH_UNIX_X "@TERMUX_PREFIX@/tmp/.X11-unix/X%u"
++#define _PATH_UNIX_X "@MININIX_PREFIX@/tmp/.X11-unix/X%u"
  #endif
  
  /* for scp */
@@ -63,7 +63,7 @@ diff -uNr openssh-7.5p1/pathnames.h openssh-7.5p1.mod/pathnames.h
  /* for passwd change */
  #ifndef _PATH_PASSWD_PROG
 -#define _PATH_PASSWD_PROG             "/usr/bin/passwd"
-+#define _PATH_PASSWD_PROG             "@TERMUX_PREFIX@/bin/passwd"
++#define _PATH_PASSWD_PROG             "@MININIX_PREFIX@/bin/passwd"
  #endif
  
  #ifndef _PATH_LS
@@ -75,7 +75,7 @@ diff -uNr openssh-7.5p1/ssh-agent.c openssh-7.5p1.mod/ssh-agent.c
  
  #ifndef DEFAULT_PKCS11_WHITELIST
 -# define DEFAULT_PKCS11_WHITELIST "/usr/lib*/*,/usr/local/lib*/*"
-+# define DEFAULT_PKCS11_WHITELIST "/usr/lib*/*,/usr/local/lib*/*,@TERMUX_PREFIX@/lib*/*"
++# define DEFAULT_PKCS11_WHITELIST "/usr/lib*/*,/usr/local/lib*/*,@MININIX_PREFIX@/lib*/*"
  #endif
  
  typedef enum {

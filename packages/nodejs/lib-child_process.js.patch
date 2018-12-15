@@ -6,7 +6,7 @@ diff -u -r ../node-v6.2.0/lib/child_process.js ./lib/child_process.js
          file = options.shell;
        else if (process.platform === 'android')
 -        file = '/system/bin/sh';
-+        file = '@TERMUX_PREFIX@/bin/sh';
++        file = '@MININIX_PREFIX@/bin/sh';
        else
          file = '/bin/sh';
        args = ['-c', command];

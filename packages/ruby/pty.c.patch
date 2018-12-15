@@ -6,7 +6,7 @@ diff -u -r ../ruby-2.4.0/ext/pty/pty.c ./ext/pty/pty.c
  
      if (argc == 0) {
 -	const char *shellname = "/bin/sh";
-+	const char *shellname = "@TERMUX_PREFIX@/bin/sh";
++	const char *shellname = "@MININIX_PREFIX@/bin/sh";
  
  	if ((p = getenv("SHELL")) != NULL) {
  	    shellname = p;

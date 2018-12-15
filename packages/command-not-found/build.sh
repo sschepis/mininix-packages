@@ -1,10 +1,10 @@
-TERMUX_PKG_HOMEPAGE=https://termux.com
-TERMUX_PKG_DESCRIPTION="Suggest installation of packages in interactive shell sessions"
-TERMUX_PKG_VERSION=1.36
+MININIX_PKG_HOMEPAGE=https://mininix.com
+MININIX_PKG_DESCRIPTION="Suggest installation of packages in interactive shell sessions"
+MININIX_PKG_VERSION=1.36
 
-termux_step_make_install () {
-	TERMUX_LIBEXEC_DIR=$TERMUX_PREFIX/libexec/termux
-	mkdir -p $TERMUX_LIBEXEC_DIR
-	$CC -Wall -Wextra -Werror -pedantic $CFLAGS $LDFLAGS -std=c11 $TERMUX_PKG_BUILDER_DIR/command-not-found.c \
-	        -o $TERMUX_LIBEXEC_DIR/command-not-found
+mininix_step_make_install () {
+	MININIX_LIBEXEC_DIR=$MININIX_PREFIX/libexec/mininix
+	mkdir -p $MININIX_LIBEXEC_DIR
+	$CC -Wall -Wextra -Werror -pedantic $CFLAGS $LDFLAGS -std=c11 $MININIX_PKG_BUILDER_DIR/command-not-found.c \
+	        -o $MININIX_LIBEXEC_DIR/command-not-found
 }

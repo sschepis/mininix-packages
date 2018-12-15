@@ -6,7 +6,7 @@ diff -u -r ../postgresql-9.6.2/src/bin/pg_ctl/pg_ctl.c ./src/bin/pg_ctl/pg_ctl.c
  				 exec_path, pgdata_opt, post_opts, DEVNULL);
  
 -	(void) execl("/bin/sh", "/bin/sh", "-c", cmd, (char *) NULL);
-+	(void) execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", cmd, (char *) NULL);
++	(void) execl("@MININIX_PREFIX@/bin/sh", "sh", "-c", cmd, (char *) NULL);
  
  	/* exec failed */
  	write_stderr(_("%s: could not start server: %s\n"),

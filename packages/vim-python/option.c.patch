@@ -6,7 +6,7 @@ diff -u -r ../vim-8.0.1750/src/option.c ./src/option.c
  		p = (char_u *)"/private/tmp";
  #  else
 -		p = (char_u *)"/tmp";
-+		p = (char_u *)"@TERMUX_PREFIX@/tmp";
++		p = (char_u *)"@MININIX_PREFIX@/tmp";
  #  endif
  	    else
  # endif

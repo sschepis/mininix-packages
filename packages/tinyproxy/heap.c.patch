@@ -8,7 +8,7 @@
 +        char buffer[128];
  
 -        static const char *shared_file = "/tmp/tinyproxy.shared.XXXXXX";
-+        static const char *shared_file = "@TERMUX_PREFIX@/tmp/tinyproxy.shared.XXXXXX";
++        static const char *shared_file = "@MININIX_PREFIX@/tmp/tinyproxy.shared.XXXXXX";
  
          assert (size > 0);
  

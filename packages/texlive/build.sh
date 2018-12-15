@@ -1,52 +1,52 @@
-TERMUX_PKG_HOMEPAGE=https://www.tug.org/texlive/
-TERMUX_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system."
-TERMUX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+MININIX_PKG_HOMEPAGE=https://www.tug.org/texlive/
+MININIX_PKG_DESCRIPTION="TeX Live is a distribution of the TeX typesetting system."
+MININIX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
 _MAJOR_VERSION=20180414
-TERMUX_PKG_VERSION=${_MAJOR_VERSION}
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL="ftp://ftp.tug.org/texlive/historic/${TERMUX_PKG_VERSION:0:4}/texlive-$_MAJOR_VERSION-texmf.tar.xz"
-TERMUX_PKG_SHA256="bae2fa05ea1858b489f8138bea855c6d65829cf595c1fb219c5d65f4fe8b1fad"
-TERMUX_PKG_DEPENDS="perl, texlive-bin (>= 20180414)"
-TERMUX_PKG_CONFLICTS="texlive (<< 20170524-5), texlive-bin (<< 20180414)"
-TERMUX_PKG_RECOMMENDS="texlive-tlmgr"
-TERMUX_PKG_FOLDERNAME="texlive-$_MAJOR_VERSION-texmf"
-TERMUX_PKG_PLATFORM_INDEPENDENT=yes
-TERMUX_PKG_HAS_DEBUG=no
+MININIX_PKG_VERSION=${_MAJOR_VERSION}
+MININIX_PKG_REVISION=1
+MININIX_PKG_SRCURL="ftp://ftp.tug.org/texlive/historic/${MININIX_PKG_VERSION:0:4}/texlive-$_MAJOR_VERSION-texmf.tar.xz"
+MININIX_PKG_SHA256="bae2fa05ea1858b489f8138bea855c6d65829cf595c1fb219c5d65f4fe8b1fad"
+MININIX_PKG_DEPENDS="perl, texlive-bin (>= 20180414)"
+MININIX_PKG_CONFLICTS="texlive (<< 20170524-5), texlive-bin (<< 20180414)"
+MININIX_PKG_RECOMMENDS="texlive-tlmgr"
+MININIX_PKG_FOLDERNAME="texlive-$_MAJOR_VERSION-texmf"
+MININIX_PKG_PLATFORM_INDEPENDENT=yes
+MININIX_PKG_HAS_DEBUG=no
 
 TL_FILE_LISTS="texlive-texmf.list"
-TL_ROOT=$TERMUX_PREFIX/share/texlive
-TL_BINDIR=$TERMUX_PREFIX/bin
+TL_ROOT=$MININIX_PREFIX/share/texlive
+TL_BINDIR=$MININIX_PREFIX/bin
 
-termux_step_extract_package() {
-	mkdir -p "$TERMUX_PKG_SRCDIR"
+mininix_step_extract_package() {
+	mkdir -p "$MININIX_PKG_SRCDIR"
 	
-	cd "$TERMUX_PKG_TMPDIR"
+	cd "$MININIX_PKG_TMPDIR"
 	local filename
-	filename=$(basename "${TERMUX_PKG_SRCURL}")
-	local file="$TERMUX_PKG_CACHEDIR/$filename"
-	termux_download "${TERMUX_PKG_SRCURL}" "$file" "${TERMUX_PKG_SHA256}"
+	filename=$(basename "${MININIX_PKG_SRCURL}")
+	local file="$MININIX_PKG_CACHEDIR/$filename"
+	mininix_download "${MININIX_PKG_SRCURL}" "$file" "${MININIX_PKG_SHA256}"
 	
-	folder=${TERMUX_PKG_FOLDERNAME}
+	folder=${MININIX_PKG_FOLDERNAME}
 	
 	rm -Rf $folder
 	echo "Extracting files listed in ${TL_FILE_LISTS} from $folder"
-	tar xf "$file" $(paste -d'\0' <(for i in $(seq 1 $( wc -l < $TERMUX_PKG_BUILDER_DIR/${TL_FILE_LISTS} )); do echo ${TERMUX_PKG_FOLDERNAME}/; done ) $TERMUX_PKG_BUILDER_DIR/${TL_FILE_LISTS} )
-	cp -r ${TERMUX_PKG_FOLDERNAME}/* "$TERMUX_PKG_SRCDIR"
+	tar xf "$file" $(paste -d'\0' <(for i in $(seq 1 $( wc -l < $MININIX_PKG_BUILDER_DIR/${TL_FILE_LISTS} )); do echo ${MININIX_PKG_FOLDERNAME}/; done ) $MININIX_PKG_BUILDER_DIR/${TL_FILE_LISTS} )
+	cp -r ${MININIX_PKG_FOLDERNAME}/* "$MININIX_PKG_SRCDIR"
 }
 
-termux_step_make() {
-	cp -r $TERMUX_PKG_SRCDIR/* $TL_ROOT/
+mininix_step_make() {
+	cp -r $MININIX_PKG_SRCDIR/* $TL_ROOT/
 	perl -I$TL_ROOT/tlpkg/ $TL_ROOT/texmf-dist/scripts/texlive/mktexlsr.pl $TL_ROOT/texmf-dist
 }
 
-termux_step_create_debscripts () {
+mininix_step_create_debscripts () {
 	# Clean texlive's folder if needed (run on upgrade)
-	echo "#!$TERMUX_PREFIX/bin/bash" > preinst
-	echo "if [ -d $TERMUX_PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Termux'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
+	echo "#!$MININIX_PREFIX/bin/bash" > preinst
+	echo "if [ -d $MININIX_PREFIX/opt/texlive ]; then echo 'Removing residual files from old version of TeX Live for Mininix'; rm -rf $PREFIX/opt/texlive; fi" >> preinst
 	echo "exit 0" >> preinst
 	chmod 0755 preinst
 	
-	echo "#!$TERMUX_PREFIX/bin/bash" > postinst
+	echo "#!$MININIX_PREFIX/bin/bash" > postinst
 	echo "mktexlsr $TL_ROOT/texmf-var" >> postinst
 	echo "texlinks" >> postinst
 	echo "echo ''" >> postinst
@@ -59,7 +59,7 @@ termux_step_create_debscripts () {
 	chmod 0755 postinst
 
 	# Remove all files installed through tlmgr on removal
-	echo "#!$TERMUX_PREFIX/bin/bash" > prerm
+	echo "#!$MININIX_PREFIX/bin/bash" > prerm
 	echo 'if [ $1 != "remove" ]; then exit 0; fi' >> prerm
 	echo "echo Running texlinks --unlink" >> prerm
 	echo "texlinks --unlink" >> prerm
@@ -71,7 +71,7 @@ termux_step_create_debscripts () {
 	chmod 0755 prerm
 }
 
-TERMUX_PKG_RM_AFTER_INSTALL="
+MININIX_PKG_RM_AFTER_INSTALL="
 share/texlive/README
 share/texlive/README.usergroups
 share/texlive/autorun.inf

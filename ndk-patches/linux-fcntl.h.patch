@@ -5,7 +5,7 @@ diff -u -r /home/fornwall/lib/android-ndk/sysroot/usr/include/linux/fcntl.h ./us
  #define DN_ATTRIB 0x00000020
  #define DN_MULTISHOT 0x80000000
  #define AT_FDCWD - 100
-+/* Termux patch: This flag is not supported on Android 6.0+, and should not
++/* Mininix patch: This flag is not supported on Android 6.0+, and should not
 +   be needed since there are not setuid binaries. Define AT_EACCESS to 0 to
 +   avoid packages defining their own AT_EACCESS (which e.g. coreutil does)
 +   since that will only result in errors. See:

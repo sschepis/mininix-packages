@@ -6,7 +6,7 @@ diff -uNr openssl-1.0.2o/e_os.h openssl-1.0.2o.mod/e_os.h
   * files listed in DEVRANDOM did not return enough entropy.
   */
 -#  define DEVRANDOM_EGD "/var/run/egd-pool","/dev/egd-pool","/etc/egd-pool","/etc/entropy"
-+#  define DEVRANDOM_EGD "@TERMUX_PREFIX@/var/run/egd-pool","/dev/egd-pool","@TERMUX_PREFIX@/etc/egd-pool","@TERMUX_PREFIX@/etc/entropy"
++#  define DEVRANDOM_EGD "@MININIX_PREFIX@/var/run/egd-pool","/dev/egd-pool","@MININIX_PREFIX@/etc/egd-pool","@MININIX_PREFIX@/etc/entropy"
  # endif
  
  # if defined(OPENSSL_SYS_VXWORKS)

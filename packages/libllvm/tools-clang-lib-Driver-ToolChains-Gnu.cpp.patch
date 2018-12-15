@@ -13,9 +13,9 @@ diff -u -r ../llvm-5.0.0.src/tools/clang/lib/Driver/ToolChains/Gnu.cpp ./tools/c
 -    GCCName = "g++";
 -  } else
 -    GCCName = "gcc";
-+  // Termux modification: Disable calling into gcc from clang.
++  // Mininix modification: Disable calling into gcc from clang.
 +  // Clang calls into gcc if it tries to compile a language it doesn't understand.
-+  // On Termux gcc is a symlink to clang, so this leads into fork loop until
++  // On Mininix gcc is a symlink to clang, so this leads into fork loop until
 +  // the whole system runs out of memory.
 +  const char *GCCName = "false";
  

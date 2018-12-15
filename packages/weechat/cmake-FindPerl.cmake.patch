@@ -59,9 +59,9 @@ diff -u -r ../weechat-1.4/cmake/FindPerl.cmake ./cmake/FindPerl.cmake
 -    PERL_LFLAGS
 -    )
 -endif()
-+set(PERL_EXECUTABLE "@TERMUX_PREFIX@/bin/perl")
-+set(PERL_INCLUDE_PATH "@TERMUX_PREFIX@/include/perl/")
-+set(PERL_LIBRARY "@TERMUX_PREFIX@/lib")
++set(PERL_EXECUTABLE "@MININIX_PREFIX@/bin/perl")
++set(PERL_INCLUDE_PATH "@MININIX_PREFIX@/include/perl/")
++set(PERL_LIBRARY "@MININIX_PREFIX@/lib")
 +set(PERL_LFLAGS "-lperl")
 +set(PERL_FOUND TRUE)
 +

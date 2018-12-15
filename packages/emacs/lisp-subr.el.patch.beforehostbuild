@@ -6,7 +6,7 @@ diff -u -r ../emacs-25.0.92/lisp/subr.el ./lisp/subr.el
    (start-file-process
     name buffer
 -   (if (file-remote-p default-directory) "/bin/sh" shell-file-name)
-+   (if (file-remote-p default-directory) "@TERMUX_PREFIX@/bin/sh" shell-file-name)
++   (if (file-remote-p default-directory) "@MININIX_PREFIX@/bin/sh" shell-file-name)
     (if (file-remote-p default-directory) "-c" shell-command-switch)
     (mapconcat 'identity args " ")))
  
@@ -15,7 +15,7 @@ diff -u -r ../emacs-25.0.92/lisp/subr.el ./lisp/subr.el
              (command &optional infile buffer display) "24.5"))
    (process-file
 -   (if (file-remote-p default-directory) "/bin/sh" shell-file-name)
-+   (if (file-remote-p default-directory) "@TERMUX_PREFIX@/bin/sh" shell-file-name)
++   (if (file-remote-p default-directory) "@MININIX_PREFIX@/bin/sh" shell-file-name)
     infile buffer display
     (if (file-remote-p default-directory) "-c" shell-command-switch)
     (mapconcat 'identity (cons command args) " ")))

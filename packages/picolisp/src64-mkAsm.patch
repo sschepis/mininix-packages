@@ -1,6 +1,6 @@
 Avoid trying to run /usr/bin/picolisp since it is probably too
 old - just run the java version, since java is needed by the
-Termux package builds anyway.
+Mininix package builds anyway.
 
 diff -u -r ../picoLisp/src64/mkAsm ./src64/mkAsm
 --- ../picoLisp/src64/mkAsm	2016-12-14 02:35:59.000000000 -0500

@@ -1,9 +1,9 @@
-TERMUX_SUBPKG_INCLUDE="
+MININIX_SUBPKG_INCLUDE="
 lib/apt/methods/tor
 lib/apt/methods/tor+http
 lib/apt/methods/tor+https
 "
 
-TERMUX_SUBPKG_DESCRIPTION="APT transport for anonymous package downloads via Tor"
-TERMUX_SUBPKG_DEPENDS="apt, tor"
-TERMUX_SUBPKG_PLATFORM_INDEPENDENT=yes
+MININIX_SUBPKG_DESCRIPTION="APT transport for anonymous package downloads via Tor"
+MININIX_SUBPKG_DEPENDS="apt, tor"
+MININIX_SUBPKG_PLATFORM_INDEPENDENT=yes

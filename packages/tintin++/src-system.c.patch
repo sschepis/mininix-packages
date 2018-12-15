@@ -6,7 +6,7 @@ diff -u -r ../../tt/src/system.c ./system.c
  			sprintf(temp, "exec %s", right);
  			argv[2] = temp;
 -			execv("/bin/sh", argv);
-+			execv("@TERMUX_PREFIX@/bin/sh", argv);
++			execv("@MININIX_PREFIX@/bin/sh", argv);
  			break;
  
  		default:

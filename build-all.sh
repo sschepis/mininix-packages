@@ -3,11 +3,11 @@
 
 set -e -u -o pipefail
 
-# Read settings from .termuxrc if existing
-test -f $HOME/.termuxrc && . $HOME/.termuxrc
-: ${TERMUX_TOPDIR:="$HOME/.termux-build"}
-: ${TERMUX_ARCH:="aarch64"}
-: ${TERMUX_DEBUG:=""}
+# Read settings from .mininixrc if existing
+test -f $HOME/.mininixrc && . $HOME/.mininixrc
+: ${MININIX_TOPDIR:="$HOME/.mininix-build"}
+: ${MININIX_ARCH:="aarch64"}
+: ${MININIX_DEBUG:=""}
 
 _show_usage () {
 	echo "Usage: ./build-all.sh [-a ARCH] [-d] [-o DIR]"
@@ -20,22 +20,22 @@ _show_usage () {
 
 while getopts :a:hdDso: option; do
 case "$option" in
-	a) TERMUX_ARCH="$OPTARG";;
-	d) TERMUX_DEBUG='-d';;
-	o) TERMUX_DEBDIR="$(realpath -m $OPTARG)";;
+	a) MININIX_ARCH="$OPTARG";;
+	d) MININIX_DEBUG='-d';;
+	o) MININIX_DEBDIR="$(realpath -m $OPTARG)";;
 	h) _show_usage;;
 esac
 done
 shift $((OPTIND-1))
 if [ "$#" -ne 0 ]; then _show_usage; fi
 
-if [[ ! "$TERMUX_ARCH" =~ ^(all|aarch64|arm|i686|x86_64)$ ]]; then
-	echo "ERROR: Invalid arch '$TERMUX_ARCH'" 1>&2
+if [[ ! "$MININIX_ARCH" =~ ^(all|aarch64|arm|i686|x86_64)$ ]]; then
+	echo "ERROR: Invalid arch '$MININIX_ARCH'" 1>&2
 	exit 1
 fi
 
 BUILDSCRIPT=`dirname $0`/build-package.sh
-BUILDALL_DIR=$TERMUX_TOPDIR/_buildall-$TERMUX_ARCH
+BUILDALL_DIR=$MININIX_TOPDIR/_buildall-$MININIX_ARCH
 BUILDORDER_FILE=$BUILDALL_DIR/buildorder.txt
 BUILDSTATUS_FILE=$BUILDALL_DIR/buildstatus.txt
 
@@ -63,8 +63,8 @@ for package_path in `cat $BUILDORDER_FILE`; do
 
 	echo -n "Building $package... "
 	BUILD_START=`date "+%s"`
-	bash -x $BUILDSCRIPT -a $TERMUX_ARCH -s \
-	        $TERMUX_DEBUG ${TERMUX_DEBDIR+-o $TERMUX_DEBDIR} $package \
+	bash -x $BUILDSCRIPT -a $MININIX_ARCH -s \
+	        $MININIX_DEBUG ${MININIX_DEBDIR+-o $MININIX_DEBDIR} $package \
 	        > $BUILDALL_DIR/${package}.out 2> $BUILDALL_DIR/${package}.err
 	BUILD_END=`date "+%s"`
 	BUILD_SECONDS=$(( $BUILD_END - $BUILD_START ))

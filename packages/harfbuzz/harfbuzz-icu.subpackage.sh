@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="lib/libharfbuzz-icu*"
-TERMUX_SUBPKG_DESCRIPTION="OpenType text shaping engine ICU backend"
-TERMUX_SUBPKG_DEPENDS="harfbuzz, libicu"
+MININIX_SUBPKG_INCLUDE="lib/libharfbuzz-icu*"
+MININIX_SUBPKG_DESCRIPTION="OpenType text shaping engine ICU backend"
+MININIX_SUBPKG_DEPENDS="harfbuzz, libicu"

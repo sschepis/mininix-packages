@@ -7,8 +7,8 @@ diff -u -r ./support-files/mysql-multi.server.sh ../src.orig/support-files/mysql
  else
 -  # Try to find basedir in /etc/my.cnf
 -  conf=/etc/my.cnf
-+  # Try to find basedir in @TERMUX_PREFIX@/etc/my.cnf
-+  conf=@TERMUX_PREFIX@/etc/my.cnf
++  # Try to find basedir in @MININIX_PREFIX@/etc/my.cnf
++  conf=@MININIX_PREFIX@/etc/my.cnf
    print_defaults=
    if test -r $conf
    then
@@ -21,8 +21,8 @@ diff -u -r ./support-files/mysql.server.sh ../src.orig/support-files/mysql.serve
  else
 -  # Try to find basedir in /etc/my.cnf
 -  conf=/etc/my.cnf
-+  # Try to find basedir in @TERMUX_PREFIX@/etc/my.cnf
-+  conf=@TERMUX_PREFIX@/etc/my.cnf
++  # Try to find basedir in @MININIX_PREFIX@/etc/my.cnf
++  conf=@MININIX_PREFIX@/etc/my.cnf
    print_defaults=
    if test -r $conf
    then
@@ -34,7 +34,7 @@ diff -u -r ./support-files/policy/apparmor/usr.sbin.mysqld ../src.orig/support-f
    /etc/ld.so.cache r,
    /etc/mtab r,
 -  /etc/my.cnf r,
-+  @TERMUX_PREFIX@/etc/my.cnf r,
++  @MININIX_PREFIX@/etc/my.cnf r,
    /etc/mysql/*.cnf r,
    /etc/mysql/*.pem r,
    /etc/mysql/conf.d/ r,
@@ -43,7 +43,7 @@ diff -u -r ./support-files/policy/apparmor/usr.sbin.mysqld ../src.orig/support-f
      /dev/tty rw,
      /etc/ld.so.cache r,
 -    /etc/my.cnf r,
-+    @TERMUX_PREFIX@/etc/my.cnf r,
++    @MININIX_PREFIX@/etc/my.cnf r,
      /proc/ r,
      /proc/*/cmdline r,
      /proc/*/fd/ r,
@@ -55,5 +55,5 @@ diff -u -r ./support-files/rpm/my.cnf ../src.orig/support-files/rpm/my.cnf
  # include all files from the config directory
  #
 -!includedir /etc/my.cnf.d
-+!includedir @TERMUX_PREFIX@/etc/my.cnf.d
++!includedir @MININIX_PREFIX@/etc/my.cnf.d
  

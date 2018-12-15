@@ -9,10 +9,10 @@ diff -uNr apt-1.4.8/apt-pkg/aptconfiguration.cc apt-1.4.8.mod/apt-pkg/aptconfigu
 -	_config->CndSet("Dir::Bin::bzip2", "/bin/bzip2");
 -	_config->CndSet("Dir::Bin::xz", "/usr/bin/xz");
 -	_config->CndSet("Dir::Bin::lz4", "/usr/bin/lz4");
-+	_config->CndSet("Dir::Bin::gzip", "@TERMUX_PREFIX@/bin/gzip");
-+	_config->CndSet("Dir::Bin::bzip2", "@TERMUX_PREFIX@/bin/bzip2");
-+	_config->CndSet("Dir::Bin::xz", "@TERMUX_PREFIX@/bin/xz");
-+	_config->CndSet("Dir::Bin::lz4", "@TERMUX_PREFIX@/bin/lz4");
++	_config->CndSet("Dir::Bin::gzip", "@MININIX_PREFIX@/bin/gzip");
++	_config->CndSet("Dir::Bin::bzip2", "@MININIX_PREFIX@/bin/bzip2");
++	_config->CndSet("Dir::Bin::xz", "@MININIX_PREFIX@/bin/xz");
++	_config->CndSet("Dir::Bin::lz4", "@MININIX_PREFIX@/bin/lz4");
  	if (FileExists(_config->Find("Dir::Bin::xz")) == true) {
  		_config->Set("Dir::Bin::lzma", _config->Find("Dir::Bin::xz"));
  		_config->Set("APT::Compressor::lzma::Binary", "xz");
@@ -21,7 +21,7 @@ diff -uNr apt-1.4.8/apt-pkg/aptconfiguration.cc apt-1.4.8.mod/apt-pkg/aptconfigu
  		}
  	} else {
 -		_config->CndSet("Dir::Bin::lzma", "/usr/bin/lzma");
-+		_config->CndSet("Dir::Bin::lzma", "@TERMUX_PREFIX@/bin/lzma");
++		_config->CndSet("Dir::Bin::lzma", "@MININIX_PREFIX@/bin/lzma");
  		if (_config->Exists("APT::Compressor::lzma::CompressArg") == false) {
  			_config->Set("APT::Compressor::lzma::CompressArg::", "--suffix=");
  			_config->Set("APT::Compressor::lzma::CompressArg::", "-6");

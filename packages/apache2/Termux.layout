@@ -1,6 +1,6 @@
 
-# Termux layout
-<Layout Termux>
+# Mininix layout
+<Layout Mininix>
     prefix:
     exec_prefix:   ${prefix}
     bindir:        ${exec_prefix}/bin

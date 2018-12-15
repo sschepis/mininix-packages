@@ -6,7 +6,7 @@ diff -u -r ../emacs-25.0.92/lib-src/emacsclient.c ./lib-src/emacsclient.c
              else
  #endif
 -              tmpdir = "/tmp";
-+              tmpdir = "@TERMUX_PREFIX@/tmp";
++              tmpdir = "@MININIX_PREFIX@/tmp";
            }
  	socket_name_storage =
  	  xmalloc (strlen (tmpdir) + strlen (server_name) + EXTRA_SPACE);

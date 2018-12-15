@@ -15,10 +15,10 @@ diff -u -r ../fzf-0.11.1/bin/fzf-tmux ./bin/fzf-tmux
 -fifo1="${TMPDIR:-/tmp}/fzf-fifo1-$id"
 -fifo2="${TMPDIR:-/tmp}/fzf-fifo2-$id"
 -fifo3="${TMPDIR:-/tmp}/fzf-fifo3-$id"
-+argsf="${TMPDIR:-@TERMUX_PREFIX@/tmp}/fzf-args-$id"
-+fifo1="${TMPDIR:-@TERMUX_PREFIX@/tmp}/fzf-fifo1-$id"
-+fifo2="${TMPDIR:-@TERMUX_PREFIX@/tmp}/fzf-fifo2-$id"
-+fifo3="${TMPDIR:-@TERMUX_PREFIX@/tmp}/fzf-fifo3-$id"
++argsf="${TMPDIR:-@MININIX_PREFIX@/tmp}/fzf-args-$id"
++fifo1="${TMPDIR:-@MININIX_PREFIX@/tmp}/fzf-fifo1-$id"
++fifo2="${TMPDIR:-@MININIX_PREFIX@/tmp}/fzf-fifo2-$id"
++fifo3="${TMPDIR:-@MININIX_PREFIX@/tmp}/fzf-fifo3-$id"
  cleanup() {
    rm -f $argsf $fifo1 $fifo2 $fifo3
  }

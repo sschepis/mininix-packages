@@ -24,7 +24,7 @@ diff -u -r ../netpbm-advanced-r3084/buildtools/installnetpbm.pl ./buildtools/ins
      }
  
 -    my $response = fsObjPrompt("install prefix", $default);
-+    my $response = "@TERMUX_PREFIX@";
++    my $response = "@MININIX_PREFIX@";
  
      my $prefix;
  

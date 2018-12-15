@@ -6,7 +6,7 @@ diff -u -r ../ruby-2.4.0/ext/etc/etc.c ./ext/etc/etc.c
      tmpdir = rb_w32_conv_from_wchar(path, rb_filesystem_encoding());
  #else
 -    const char default_tmp[] = "/tmp";
-+    const char default_tmp[] = "@TERMUX_PREFIX@/tmp";
++    const char default_tmp[] = "@MININIX_PREFIX@/tmp";
      const char *tmpstr = default_tmp;
      size_t tmplen = strlen(default_tmp);
  # if defined _CS_DARWIN_USER_TEMP_DIR

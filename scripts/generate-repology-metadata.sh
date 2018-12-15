@@ -9,19 +9,19 @@ check_package() { # path
 
 	local path=$1
 	local pkg=`basename $path`
-	TERMUX_PKG_MAINTAINER="Fredrik Fornwall @fornwall"
+	MININIX_PKG_MAINTAINER="Fredrik Fornwall @fornwall"
 	. $path/build.sh
 
 	echo "  {"
 	echo "    \"name\": \"$pkg\","
-	echo "    \"version\": \"$TERMUX_PKG_VERSION\","
-	DESC=`echo $TERMUX_PKG_DESCRIPTION | head -n 1`
+	echo "    \"version\": \"$MININIX_PKG_VERSION\","
+	DESC=`echo $MININIX_PKG_DESCRIPTION | head -n 1`
 	echo "    \"description\": \"$DESC\","
-	echo "    \"homepage\": \"$TERMUX_PKG_HOMEPAGE\","
+	echo "    \"homepage\": \"$MININIX_PKG_HOMEPAGE\","
 
 	echo -n "    \"depends\": ["
 	FIRST_DEP=yes
-	for p in ${TERMUX_PKG_DEPENDS//,/ }; do
+	for p in ${MININIX_PKG_DEPENDS//,/ }; do
 		if [ $FIRST_DEP = yes ]; then
 			FIRST_DEP=no
 		else
@@ -31,16 +31,16 @@ check_package() { # path
 	done
 	echo "],"
 
-	if [ "$TERMUX_PKG_SRCURL" != "" ]; then
-		echo "    \"srcurl\": \"$TERMUX_PKG_SRCURL\","
+	if [ "$MININIX_PKG_SRCURL" != "" ]; then
+		echo "    \"srcurl\": \"$MININIX_PKG_SRCURL\","
 	fi
 
-	echo "    \"maintainer\": \"$TERMUX_PKG_MAINTAINER\""
+	echo "    \"maintainer\": \"$MININIX_PKG_MAINTAINER\""
 	echo -n "  }"
 }
 
 . scripts/properties.sh
-export TERMUX_ARCH=aarch64
+export MININIX_ARCH=aarch64
 
 echo '['
 

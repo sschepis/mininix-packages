@@ -6,7 +6,7 @@ diff -uNr libuuid-1.0.3/uuidP.h libuuid-1.0.3.mod/uuidP.h
  #include "uuid.h"
  
 -#define LIBUUID_CLOCK_FILE	"/var/lib/libuuid/clock.txt"
-+#define LIBUUID_CLOCK_FILE	"@TERMUX_PREFIX@/var/lib/libuuid/clock.txt"
++#define LIBUUID_CLOCK_FILE	"@MININIX_PREFIX@/var/lib/libuuid/clock.txt"
  
  /*
   * Offset between 15-Oct-1582 and 1-Jan-70

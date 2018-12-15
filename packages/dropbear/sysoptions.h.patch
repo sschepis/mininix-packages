@@ -6,7 +6,7 @@ diff -uNr dropbear-2018.76/sysoptions.h dropbear-2018.76.mod/sysoptions.h
  #define _PATH_TTY "/dev/tty"
  
 -#define _PATH_CP "/bin/cp"
-+#define _PATH_CP "@TERMUX_PREFIX@/bin/cp"
++#define _PATH_CP "@MININIX_PREFIX@/bin/cp"
  
  #define DROPBEAR_ESCAPE_CHAR '~'
  

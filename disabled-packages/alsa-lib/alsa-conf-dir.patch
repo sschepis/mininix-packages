@@ -5,7 +5,7 @@
  				]
  			}
 -			"/etc/asound.conf"
-+			"@TERMUX_PREFIX@/etc/asound.conf"
++			"@MININIX_PREFIX@/etc/asound.conf"
  			"~/.asoundrc"
  		]
  		errors false

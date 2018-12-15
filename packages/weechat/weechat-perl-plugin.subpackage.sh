@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="lib/weechat/plugins/perl.so"
-TERMUX_SUBPKG_DESCRIPTION="WeeChat Perl Plugin"
-TERMUX_SUBPKG_DEPENDS="weechat, perl"
+MININIX_SUBPKG_INCLUDE="lib/weechat/plugins/perl.so"
+MININIX_SUBPKG_DESCRIPTION="WeeChat Perl Plugin"
+MININIX_SUBPKG_DEPENDS="weechat, perl"

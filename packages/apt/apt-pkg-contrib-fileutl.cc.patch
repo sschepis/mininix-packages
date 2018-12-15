@@ -6,7 +6,7 @@ diff -uNr apt-1.4.8/apt-pkg/contrib/fileutl.cc apt-1.4.8.mod/apt-pkg/contrib/fil
        auto const shell = flNotDir(pw->pw_shell);
        if (shell == "false" || shell == "nologin")
 -	 setenv("SHELL", "/bin/sh", 1);
-+	 setenv("SHELL", "@TERMUX_PREFIX@/bin/sh", 1);
++	 setenv("SHELL", "@MININIX_PREFIX@/bin/sh", 1);
        else
  	 setenv("SHELL", pw->pw_shell, 1);
        auto const apt_setenv_tmp = [](char const * const env) {
@@ -18,7 +18,7 @@ diff -uNr apt-1.4.8/apt-pkg/contrib/fileutl.cc apt-1.4.8.mod/apt-pkg/contrib/fil
        }
  
 -      if (chdir("/tmp/") != 0)
-+      if (chdir("@TERMUX_PREFIX@/tmp/") != 0)
++      if (chdir("@MININIX_PREFIX@/tmp/") != 0)
  	 _exit(100);
  	 
        unsigned int Count = 1;

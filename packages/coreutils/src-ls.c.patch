@@ -5,7 +5,7 @@ diff -u -r ../coreutils-8.26/src/ls.c ./src/ls.c
        }
    }
  
-+  /* Termux patch: Default to colors if terminal. The --color option may override this. */
++  /* Mininix patch: Default to colors if terminal. The --color option may override this. */
 +  print_with_color = isatty(STDOUT_FILENO);
 +
    while (true)

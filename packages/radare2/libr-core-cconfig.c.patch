@@ -9,7 +9,7 @@ diff -u -r ../radare2-2.6.0/libr/core/cconfig.c ./libr/core/cconfig.c
 -#if __ANDROID__
 -	SETPREF ("dir.projects", "/data/data/org.radare.radare2installer/radare2/projects", "Default path for projects");
 -#else
-+	SETPREF ("dir.types", "@TERMUX_PREFIX@/include", "Default path to look for cparse type files");
++	SETPREF ("dir.types", "@MININIX_PREFIX@/include", "Default path to look for cparse type files");
  	SETPREF ("dir.projects", R_JOIN_2_PATHS ("~", R2_HOME_PROJECTS), "Default path for projects");
 -#endif
  	SETCB ("dir.zigns", R_JOIN_2_PATHS ("~", R2_HOME_ZIGNS), &cb_dirzigns, "Default path for zignatures (see zo command)");

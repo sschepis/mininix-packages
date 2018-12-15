@@ -6,7 +6,7 @@ index 26b7790..a29cf86 100644
  ; default-dbus-server =
  
  ; autospawn = yes
-+daemon-binary = @TERMUX_PREFIX@/bin/pulseaudio
++daemon-binary = @MININIX_PREFIX@/bin/pulseaudio
  ; daemon-binary = @PA_BINARY@
  ; extra-arguments = --log-target=syslog
  

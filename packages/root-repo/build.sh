@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/termux/termux-root-packages
-TERMUX_PKG_DESCRIPTION="Package repository containing programs for rooted devices"
-TERMUX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
-TERMUX_PKG_VERSION=1.1
-TERMUX_PKG_PLATFORM_INDEPENDENT=yes
+MININIX_PKG_HOMEPAGE=https://github.com/mininix/mininix-root-packages
+MININIX_PKG_DESCRIPTION="Package repository containing programs for rooted devices"
+MININIX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+MININIX_PKG_VERSION=1.1
+MININIX_PKG_PLATFORM_INDEPENDENT=yes
 
-termux_step_make_install() {
-	mkdir -p $TERMUX_PREFIX/etc/apt/{sources.list.d,trusted.gpg.d}
-	echo "deb https://grimler.se root stable" > $TERMUX_PREFIX/etc/apt/sources.list.d/root.list
-	cp $TERMUX_PKG_BUILDER_DIR/grimler.gpg $TERMUX_PREFIX/etc/apt/trusted.gpg.d/
+mininix_step_make_install() {
+	mkdir -p $MININIX_PREFIX/etc/apt/{sources.list.d,trusted.gpg.d}
+	echo "deb https://grimler.se root stable" > $MININIX_PREFIX/etc/apt/sources.list.d/root.list
+	cp $MININIX_PKG_BUILDER_DIR/grimler.gpg $MININIX_PREFIX/etc/apt/trusted.gpg.d/
 }
 
-termux_step_create_debscripts () {
-	echo "#!$TERMUX_PREFIX/bin/sh" > postinst
+mininix_step_create_debscripts () {
+	echo "#!$MININIX_PREFIX/bin/sh" > postinst
 	echo "echo Downloading updated package list ..." >> postinst
 	echo "apt update" >> postinst
 	echo "exit 0" >> postinst

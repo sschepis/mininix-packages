@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="bin"
-TERMUX_SUBPKG_DESCRIPTION="Fontconfig binaries"
-TERMUX_SUBPKG_DEPENDS="fontconfig, libpng"
+MININIX_SUBPKG_INCLUDE="bin"
+MININIX_SUBPKG_DESCRIPTION="Fontconfig binaries"
+MININIX_SUBPKG_DEPENDS="fontconfig, libpng"

@@ -1,12 +1,12 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.mininix/files/usr/bin/sh
 
 if [ "$#" != "0" ]; then
-	echo 'usage: termux-setup-storage'
+	echo 'usage: mininix-setup-storage'
 	echo 'Use without arguments to ensure storage permission granted'
 	echo 'and symlinks to storage available in $HOME/storage'
 	exit
 fi
 
 am broadcast --user 0 \
-		 --es com.termux.app.reload_style storage \
-		 -a com.termux.app.reload_style com.termux > /dev/null
+		 --es com.mininix.app.reload_style storage \
+		 -a com.mininix.app.reload_style com.mininix > /dev/null

@@ -6,7 +6,7 @@ diff -u -r ../Python-3.5.0/setup.py ./setup.py
          # Lance Ellinghaus's syslog module
          # syslog daemon interface
 -        exts.append( Extension('syslog', ['syslogmodule.c']) )
-+        # Termux: Add 'log' android library since we use android logging:
++        # Mininix: Add 'log' android library since we use android logging:
 +        exts.append( Extension('syslog', ['syslogmodule.c'], libraries=['log']) )
  
          #

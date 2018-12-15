@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://launchpad.net/pastebinit
-TERMUX_PKG_DESCRIPTION="Command-line pastebin client"
-TERMUX_PKG_VERSION=1.5
-TERMUX_PKG_SRCURL=https://launchpad.net/pastebinit/trunk/${TERMUX_PKG_VERSION}/+download/pastebinit-${TERMUX_PKG_VERSION}.tar.bz2
-TERMUX_PKG_SHA256=42e5a84ce7e46825fb3b6478e11893fad357197327257e474bd0d3549f438457
-TERMUX_PKG_DEPENDS="python"
-TERMUX_PKG_BUILD_IN_SRC=yes
-TERMUX_PKG_PLATFORM_INDEPENDENT=yes
+MININIX_PKG_HOMEPAGE=https://launchpad.net/pastebinit
+MININIX_PKG_DESCRIPTION="Command-line pastebin client"
+MININIX_PKG_VERSION=1.5
+MININIX_PKG_SRCURL=https://launchpad.net/pastebinit/trunk/${MININIX_PKG_VERSION}/+download/pastebinit-${MININIX_PKG_VERSION}.tar.bz2
+MININIX_PKG_SHA256=42e5a84ce7e46825fb3b6478e11893fad357197327257e474bd0d3549f438457
+MININIX_PKG_DEPENDS="python"
+MININIX_PKG_BUILD_IN_SRC=yes
+MININIX_PKG_PLATFORM_INDEPENDENT=yes
 
-termux_step_make_install () {
-        cp pastebinit $TERMUX_PREFIX/bin/
+mininix_step_make_install () {
+        cp pastebinit $MININIX_PREFIX/bin/
 	xsltproc -''-nonet /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl pastebinit.xml
-	cp pastebinit.1 $TERMUX_PREFIX/share/man/man1/
+	cp pastebinit.1 $MININIX_PREFIX/share/man/man1/
 
-	rm -Rf $TERMUX_PREFIX/etc/pastebin.d
-	mv pastebin.d $TERMUX_PREFIX/etc
+	rm -Rf $MININIX_PREFIX/etc/pastebin.d
+	mv pastebin.d $MININIX_PREFIX/etc
 }

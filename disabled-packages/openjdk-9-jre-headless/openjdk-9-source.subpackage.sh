@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="$_jvm_dir/src.zip"
-TERMUX_SUBPKG_DEPENDS="openjdk-9-jre-headless"
-TERMUX_SUBPKG_DESCRIPTION="OpenJDK Development Kit (JDK) source files"
-TERMUX_SUBPKG_PLATFORM_INDEPENDENT=yes
+MININIX_SUBPKG_INCLUDE="$_jvm_dir/src.zip"
+MININIX_SUBPKG_DEPENDS="openjdk-9-jre-headless"
+MININIX_SUBPKG_DESCRIPTION="OpenJDK Development Kit (JDK) source files"
+MININIX_SUBPKG_PLATFORM_INDEPENDENT=yes

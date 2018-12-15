@@ -17,7 +17,7 @@ diff -uNr dropbear-2018.76/svr-authpasswd.c dropbear-2018.76.mod/svr-authpasswd.
 -
 -	return constant_time_memcmp(a, b, la);
 -}
-+#include <termux-auth.h>
++#include <mininix-auth.h>
  
  /* Process a password auth request, sending success or failure messages as
   * appropriate */
@@ -71,7 +71,7 @@ diff -uNr dropbear-2018.76/svr-authpasswd.c dropbear-2018.76.mod/svr-authpasswd.
  
 -	if (constant_time_strcmp(testcrypt, passwdcrypt) == 0) {
 +    /* check if password is valid */
-+    if (termux_auth(ses.authstate.pw_name, password)) {
++    if (mininix_auth(ses.authstate.pw_name, password)) {
  		/* successful authentication */
 -		dropbear_log(LOG_NOTICE, 
 +		dropbear_log(LOG_NOTICE,

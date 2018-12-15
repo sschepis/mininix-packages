@@ -6,7 +6,7 @@ diff -uNr parallel-20180222/src/sem parallel-20180222.mod/src/sem
      $Global::debug = $opt::D;
      $Global::shell = $ENV{'PARALLEL_SHELL'} || parent_shell($$)
 -	|| $ENV{'SHELL'} || "/bin/sh";
-+	|| $ENV{'SHELL'} || "@TERMUX_PREFIX@/bin/sh";
++	|| $ENV{'SHELL'} || "@MININIX_PREFIX@/bin/sh";
      if(not which($Global::shell)) {
  	::error("Shell '$Global::shell' not found.");
  	wait_and_exit(255);
@@ -15,13 +15,13 @@ diff -uNr parallel-20180222/src/sem parallel-20180222.mod/src/sem
      $Global::max_jobs_running = 0;
      $Global::job_already_run = '';
 -    $ENV{'TMPDIR'} ||= "/tmp";
-+    $ENV{'TMPDIR'} ||= "@TERMUX_PREFIX@/tmp";
++    $ENV{'TMPDIR'} ||= "@MININIX_PREFIX@/tmp";
      if(not $ENV{HOME}) {
  	# $ENV{HOME} is sometimes not set if called from PHP
 -	::warning("\$HOME not set. Using /tmp.");
 -	$ENV{HOME} = "/tmp";
-+	::warning("\$HOME not set. Using @TERMUX_HOME@.");
-+	$ENV{HOME} = "@TERMUX_HOME@";
++	::warning("\$HOME not set. Using @MININIX_HOME@.");
++	$ENV{HOME} = "@MININIX_HOME@";
      }
      # no warnings to allow for undefined $XDG_*
      no warnings 'uninitialized';
@@ -30,7 +30,7 @@ diff -uNr parallel-20180222/src/sem parallel-20180222.mod/src/sem
  
      my $pid = ::open3($stdin_fh,$stdout_fh,$stderr_fh,
 -		      $0,qw(--plain --shell /bin/sh --will-cite), @args);
-+		      $0,qw(--plain --shell @TERMUX_PREFIX@/bin/sh --will-cite), @args);
++		      $0,qw(--plain --shell @MININIX_PREFIX@/bin/sh --will-cite), @args);
      if(my $writerpid = fork()) {
  	close $stdin_fh;
  	@stdout = <$stdout_fh>;

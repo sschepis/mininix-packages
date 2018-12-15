@@ -1,7 +1,7 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.mininix/files/usr/bin/sh
 set -e -u
 
-SCRIPTNAME=termux-open
+SCRIPTNAME=mininix-open
 show_usage () {
     echo "Usage: $SCRIPTNAME [options] path-or-url"
     echo "Open a file or URL in an external app."
@@ -42,7 +42,7 @@ fi
 
 am broadcast --user 0 \
 	-a $ACTION \
-	-n com.termux/com.termux.app.TermuxOpenReceiver \
+	-n com.mininix/com.mininix.app.MininixOpenReceiver \
 	$EXTRAS \
 	-d "$FILE" \
 	> /dev/null

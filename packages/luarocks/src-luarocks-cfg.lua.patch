@@ -8,10 +8,10 @@
 -   defaults.variables.LUA_BINDIR = site_config.LUA_BINDIR or "/usr/local/bin"
 -   defaults.variables.LUA_INCDIR = site_config.LUA_INCDIR or "/usr/local/include"
 -   defaults.variables.LUA_LIBDIR = site_config.LUA_LIBDIR or "/usr/local/lib"
-+   defaults.external_deps_dirs = { "@TERMUX_PREFIX@/local", "@TERMUX_PREFIX@" }
-+   defaults.variables.LUA_BINDIR = site_config.LUA_BINDIR or "@TERMUX_PREFIX@/local/bin"
-+   defaults.variables.LUA_INCDIR = site_config.LUA_INCDIR or "@TERMUX_PREFIX@/local/include"
-+   defaults.variables.LUA_LIBDIR = site_config.LUA_LIBDIR or "@TERMUX_PREFIX@/local/lib"
++   defaults.external_deps_dirs = { "@MININIX_PREFIX@/local", "@MININIX_PREFIX@" }
++   defaults.variables.LUA_BINDIR = site_config.LUA_BINDIR or "@MININIX_PREFIX@/local/bin"
++   defaults.variables.LUA_INCDIR = site_config.LUA_INCDIR or "@MININIX_PREFIX@/local/include"
++   defaults.variables.LUA_LIBDIR = site_config.LUA_LIBDIR or "@MININIX_PREFIX@/local/lib"
     defaults.variables.CFLAGS = "-O2"
     defaults.cmake_generator = "Unix Makefiles"
     defaults.variables.CC = "gcc"

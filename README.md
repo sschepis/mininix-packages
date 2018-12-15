@@ -1,9 +1,9 @@
-Termux packages
+Mininix packages
 ===============
-[![Build Status](https://travis-ci.org/termux/termux-packages.svg?branch=master)](https://travis-ci.org/termux/termux-packages)
-[![Join the chat at https://gitter.im/termux/termux](https://badges.gitter.im/termux/termux.svg)](https://gitter.im/termux/termux)
+[![Build Status](https://travis-ci.org/mininix/mininix-packages.svg?branch=master)](https://travis-ci.org/mininix/mininix-packages)
+[![Join the chat at https://gitter.im/mininix/mininix](https://badges.gitter.im/mininix/mininix.svg)](https://gitter.im/mininix/mininix)
 
-This project contains scripts and patches to build packages for the [Termux](https://termux.com/) Android application. Note that packages are cross compiled and that on-device builds are not currently supported.
+This project contains scripts and patches to build packages for the [Mininix](https://mininix.com/) Android application. Note that packages are cross compiled and that on-device builds are not currently supported.
 
 Setting up a build environment using Docker
 ===========================================
@@ -13,7 +13,7 @@ Run the following script to setup a container (from an image created by [scripts
 
     ./scripts/run-docker.sh
 
-This source folder is mounted as the `/root/termux-packages` data volume, so changes are kept
+This source folder is mounted as the `/root/mininix-packages` data volume, so changes are kept
 in sync between the host and the container when trying things out before committing, and built
 deb files will be available on the host in the `debs/` directory just as when building on the host.
 
@@ -49,14 +49,14 @@ The basic build operation is to run `./build-package.sh $PKG`, which:
 
 2. Reads `packages/$PKG/build.sh` to find out where to find the source code of the package and how to build it.
 
-3. Extracts the source in `$HOME/.termux-build/$PKG/src`.
+3. Extracts the source in `$HOME/.mininix-build/$PKG/src`.
 
 4. Applies all patches in packages/$PKG/\*.patch.
 
-5. Builds the package under `$HOME/.termux-build/$PKG/` (either in the build/ directory there or in the
+5. Builds the package under `$HOME/.mininix-build/$PKG/` (either in the build/ directory there or in the
   src/ directory if the package is specified to build in the src dir) and installs it to `$PREFIX`.
 
-6. Extracts modified files in `$PREFIX` into `$HOME/.termux-build/$PKG/massage` and massages the
+6. Extracts modified files in `$PREFIX` into `$HOME/.mininix-build/$PKG/massage` and massages the
   files there for distribution (removes some files, splits it up in sub-packages, modifies elf files).
 
 7. Creates a deb package file for distribution in `debs/`.
@@ -135,7 +135,7 @@ Some notes about the linker:
 
 - The supported types of dynamic section entries has increased over time.
 
-- The Termux build system uses [termux-elf-cleaner](https://github.com/termux/termux-elf-cleaner) to strip away unused ELF entries causing the above mentioned linker warnings.
+- The Mininix build system uses [mininix-elf-cleaner](https://github.com/mininix/mininix-elf-cleaner) to strip away unused ELF entries causing the above mentioned linker warnings.
 
 - Symbol versioning is supported only as of Android 6.0, so is stripped away.
 

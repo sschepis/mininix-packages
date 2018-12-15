@@ -6,7 +6,7 @@ diff -uNr dash-0.5.10.2/src/var.c dash-0.5.10.2.mod/src/var.c
  
  const char defpathvar[] =
 -	"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
-+	"PATH=@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/bin/applets";
++	"PATH=@MININIX_PREFIX@/bin:@MININIX_PREFIX@/bin/applets";
  #ifdef IFS_BROKEN
  const char defifsvar[] = "IFS= \t\n";
  #else

@@ -6,7 +6,7 @@ diff -u -r ../gdb-8.1/gdb/nat/fork-inferior.c ./gdb/nat/fork-inferior.c
  /* Default shell file to be used if 'startup-with-shell' is set but
     $SHELL is not.  */
 -#define SHELL_FILE "/bin/sh"
-+#define SHELL_FILE "@TERMUX_PREFIX@/bin/sh"
++#define SHELL_FILE "@MININIX_PREFIX@/bin/sh"
  
  /* Build the argument vector for execv(3).  */
  

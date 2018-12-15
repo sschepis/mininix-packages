@@ -6,7 +6,7 @@ diff -uNr lynx2.8.9dev.19/src/LYUtils.c lynx2.8.9dev.19.mod/src/LYUtils.c
  		 * Use /tmp; it should be writable.
  		 */
 -		StrAllocCopy(HomeDir, "/tmp");
-+		StrAllocCopy(HomeDir, "@TERMUX_PREFIX@/tmp");
++		StrAllocCopy(HomeDir, "@MININIX_PREFIX@/tmp");
  	    }
  #endif
  #endif /* VMS */

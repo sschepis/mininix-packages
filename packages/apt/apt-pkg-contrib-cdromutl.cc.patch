@@ -6,7 +6,7 @@ diff -uNr apt-1.4.8/apt-pkg/contrib/cdromutl.cc apt-1.4.8.mod/apt-pkg/contrib/cd
  {
     // this is the order that mount uses as well
 -   std::vector<std::string> const mounts = _config->FindVector("Dir::state::MountPoints", "/etc/mtab,/proc/mount");
-+   std::vector<std::string> const mounts = _config->FindVector("Dir::state::MountPoints", "@TERMUX_PREFIX@/etc/mtab,/proc/mount");
++   std::vector<std::string> const mounts = _config->FindVector("Dir::state::MountPoints", "@MININIX_PREFIX@/etc/mtab,/proc/mount");
  
     for (std::vector<std::string>::const_iterator m = mounts.begin(); m != mounts.end(); ++m)
        if (FileExists(*m) == true)

@@ -7,8 +7,8 @@ diff -u -r ../pastebinit-1.5/pastebinit ./pastebinit
          pastebind = {}
 -        for confdir in ['/usr/share/pastebin.d', '/etc/pastebin.d',
 -                        '/usr/local/etc/pastebin.d',
-+        for confdir in ['@TERMUX_PREFIX@/share/pastebin.d', '@TERMUX_PREFIX@/etc/pastebin.d',
-+                        '@TERMUX_PREFIX@/local/etc/pastebin.d',
++        for confdir in ['@MININIX_PREFIX@/share/pastebin.d', '@MININIX_PREFIX@/etc/pastebin.d',
++                        '@MININIX_PREFIX@/local/etc/pastebin.d',
                          os.path.expanduser('~/.pastebin.d'),
                          os.path.join(
                              os.path.dirname(

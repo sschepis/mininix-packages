@@ -6,7 +6,7 @@ diff -u -r ../postgresql-9.6.2/src/bin/pg_upgrade/check.c ./src/bin/pg_upgrade/c
  #ifndef WIN32
  	/* add shebang header */
 -	fprintf(script, "#!/bin/sh\n\n");
-+	fprintf(script, "#!@TERMUX_PREFIX@/bin/sh\n\n");
++	fprintf(script, "#!@MININIX_PREFIX@/bin/sh\n\n");
  #else
  	/* suppress command echoing */
  	fprintf(script, "@echo off\n");
@@ -15,7 +15,7 @@ diff -u -r ../postgresql-9.6.2/src/bin/pg_upgrade/check.c ./src/bin/pg_upgrade/c
  #ifndef WIN32
  	/* add shebang header */
 -	fprintf(script, "#!/bin/sh\n\n");
-+	fprintf(script, "#!@TERMUX_PREFIX@/bin/sh\n\n");
++	fprintf(script, "#!@MININIX_PREFIX@/bin/sh\n\n");
  #endif
  
  	/* delete old cluster's default tablespace */

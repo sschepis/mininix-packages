@@ -7,7 +7,7 @@
 +#ifdef __clang__
  #include_next <stddef.h>
 +#else
-+#include "../../../lib/gcc/@TERMUX_HOST_PLATFORM@/4.9.x/include/stddef.h"
++#include "../../../lib/gcc/@MININIX_HOST_PLATFORM@/4.9.x/include/stddef.h"
 +#endif
  #include <__nullptr>
  

@@ -1,2 +1,2 @@
-TERMUX_SUBPKG_INCLUDE="bin/"
-TERMUX_SUBPKG_DESCRIPTION="New zlib compatible compressor tools"
+MININIX_SUBPKG_INCLUDE="bin/"
+MININIX_SUBPKG_DESCRIPTION="New zlib compatible compressor tools"

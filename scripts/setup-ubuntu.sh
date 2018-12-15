@@ -41,5 +41,5 @@ PACKAGES+=" libssl-dev" # Needed to build Rust
 sudo DEBIAN_FRONTEND=noninteractive \
 	apt-get install -yq --no-install-recommends $PACKAGES
 
-sudo mkdir -p /data/data/com.termux/files/usr
+sudo mkdir -p /data/data/com.mininix/files/usr
 sudo chown -R `whoami` /data

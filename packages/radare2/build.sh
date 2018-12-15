@@ -1,14 +1,14 @@
-TERMUX_PKG_HOMEPAGE=https://rada.re
-TERMUX_PKG_DESCRIPTION="Advanced Hexadecimal Editor"
-TERMUX_PKG_VERSION=3.1.0
-TERMUX_PKG_SHA256=b6e74f29cc36ff25400376726e1315b37fe5876a1c82cf7bf75b39e6e5bbe41f
-TERMUX_PKG_SRCURL=https://github.com/radare/radare2/archive/$TERMUX_PKG_VERSION.tar.gz
-TERMUX_PKG_DEPENDS="libuv"
-TERMUX_PKG_BUILD_IN_SRC="yes"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--with-compiler=termux-host"
+MININIX_PKG_HOMEPAGE=https://rada.re
+MININIX_PKG_DESCRIPTION="Advanced Hexadecimal Editor"
+MININIX_PKG_VERSION=3.1.0
+MININIX_PKG_SHA256=b6e74f29cc36ff25400376726e1315b37fe5876a1c82cf7bf75b39e6e5bbe41f
+MININIX_PKG_SRCURL=https://github.com/radare/radare2/archive/$MININIX_PKG_VERSION.tar.gz
+MININIX_PKG_DEPENDS="libuv"
+MININIX_PKG_BUILD_IN_SRC="yes"
+MININIX_PKG_EXTRA_CONFIGURE_ARGS="--with-compiler=mininix-host"
 
-termux_step_pre_configure() {
-	# Unset CPPFLAGS to avoid -I$TERMUX_PREFIX/include. This is because
+mininix_step_pre_configure() {
+	# Unset CPPFLAGS to avoid -I$MININIX_PREFIX/include. This is because
 	# radare2 build will put it's own -I flags after ours, which causes
 	# problems due to name clashes (binutils header files).
 	unset CPPFLAGS
@@ -16,8 +16,8 @@ termux_step_pre_configure() {
 	# If this variable is not set, then build will fail on linking with 'pthread'
 	export ANDROID=1
 
-	export OBJCOPY=$TERMUX_HOST_PLATFORM-objcopy
+	export OBJCOPY=$MININIX_HOST_PLATFORM-objcopy
 
 	# Remove old libs which may mess with new build:
-	rm -f $TERMUX_PREFIX/lib/libr_*
+	rm -f $MININIX_PREFIX/lib/libr_*
 }

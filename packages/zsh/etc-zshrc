@@ -1,5 +1,5 @@
 command_not_found_handler() {
-	@TERMUX_PREFIX@/libexec/termux/command-not-found $1
+	@MININIX_PREFIX@/libexec/mininix/command-not-found $1
 }
 
 PS1='%# '

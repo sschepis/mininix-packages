@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="bin/"
-TERMUX_SUBPKG_DESCRIPTION="The Berkeley DB embedded database system"
-TERMUX_SUBPKG_DEPENDS="libdb"
+MININIX_SUBPKG_INCLUDE="bin/"
+MININIX_SUBPKG_DESCRIPTION="The Berkeley DB embedded database system"
+MININIX_SUBPKG_DEPENDS="libdb"

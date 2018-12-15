@@ -6,7 +6,7 @@ diff -u -r ../openssh-7.9p1/Makefile.in ./Makefile.in
  
  sshd$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHDOBJS)
 -	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS)
-+	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -ltermux-auth -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS)
++	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lmininix-auth -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS)
  
  scp$(EXEEXT): $(LIBCOMPAT) libssh.a scp.o progressmeter.o
  	$(LD) -o $@ scp.o progressmeter.o $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS)

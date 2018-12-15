@@ -1,7 +1,7 @@
 # Build with:
-# 	docker build -t termux/package-builder .
+# 	docker build -t mininix/package-builder .
 # Push to docker hub with:
-# 	docker push termux/package-builder
+# 	docker push mininix/package-builder
 # This is done after changing this file or any of the
 # scripts/setup-{ubuntu,android-sdk}.sh setup scripts.
 FROM ubuntu:18.10
@@ -31,6 +31,6 @@ RUN apt-get update && \
     cd /home/builder/lib/android-sdk/tools && \
     rm -Rf emulator* lib* proguard templates
 
-# We expect this to be mounted with '-v $PWD:/home/builder/termux-packages':
-WORKDIR /home/builder/termux-packages
+# We expect this to be mounted with '-v $PWD:/home/builder/mininix-packages':
+WORKDIR /home/builder/mininix-packages
 

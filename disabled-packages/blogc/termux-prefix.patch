@@ -7,7 +7,7 @@ index d5f5387..5154bb9 100644
  
      // this is not really portable
 -    char fname[] = "/tmp/blogc-make_XXXXXX";
-+    char fname[] = "@TERMUX_PREFIX@/tmp/blogc-make_XXXXXX";
++    char fname[] = "@MININIX_PREFIX@/tmp/blogc-make_XXXXXX";
      int fd;
      if (-1 == (fd = mkstemp(fname))) {
          *err = bc_error_new_printf(BLOGC_MAKE_ERROR_ATOM,
@@ -20,7 +20,7 @@ index db20cae..86e8d25 100644
  
          char *const argv[] = {
 -            "/bin/sh",
-+            "@TERMUX_PREFIX@/bin/sh",
++            "@MININIX_PREFIX@/bin/sh",
              "-c",
              (char*) cmd,
              NULL,

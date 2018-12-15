@@ -6,7 +6,7 @@
  			free(line);
 -			if(!freopen(ctermid(NULL), "r", stdin)) {
 +			//if(!freopen(ctermid(NULL), "r", stdin)) {
-+			if(!freopen("/dev/tty", "r", stdin)) { // HACK termux doesn't have ctermid()
++			if(!freopen("/dev/tty", "r", stdin)) { // HACK mininix doesn't have ctermid()
  				pm_printf(ALPM_LOG_ERROR, _("failed to reopen stdin for reading: (%s)\n"),
  						strerror(errno));
  			}

@@ -1,9 +1,9 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.mininix/files/usr/bin/sh
 
 
 if [ "$#" != "0" ]; then
-	echo 'usage: termux-info'
-	echo 'Provides information about Termux, and the current system. Helpful for debugging.'
+	echo 'usage: mininix-info'
+	echo 'Provides information about Mininix, and the current system. Helpful for debugging.'
 	exit
 fi
 
@@ -21,7 +21,7 @@ output="Updatable packages:
 $(updates)
 System information:
 $(uname -a)
-Termux-packages arch:
+Mininix-packages arch:
 $(dpkg --print-architecture)
 Android version:
 $(getprop ro.build.version.release)
@@ -30,8 +30,8 @@ $(getprop ro.product.manufacturer)
 Device model:
 $(getprop ro.product.model)"
 echo "$output"
-# Copy to clipboard (requires termux-api)
-# use timeout in case termux-api is installed but the termux:api app is missing
-echo "$output" | busybox timeout -t 3 termux-clipboard-set 2>/dev/null
-busybox timeout -t 3 termux-toast "Information has been copied to the clipboard" 2>/dev/null
+# Copy to clipboard (requires mininix-api)
+# use timeout in case mininix-api is installed but the mininix:api app is missing
+echo "$output" | busybox timeout -t 3 mininix-clipboard-set 2>/dev/null
+busybox timeout -t 3 mininix-toast "Information has been copied to the clipboard" 2>/dev/null
 exit 0

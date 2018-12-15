@@ -12,10 +12,10 @@ set_shell () {
 		echo "login is not a valid shell"
 		exit 1
 	fi
-	mkdir -p $HOME/.termux
+	mkdir -p $HOME/.mininix
 	NEW_SHELL=$PREFIX/bin/$1
 	if test -x $NEW_SHELL -a ! -d $NEW_SHELL; then
-		ln -f -s $NEW_SHELL $HOME/.termux/shell
+		ln -f -s $NEW_SHELL $HOME/.mininix/shell
 	else
 		echo "$NEW_SHELL is not an executable file!"
 	fi

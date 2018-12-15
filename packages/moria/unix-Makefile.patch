@@ -5,7 +5,7 @@ index e65338f..e169edf 100644
 @@ -1,5 +1,5 @@
  # Edited for Debian GNU/Linux.
 -DESTDIR =
-+DESTDIR = @TERMUX_PREFIX@
++DESTDIR = @MININIX_PREFIX@
  
  # DEBIAN NOTE: This file diverges significantly from the original Makefile
  #   for obvious reasons.  The original Makefile is Makefile.unix and should

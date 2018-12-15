@@ -6,7 +6,7 @@ diff -u -r ../luarocks-2.4.0/src/luarocks/fs/unix/tools.lua ./src/luarocks/fs/un
     name = dir.normalize(name)
  
 -   local template = (os.getenv("TMPDIR") or "/tmp") .. "/luarocks_" .. name:gsub(dir.separator, "_") .. "-XXXXXX"
-+   local template = (os.getenv("TMPDIR") or "@TERMUX_PREFIX@/tmp") .. "/luarocks_" .. name:gsub(dir.separator, "_") .. "-XXXXXX"
++   local template = (os.getenv("TMPDIR") or "@MININIX_PREFIX@/tmp") .. "/luarocks_" .. name:gsub(dir.separator, "_") .. "-XXXXXX"
     local pipe = io.popen(vars.MKTEMP.." -d "..fs.Q(template))
     local dirname = pipe:read("*l")
     pipe:close()
